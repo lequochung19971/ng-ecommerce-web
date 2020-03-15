@@ -8,9 +8,13 @@ import { MaterialModule } from '../material/material.module';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { NavBarSideBarListComponent } from './components/nav-bar-side-bar-list/nav-bar-side-bar-list.component';
 import { NavBarProfileComponent } from './components/nav-bar-profile/nav-bar-profile.component';
+import { TableComponent } from './components/table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
-  declarations: [NavBarComponent, DashboardComponent, BreadcrumbsComponent, NavBarSideBarListComponent, NavBarProfileComponent],
-  imports: [CommonModule, AdminRoutingModule, MaterialModule]
+  declarations: [NavBarComponent, DashboardComponent, BreadcrumbsComponent, NavBarSideBarListComponent, NavBarProfileComponent, TableComponent],
+  imports: [CommonModule, AdminRoutingModule, MaterialModule, MatTableModule, MatPaginatorModule, MatSortModule]
 })
 export class AdminModule {}

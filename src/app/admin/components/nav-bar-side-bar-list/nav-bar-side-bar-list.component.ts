@@ -70,16 +70,12 @@ export class NavBarSideBarListComponent implements OnInit {
     },
     {
       id: 'panel-2',
-      isHideToggle: false,
+      isHideToggle: true,
       isDisabled: false,
       isExpanded: false,
-      routeName: 'List Route',
-      url: null,
-      children: [
-        { routeName: 'Route 1', url: '/admin/route1' },
-        { routeName: 'Route 2', url: '/admin/route2' },
-        { routeName: 'Route 3', url: '/admin/route3' }
-      ]
+      routeName: 'Table',
+      url: '/admin/table',
+      children: []
     }
   ];
 

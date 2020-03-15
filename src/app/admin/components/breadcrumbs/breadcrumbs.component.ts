@@ -10,8 +10,8 @@ import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 })
 export class BreadcrumbsComponent implements OnInit {
   breadcrumb$;
-  homeRoute: string;
-  childRoute: string;
+  homeRouteName: string;
+  childRouteName: string;
 
   constructor(private activatedRouter: ActivatedRoute, private router: Router) {
     this.breadcrumb$ = this.router.events
@@ -26,7 +26,8 @@ export class BreadcrumbsComponent implements OnInit {
   ngOnInit(): void {}
 
   buildBreadCrumb(route: ActivatedRoute, url, breadcrumbs: Array<Breadcrumb> = []) {
-    // this.homeRoute = route.routeConfig.data.breadcrumb;
-    // this.childRoute = route.firstChild.routeConfig.data.breadcrumb;
+    this.homeRouteName = route.routeConfig ? route.routeConfig.data.breadcrumb : '';
+    this.childRouteName = route.firstChild.routeConfig ? route.firstChild.routeConfig.data.breadcrumb : '';
+    console.log(this.childRouteName);
   }
 }

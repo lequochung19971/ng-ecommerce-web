@@ -2,6 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent, data: { breadcrumb: 'Dashboard' } },
       { path: 'customer', component: DashboardComponent, data: { breadcrumb: 'Customer' } },
       { path: 'product', component: DashboardComponent, data: { breadcrumb: 'Prodcut' } },
+      { path: 'table', component: TableComponent, data: { breadcrumb: 'Table' } },
       { path: '', redirectTo: '/admin/dashboard', data: { breadcrumb: 'Dashboard' } }
     ]
   }
