@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar-side-bar-list',
@@ -8,78 +9,74 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarSideBarListComponent implements OnInit {
   accordionList = [
     {
-      id: 'panel-1',
-      isHideToggle: true,
+      id: 'dashboard',
       isDisabled: false,
-      isExpanded: false,
+      isExpanded: !!(this.router.url === '/admin/dashboard'),
       routeName: 'Dashboard',
+      matIcon: 'dashboard',
       url: '/admin/dashboard',
       children: []
     },
     {
-      id: 'panel-2',
-      isHideToggle: false,
+      id: 'categories',
       isDisabled: false,
-      isExpanded: false,
-      routeName: 'List Route',
-      url: null,
-      children: [
-        { routeName: 'Route 1', url: '/admin/route1' },
-        { routeName: 'Route 2', url: '/admin/route2' },
-        { routeName: 'Route 3', url: '/admin/route3' }
-      ]
+      isExpanded: !!(this.router.url === '/admin/categories'),
+      routeName: 'Categories',
+      matIcon: 'category',
+      url: '/admin/categories',
+      children: []
     },
     {
-      id: 'panel-3',
-      isHideToggle: false,
+      id: 'products',
       isDisabled: false,
-      isExpanded: false,
-      routeName: 'List Route',
-      url: '',
-      children: [
-        { routeName: 'Route 1', url: '/admin/route1' },
-        { routeName: 'Route 2', url: '/admin/route2' },
-        { routeName: 'Route 3', url: '/admin/route3' }
-      ]
+      isExpanded: !!(this.router.url === '/admin/products'),
+      routeName: 'Products',
+      matIcon: 'menu_book',
+      url: '/admin/products',
+      children: []
     },
     {
-      id: 'panel-2',
-      isHideToggle: false,
+      id: 'employees',
       isDisabled: false,
-      isExpanded: false,
-      routeName: 'List Route',
-      url: null,
-      children: [
-        { routeName: 'Route 1', url: '/admin/route1' },
-        { routeName: 'Route 2', url: '/admin/route2' },
-        { routeName: 'Route 3', url: '/admin/route3' }
-      ]
+      isExpanded: !!(this.router.url === '/admin/employees'),
+      routeName: 'Employees',
+      matIcon: 'assignment_ind',
+      url: '/admin/employees',
+      children: []
     },
     {
-      id: 'panel-2',
-      isHideToggle: false,
+      id: 'customers',
       isDisabled: false,
-      isExpanded: false,
-      routeName: 'List Route',
-      url: null,
-      children: [
-        { routeName: 'Route 1', url: '/admin/route1' },
-        { routeName: 'Route 2', url: '/admin/route2' },
-        { routeName: 'Route 3', url: '/admin/route3' }
-      ]
+      isExpanded: !!(this.router.url === '/admin/customers'),
+      routeName: 'Customers',
+      matIcon: 'people',
+      url: '/admin/customers',
+      children: []
     },
     {
-      id: 'panel-2',
-      isHideToggle: true,
+      id: 'receipts',
       isDisabled: false,
-      isExpanded: false,
-      routeName: 'Table',
-      url: '/admin/table',
+      isExpanded: !!(this.router.url === '/admin/receipts'),
+      routeName: 'Receipts',
+      matIcon: 'assessment',
+      url: '/admin/receipts',
       children: []
     }
+    // {
+    //   id: 'panel-2',
+    //   isDisabled: false,
+    //   isExpanded: false,
+    //   routeName: 'List Route',
+    //   url: null,
+    //   children: [
+    //     { routeName: 'Route 1', url: '/admin/route1' },
+    //     { routeName: 'Route 2', url: '/admin/route2' },
+    //     { routeName: 'Route 3', url: '/admin/route3' }
+    //   ]
+    // },
   ];
 
-  constructor() {}
+  constructor(protected router: Router) {}
 
   ngOnInit(): void {}
 }

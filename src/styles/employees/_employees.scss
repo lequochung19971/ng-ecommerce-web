@@ -1,0 +1,29 @@
+.employee-mat-card {
+  &.mat-card {
+    margin: 2rem;
+    padding: 0;
+  }
+
+  &__title {
+    color: $black-7-opacity;
+    font-weight: 400;
+  }
+
+  &__action {
+    button {
+      border-radius: 100px;
+    }
+  }
+
+  .mat-card-header-text {
+    margin: 0;
+    padding: 1rem;
+  }
+
+  .mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    margin: 0;
+  }
+}

@@ -5,4 +5,13 @@
 @import './styles/mixins';
 @import './styles/animation';
 
-@import './styles/nav-bar';
+@import './styles/nav-bar/nav-bar';
+@import './styles/nav-bar/nav-bar-profile';
+@import './styles/nav-bar/nav-bar-list';
+
+@import './styles/breadcrumbs';
+
+@import './styles/employees/employees';
+@import './styles/employees/employees-table';
+
+@import './styles/responsive';

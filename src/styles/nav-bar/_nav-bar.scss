@@ -1,0 +1,16 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 240px;
+  z-index: 3;
+  border-right: none;
+}
+
+.mat-toolbar.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}

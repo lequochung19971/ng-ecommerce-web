@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TableComponent } from './components/table/table.component';
+import { PageNotfoundComponent } from '../page-notfound/page-notfound.component';
+import { EmployeesComponent } from './components/employees/components/employees/employees.component';
 
 const routes: Routes = [
   {
@@ -11,10 +13,11 @@ const routes: Routes = [
     component: NavBarComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent, data: { breadcrumb: 'Dashboard' } },
-      { path: 'customer', component: DashboardComponent, data: { breadcrumb: 'Customer' } },
-      { path: 'product', component: DashboardComponent, data: { breadcrumb: 'Prodcut' } },
-      { path: 'table', component: TableComponent, data: { breadcrumb: 'Table' } },
-      { path: '', redirectTo: '/admin/dashboard', data: { breadcrumb: 'Dashboard' } }
+      { path: 'categories', component: DashboardComponent, data: { breadcrumb: 'Categories' } },
+      { path: 'products', component: DashboardComponent, data: { breadcrumb: 'Products' } },
+      { path: 'employees', component: EmployeesComponent, data: { breadcrumb: 'Employees' } },
+      { path: 'customers', component: DashboardComponent, data: { breadcrumb: 'Customers' } },
+      { path: 'receipts', component: DashboardComponent, data: { breadcrumb: 'Receipts' } }
     ]
   }
 ];

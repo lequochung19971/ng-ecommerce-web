@@ -15,15 +15,21 @@ export class NavBarComponent {
     shareReplay()
   );
 
+  isMobile$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.XSmall]).pipe(
+    map(result => result.matches),
+    shareReplay()
+  );
+
   constructor(private breakpointObserver: BreakpointObserver, protected router: Router) {
-    this.redirectToCurrentRoute();
+    this.redirectToDashboard();
   }
 
   ngOnInit(): void {}
 
-  redirectToCurrentRoute() {
-    const currentRoute = this.router.url;
-    this.router.navigateByUrl(currentRoute);
+  redirectToDashboard() {
+    if (this.router.url === '/admin') {
+      this.router.navigateByUrl('/admin/dashboard');
+    }
   }
 
   isOpen(panel): void {

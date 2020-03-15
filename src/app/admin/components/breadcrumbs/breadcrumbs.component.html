@@ -1,6 +1,9 @@
-<h2 *ngIf="childRouteName">{{ childRouteName }}</h2>
-<p *ngIf="childRouteName">
-  <a href="">{{ homeRouteName }}</a>
-  <span> > </span>
-  <span>{{ childRouteName }}</span>
-</p>
+<mat-card class="lqh-breadcrumbs">
+  <div class="lqh-breadcrumbs__wrapper">
+    <p *ngIf="childRouteName" class="lqh-breadcrumbs__title">{{ childRouteName }}</p>
+    <p *ngIf="childRouteName" class="lqh-breadcrumbs__breadcrumb">
+      <a routerLink="/admin/dashboard" class="lqh-breadcrumbs__link arrow" color="primary">{{ homeRouteName }}</a>
+      <span class="lqh-breadcrumbs__route-name">{{ childRouteName }}</span>
+    </p>
+  </div>
+</mat-card>

@@ -1,0 +1,48 @@
+.lqh-breadcrumbs {
+  &.mat-card {
+    border-radius: 0px;
+  }
+
+  &__wrapper {
+    margin-left: 15px;
+  }
+
+  &__title {
+    color: $primary;
+    font-size: 1.5rem;
+    margin: {
+      top: 5px;
+      bottom: 5px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primary;
+    font-size: 1rem;
+    & ~ span {
+      font-size: 1rem;
+      color: $black-3-opacity;
+    }
+  }
+
+  .arrow::after {
+    content: '〉';
+    padding: {
+      left: 5px;
+      right: 5px;
+    }
+    color: $black-3-opacity;
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  &__breadcrumb {
+    font-weight: 200;
+  }
+
+  p {
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
+}

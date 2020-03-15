@@ -12,9 +12,24 @@ import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { EmployeesComponent } from './components/employees/components/employees/employees.component';
+import { EmployeesFormComponent } from './components/employees/components/employees-form/employees-form.component';
+import { EmployeesTableComponent } from './components/employees/components/employees-table/employees-table.component';
+import { EmployeesSearchboxComponent } from './components/employees/components/employees-searchbox/employees-searchbox.component';
 
 @NgModule({
-  declarations: [NavBarComponent, DashboardComponent, BreadcrumbsComponent, NavBarSideBarListComponent, NavBarProfileComponent, TableComponent],
+  declarations: [
+    NavBarComponent,
+    DashboardComponent,
+    BreadcrumbsComponent,
+    NavBarSideBarListComponent,
+    NavBarProfileComponent,
+    TableComponent,
+    EmployeesComponent,
+    EmployeesFormComponent,
+    EmployeesTableComponent,
+    EmployeesSearchboxComponent
+  ],
   imports: [CommonModule, AdminRoutingModule, MaterialModule, MatTableModule, MatPaginatorModule, MatSortModule]
 })
 export class AdminModule {}

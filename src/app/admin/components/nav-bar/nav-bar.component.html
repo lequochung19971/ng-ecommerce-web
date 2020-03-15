@@ -11,7 +11,10 @@
   <img src="assets/icons/biohazard-white.svg" alt="logo" height="40px" width="40px" />
   &nbsp;&nbsp;<span>LQH</span>
 </mat-toolbar>
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container
+  class="sidenav-container"
+  [ngStyle]="{ 'padding-top': (isMobile$ | async) ? '3.7rem' : '4.25rem' }"
+>
   <mat-sidenav
     #drawer
     class="sidenav mat-elevation-z3"
@@ -19,6 +22,7 @@
     [attr.role]="(isBrokken$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isBrokken$ | async) ? 'over' : 'side'"
     [opened]="(isBrokken$ | async) === false"
+    [ngStyle]="{ 'padding-top': (isMobile$ | async) ? '3.7rem' : '4.25rem' }"
   >
     <app-nav-bar-profile></app-nav-bar-profile>
     <app-nav-bar-side-bar-list></app-nav-bar-side-bar-list>

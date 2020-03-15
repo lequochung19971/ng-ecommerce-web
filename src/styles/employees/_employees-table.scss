@@ -1,0 +1,68 @@
+.table-container {
+  overflow: auto;
+}
+
+.employee-table {
+  .full-name__wrapper {
+    display: flex;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: $primary;
+      padding-left: 1rem;
+      &:hover {
+        color: $text-primary-hover-color;
+      }
+    }
+  }
+
+  th.mat-header-cell {
+    font-size: 1rem;
+    padding: 1rem 1rem;
+  }
+
+  td.mat-cell,
+  td.mat-footer-cell {
+    font-size: 1rem;
+    color: $black-7-opacity;
+    padding: 1.5rem 1rem;
+  }
+
+  .mat-table-sticky {
+    min-width: 180px;
+  }
+}
+
+.employee {
+  padding: 3px 6px;
+  border-radius: 50px;
+  &.chairman {
+    color: $black-10-opacity;
+    background-color: #ffb22b;
+  }
+
+  &.director {
+    color: #ffffff;
+    background-color: #fc4b6c;
+  }
+
+  &.manager {
+    color: #ffffff;
+    background-color: #1e88e5;
+  }
+
+  &.staff {
+    color: #ffffff;
+    background-color: #21c1d6;
+  }
+
+  &.assistant {
+    color: #ffffff;
+    background-color: #21d65d;
+  }
+
+  &.accountant {
+    color: #ffffff;
+    background-color: #2f3d4a;
+  }
+}
