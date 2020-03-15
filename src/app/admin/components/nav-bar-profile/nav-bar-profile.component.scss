@@ -1,0 +1,45 @@
+.person-profile {
+  height: 160px;
+  background: url(../../../../assets/images/bkg-ne.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &__avatar.mat-card-avatar {
+    margin: {
+      top: 40px;
+      bottom: 50px;
+      left: 30px;
+    }
+
+    width: 50px;
+    height: 50px;
+  }
+
+  &__dropdown {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    .mat-button {
+      width: 100%;
+      color: #ffffff;
+    }
+    .mat-menu-content {
+      width: 200px !important;
+    }
+  }
+}
+
+.cdk-overlay-container {
+  .lqh-mat-menu {
+    margin-top: 5px;
+    width: 200px;
+  }
+
+  .cdk-overlay-connected-position-bounding-box {
+    align-items: center !important;
+  }
+}

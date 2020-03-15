@@ -1,0 +1,19 @@
+<div class="person-profile">
+  <img mat-card-avatar src="../../../../assets/images/avatar.jpg" class="person-profile__avatar" />
+  <div class="ring-ph-circle "></div>
+  <div class="person-profile__dropdown">
+    <button mat-button [matMenuTriggerFor]="menu">Bryan Lee</button>
+    <mat-menu #menu="matMenu" xPosition="before" class="lqh-mat-menu">
+      <button mat-menu-item>
+        <mat-icon>person_outline</mat-icon>
+        <span>My Profile</span>
+      </button>
+      <button mat-menu-item>My Balance</button>
+      <button mat-menu-item>Inbox</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Account Setting</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+  </div>
+</div>

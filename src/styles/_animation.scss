@@ -1,0 +1,183 @@
+/////////////////////////////
+/////////Ring Circle/////////
+/////////////////////////////
+.ring-ph-circle {
+  width: 80px;
+  height: 80px;
+  top: 23px;
+  left: 13px;
+  position: absolute;
+  background-color: transparent;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  border: 2px solid $accent;
+  opacity: 0.3;
+
+  -webkit-animation: ring-circle-anim 1.2s infinite ease-in-out;
+  -moz-animation: ring-circle-anim 1.2s infinite ease-in-out;
+  -ms-animation: ring-circle-anim 1.2s infinite ease-in-out;
+  -o-animation: ring-circle-anim 1.2s infinite ease-in-out;
+  animation: ring-circle-anim 1.2s infinite ease-in-out;
+
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+@-moz-keyframes ring-circle-anim {
+  0% {
+    transform: rotate(0) scale(0.6) skew(1deg);
+    opacity: 0.3;
+  }
+  30% {
+    transform: rotate(0) scale(0.8) skew(1deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.1;
+  }
+}
+
+@-webkit-keyframes ring-circle-anim {
+  0% {
+    transform: rotate(0) scale(0.6) skew(1deg);
+    opacity: 0.3;
+  }
+  30% {
+    transform: rotate(0) scale(0.8) skew(1deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.1;
+  }
+}
+
+@-o-keyframes ring-circle-anim {
+  0% {
+    transform: rotate(0) scale(0.6) skew(1deg);
+    opacity: 0.3;
+  }
+  30% {
+    transform: rotate(0) scale(0.8) skew(1deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.1;
+  }
+}
+
+@keyframes ring-circle-anim {
+  0% {
+    transform: rotate(0) scale(0.6) skew(1deg);
+    opacity: 0.3;
+  }
+  30% {
+    transform: rotate(0) scale(0.8) skew(1deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+    opacity: 0.1;
+  }
+}
+
+@-moz-keyframes ring-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+}
+
+@-webkit-keyframes ring-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+}
+
+@-o-keyframes ring-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+}
+
+@keyframes ring-circle-img-anim {
+  0% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0) scale(1) skew(1deg);
+  }
+}

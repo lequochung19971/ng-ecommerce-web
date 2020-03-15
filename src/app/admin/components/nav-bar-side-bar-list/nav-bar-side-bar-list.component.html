@@ -1,0 +1,22 @@
+<mat-accordion>
+  <div class="lqh-mat-accordion">
+    <mat-expansion-panel
+      *ngFor="let panel of accordionList"
+      [hideToggle]="panel.isHideToggle"
+      [expanded]="panel.isExpanded"
+      [disabled]="panel.isDisabled"
+      [routerLink]="panel.url ? panel.url : null"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ panel.routeName }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let child of panel.children" [routerLink]="child.url">{{
+          child.routeName
+        }}</mat-list-item>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>

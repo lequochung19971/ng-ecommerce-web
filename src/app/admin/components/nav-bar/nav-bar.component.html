@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="header mat-elevation-z4">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+    *ngIf="isBrokken$ | async"
+  >
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <img src="assets/icons/biohazard-white.svg" alt="logo" height="40px" width="40px" />
+  &nbsp;&nbsp;<span>LQH</span>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav mat-elevation-z3"
+    fixedInViewport
+    [attr.role]="(isBrokken$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isBrokken$ | async) ? 'over' : 'side'"
+    [opened]="(isBrokken$ | async) === false"
+  >
+    <app-nav-bar-profile></app-nav-bar-profile>
+    <app-nav-bar-side-bar-list></app-nav-bar-side-bar-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Add Content Here -->
+    <app-breadcrumbs></app-breadcrumbs>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
