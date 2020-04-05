@@ -3,13 +3,13 @@
     <mat-card-title class="employee-mat-card__title">Employee List</mat-card-title>
   </mat-card-header>
   <mat-card-actions class="employee-mat-card__action">
-    <button mat-flat-button color="primary">
+    <button mat-flat-button color="primary" (click)="openCreateEmployeesDialog()">
       <mat-icon>add</mat-icon>
       Add New Employee
     </button>
   </mat-card-actions>
   <mat-card-content>
-    <!-- <app-employees-table></app-employees-table> -->
-    <app-employees-form></app-employees-form>
+    <app-employees-table></app-employees-table>
+    <!-- <app-employees-form></app-employees-form> -->
   </mat-card-content>
 </mat-card>

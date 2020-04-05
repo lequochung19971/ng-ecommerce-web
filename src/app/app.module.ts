@@ -1,15 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
+import { EmployeesFormComponent } from './admin/employees/components/employees-form/employees-form.component';
+
 @NgModule({
   declarations: [AppComponent, PageNotfoundComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EmployeesFormComponent],
 })
 export class AppModule {}

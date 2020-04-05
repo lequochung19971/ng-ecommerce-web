@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
-import { Breadcrumb } from '../../models/breadcrumb.model';
+import { Breadcrumb } from '../models/breadcrumb.model';
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
 })
 export class BreadcrumbsComponent implements OnInit {
   breadcrumb$;
@@ -16,9 +16,9 @@ export class BreadcrumbsComponent implements OnInit {
   constructor(private activatedRouter: ActivatedRoute, private router: Router) {
     this.breadcrumb$ = this.router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
+        filter((event) => event instanceof NavigationEnd),
         distinctUntilChanged(),
-        map(event => this.buildBreadCrumb(this.activatedRouter, event))
+        map((event) => this.buildBreadCrumb(this.activatedRouter, event))
       )
       .subscribe();
   }
@@ -27,7 +27,9 @@ export class BreadcrumbsComponent implements OnInit {
 
   buildBreadCrumb(route: ActivatedRoute, url, breadcrumbs: Array<Breadcrumb> = []) {
     this.homeRouteName = route.routeConfig ? route.routeConfig.data.breadcrumb : '';
-    this.childRouteName = route.firstChild.routeConfig ? route.firstChild.routeConfig.data.breadcrumb : '';
+    this.childRouteName = route.firstChild.routeConfig
+      ? route.firstChild.routeConfig.data.breadcrumb
+      : '';
     console.log(this.childRouteName);
   }
 }

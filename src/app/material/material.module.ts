@@ -47,6 +47,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatNativeDateModule } from '@angular/material/core';
 
 /**
  * NgModule that includes all Material modules.
@@ -76,6 +77,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,

@@ -2,21 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from '../material/material.module';
-import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
-import { NavBarSideBarListComponent } from './components/nav-bar-side-bar-list/nav-bar-side-bar-list.component';
-import { NavBarProfileComponent } from './components/nav-bar-profile/nav-bar-profile.component';
-import { TableComponent } from './components/table/table.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { NavBarSideBarListComponent } from './nav-bar-side-bar-list/nav-bar-side-bar-list.component';
+import { NavBarProfileComponent } from './nav-bar-profile/nav-bar-profile.component';
+import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { EmployeesComponent } from './components/employees/components/employees/employees.component';
-import { EmployeesFormComponent } from './components/employees/components/employees-form/employees-form.component';
-import { EmployeesTableComponent } from './components/employees/components/employees-table/employees-table.component';
-import { EmployeesSearchboxComponent } from './components/employees/components/employees-searchbox/employees-searchbox.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EmployeesComponent } from './employees/components/employees/employees.component';
+import { EmployeesFormComponent } from './employees/components/employees-form/employees-form.component';
+import { EmployeesTableComponent } from './employees/components/employees-table/employees-table.component';
+import { EmployeesSearchboxComponent } from './employees/components/employees-searchbox/employees-searchbox.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -28,8 +29,18 @@ import { EmployeesSearchboxComponent } from './components/employees/components/e
     EmployeesComponent,
     EmployeesFormComponent,
     EmployeesTableComponent,
-    EmployeesSearchboxComponent
+    EmployeesSearchboxComponent,
   ],
-  imports: [CommonModule, AdminRoutingModule, MaterialModule, MatTableModule, MatPaginatorModule, MatSortModule]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AdminRoutingModule,
+    MaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    FontAwesomeModule,
+  ],
 })
 export class AdminModule {}

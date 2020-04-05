@@ -6,8 +6,6 @@ export class Employees {
   dob: String;
   age: Number;
   fullName: String;
-  firstName: String;
-  lastName: String;
   email: String;
   phone: Number;
   department: Departments;

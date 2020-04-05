@@ -1,0 +1,106 @@
+<div class="employee-form-wrapper">
+  <div mat-dialog-title>
+    <h2>Create Employees</h2>
+    <div mat-dialog-title class="icon-exit">
+      <button mat-button mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
+  <form mat-dialog-content *ngIf="employeeForm" [formGroup]="employeeForm" class="employee-form">
+    <mat-grid-list cols="12" rowHeight="80px">
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <input type="hidden" formControlName="uuid" />
+        <mat-form-field appearance="standard">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="fullName" placeholder="Full Name" required />
+          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Departments</mat-label>
+          <mat-select placeholder="Department" formControlName="department" required>
+            <mat-option *ngFor="let department of departments" [value]="department">{{
+              department
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Date of birth</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Date of birth"
+            color="primary"
+            formControlName="dob"
+            required
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Age</mat-label>
+          <input matInput formControlName="age" placeholder="Age" required />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="7" [rowspan]="1" class="gender-grid-tile">
+        <mat-button-toggle-group
+          name="fontStyle"
+          aria-label="Font Style"
+          class="gender"
+          formControlName="gender"
+        >
+          <mat-button-toggle value="M">
+            <fa-icon [icon]="faMale" size="2x"></fa-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="F">
+            <fa-icon [icon]="faFemale" size="2x"></fa-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Email" required />
+          <!-- <mat-error>{{ getErrorMessage('email') }}</mat-error> -->
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone" placeholder="Phone" required />
+          <!-- <mat-error>{{ getErrorMessage('mobile') }}</mat-error> -->
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="3">
+        <div class="upload-file-wrapper">
+          <input type="file" id="up-file" />
+          <label for="up-file" class="label-upload-wrapper">
+            <div class="label-upload">
+              <mat-icon class="bounce">cloud_upload</mat-icon>
+              <p>Drag and drop a file here or click</p>
+            </div>
+          </label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1" class="btn-submit-cancel">
+        <button mat-flat-button color="primary">Submit</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>

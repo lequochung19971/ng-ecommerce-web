@@ -1,0 +1,96 @@
+.employee-form-wrapper {
+  .employee-form {
+    overflow: hidden;
+    .mat-grid-tile {
+      .mat-form-field {
+        width: 100%;
+      }
+
+      .mat-figure {
+        padding: 0 1rem;
+        justify-content: flex-start;
+      }
+    }
+
+    .btn-submit-cancel {
+      .mat-figure {
+        button {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .gender.mat-button-toggle-group {
+      border-color: #ffffff;
+      border-radius: 0;
+      .mat-button-toggle {
+        border: $disabled-color-1 solid 2px;
+        @include w-h-option(50px, 50px);
+
+        &:nth-child(1) {
+          margin-right: 20px;
+        }
+
+        .ng-fa-icon {
+          color: $disabled-color-2;
+        }
+
+        .mat-button-toggle-button {
+          height: 100%;
+
+          .mat-button-toggle-label-content {
+            padding: 6px 0;
+          }
+        }
+
+        &.mat-button-toggle-checked {
+          border: $primary solid 2px;
+          background: #ffffff;
+
+          .ng-fa-icon {
+            color: $black-5-opacity;
+          }
+        }
+      }
+    }
+  }
+
+  .upload-file-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: 95%;
+    border: solid 2px $disabled-color-1;
+    position: relative;
+
+    input[type='file'] {
+      width: 0;
+      height: 0;
+    }
+
+    .label-upload-wrapper {
+      @include w-h-100;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+
+      .label-upload {
+        @include w-h-100;
+        @include flex-between(column);
+        color: $disabled-color-2;
+        text-align: center;
+
+        .mat-icon {
+          @include w-h-option(40px, 40px);
+          font-size: 40px;
+        }
+      }
+    }
+  }
+
+  .mat-dialog-title {
+    display: flex;
+    justify-content: space-between;
+  }
+}
