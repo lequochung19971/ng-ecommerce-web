@@ -10,7 +10,19 @@
   <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
   <form mat-dialog-content *ngIf="authorsForm" [formGroup]="authorsForm" class="form-wrapper">
     <mat-grid-list cols="12" rowHeight="80px">
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="7">
+        <div class="upload-file-wrapper">
+          <input type="file" id="up-file" />
+          <label for="up-file" class="label-upload-wrapper">
+            <div class="label-upload">
+              <mat-icon class="bounce">cloud_upload</mat-icon>
+              <p>Drag and drop a file here or click</p>
+            </div>
+          </label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <input type="hidden" formControlName="uuid" />
         <mat-form-field appearance="standard">
           <mat-label>Full Name</mat-label>
@@ -19,7 +31,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Date of birth</mat-label>
           <input
@@ -35,29 +47,17 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="12" [rowspan]="2">
+      <mat-grid-tile [colspan]="8" [rowspan]="5">
         <mat-form-field appearance="standard">
           <mat-label>Description</mat-label>
           <textarea
             matInput
             formControlName="description"
             placeholder="Description"
-            rows="8"
+            rows="24"
             required
           ></textarea>
         </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="12" [rowspan]="3">
-        <div class="upload-file-wrapper">
-          <input type="file" id="up-file" />
-          <label for="up-file" class="label-upload-wrapper">
-            <div class="label-upload">
-              <mat-icon class="bounce">cloud_upload</mat-icon>
-              <p>Drag and drop a file here or click</p>
-            </div>
-          </label>
-        </div>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="6" [rowspan]="1" class="btn-submit-cancel">

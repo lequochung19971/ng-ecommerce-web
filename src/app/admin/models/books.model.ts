@@ -3,10 +3,17 @@ import { Author } from './authors.model';
 export class Authors {
   uuid: Number;
   title: String;
-  author: Author;
   category: String;
   pages: Number;
-  publisherName: String;
-  publicationDate: String;
+  description: String;
+  sale: String;
+  saleStartDate: String;
+  saleEndDate: String;
+  price: String;
+  author: Author;
+  shortDescription: String;
+  publisher: String;
+  supplier: String;
+  publishedDate: String;
   images?: String;
 }
