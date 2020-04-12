@@ -14,6 +14,7 @@ export class EmployeesFormService {
     gender: new FormControl('M'),
     email: new FormControl(''),
     department: new FormControl(''),
+    avatar: new FormControl(''),
   });
 
   constructor() {}

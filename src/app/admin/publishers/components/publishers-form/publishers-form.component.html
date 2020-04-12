@@ -1,0 +1,66 @@
+<div class="form-container">
+  <div mat-dialog-title>
+    <h2>Create Publishers</h2>
+    <div mat-dialog-title class="icon-exit">
+      <button mat-button mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
+  <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
+    <mat-grid-list cols="12" rowHeight="80px">
+      <mat-grid-tile [colspan]="4" [rowspan]="7">
+        <div *ngIf="uploaded" class="upload-file-wrapper uploaded-wrapper">
+          <input type="file" id="up-file" />
+          <label *ngIf="!uploaded" for="up-file" class="label-upload-wrapper">
+            <div class="label-upload">
+              <mat-icon class="bounce">cloud_upload</mat-icon>
+              <p>Drag and drop a file here or click</p>
+            </div>
+          </label>
+          <!-- UPLOADED -->
+          <div *ngIf="uploaded" class="uploaded-image">
+            <img src="../../../../../assets/images/unnamed.jpg" alt="image" />
+          </div>
+          <div *ngIf="uploaded" class="uploaded-overlay"></div>
+          <div *ngIf="uploaded" class="uploaded-remove">
+            <button mat-stroked-button color="white">Remove</button>
+          </div>
+          <label *ngIf="uploaded" for="up-file" class="label-upload-wrapper uploaded-content">
+            <p>image.jpg</p>
+            <p></p>
+            <p>Drag and drop or click to replace</p>
+          </label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <input type="hidden" formControlName="uuid" />
+        <mat-form-field appearance="standard">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="fullName" placeholder="Full Name" required />
+          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="8" [rowspan]="5">
+        <mat-form-field appearance="standard">
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Description"
+            rows="24"
+            required
+          ></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1" class="btn-submit-cancel btn-submit-cancel">
+        <button mat-flat-button color="primary">Submit</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>

@@ -1,0 +1,14 @@
+<mat-card class="lqh-mat-card">
+  <mat-card-header>
+    <mat-card-title class="lqh-mat-card__title">Publisher List</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions class="lqh-mat-card__action">
+    <button mat-flat-button color="primary" (click)="openCreateDialog()">
+      <mat-icon>add</mat-icon>
+      Add New Publisher
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <app-publishers-table></app-publishers-table>
+  </mat-card-content>
+</mat-card>

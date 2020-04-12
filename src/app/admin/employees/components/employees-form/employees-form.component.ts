@@ -14,8 +14,9 @@ import { Departments } from 'src/app/admin/models/departments.model';
   styleUrls: ['./employees-form.component.scss'],
 })
 export class EmployeesFormComponent implements OnInit {
-  employeeForm: FormGroup;
+  form: FormGroup;
   departments = _.values(Departments);
+  uploaded: boolean = true;
 
   faMale = faMale;
   faFemale = faFemale;
@@ -58,6 +59,10 @@ export class EmployeesFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.employeeForm = this.employeesFormService.getEmployeeForm();
+    this.form = this.employeesFormService.getEmployeeForm();
+  }
+
+  removeImage(value) {
+    console.log(value);
   }
 }

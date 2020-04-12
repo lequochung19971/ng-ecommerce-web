@@ -8,9 +8,40 @@
     </div>
   </div>
   <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
-  <form mat-dialog-content *ngIf="employeeForm" [formGroup]="employeeForm" class="form-wrapper">
+  <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
     <mat-grid-list cols="12" rowHeight="80px">
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="7">
+        <div *ngIf="form.controls.avatar" class="upload-file-wrapper uploaded-wrapper">
+          <input type="file" formControlName="avatar" id="up-file" />
+          <label *ngIf="!form.controls.avatar.value" for="up-file" class="label-upload-wrapper">
+            <div class="label-upload">
+              <mat-icon class="bounce">cloud_upload</mat-icon>
+              <p>Drag and drop a file here or click</p>
+            </div>
+          </label>
+          <!-- UPLOADED -->
+          <div *ngIf="form.controls.avatar.value" class="uploaded-image">
+            <img src="../../../../../assets/images/unnamed.jpg" alt="image" />
+          </div>
+          <div *ngIf="form.controls.avatar.value" class="uploaded-overlay"></div>
+          <div *ngIf="form.controls.avatar.value" class="uploaded-remove">
+            <button mat-stroked-button color="white" (click)="removeImage(form.controls.avatar)">
+              Remove
+            </button>
+          </div>
+          <label
+            *ngIf="form.controls.avatar.value"
+            for="up-file"
+            class="label-upload-wrapper uploaded-content"
+          >
+            <p>image.jpg</p>
+            <p></p>
+            <p>Drag and drop or click to replace</p>
+          </label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <input type="hidden" formControlName="uuid" />
         <mat-form-field appearance="standard">
           <mat-label>Full Name</mat-label>
@@ -19,7 +50,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Departments</mat-label>
           <mat-select placeholder="Department" formControlName="department" required>
@@ -30,7 +61,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Date of birth</mat-label>
           <input
@@ -46,14 +77,14 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Age</mat-label>
           <input matInput formControlName="age" placeholder="Age" required />
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="7" [rowspan]="1" class="gender-grid-tile">
+      <mat-grid-tile [colspan]="8" [rowspan]="1" class="gender-grid-tile">
         <mat-button-toggle-group
           name="fontStyle"
           aria-label="Font Style"
@@ -69,7 +100,7 @@
         </mat-button-toggle-group>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" required />
@@ -77,7 +108,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Phone</mat-label>
           <input matInput formControlName="phone" placeholder="Phone" required />
@@ -85,19 +116,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="12" [rowspan]="3">
-        <div class="upload-file-wrapper">
-          <input type="file" id="up-file" />
-          <label for="up-file" class="label-upload-wrapper">
-            <div class="label-upload">
-              <mat-icon class="bounce">cloud_upload</mat-icon>
-              <p>Drag and drop a file here or click</p>
-            </div>
-          </label>
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="6" [rowspan]="1" class="btn-submit-cancel">
+      <mat-grid-tile [colspan]="8" [rowspan]="1" class="btn-submit-cancel">
         <button mat-flat-button color="primary">Submit</button>
         <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
       </mat-grid-tile>

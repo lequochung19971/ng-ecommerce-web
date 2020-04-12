@@ -5,7 +5,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableComponent } from './table/table.component';
 import { PageNotfoundComponent } from '../page-notfound/page-notfound.component';
 import { EmployeesComponent } from './employees/components/employees/employees.component';
-import { AuthorsComponent } from './product/authors/components/authors/authors.component';
+import { AuthorsComponent } from './authors/components/authors/authors.component';
+import { PublishersComponent } from './publishers/components/publishers/publishers.component';
+import { SuppliersComponent } from './suppliers/components/suppliers/suppliers.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,8 @@ const routes: Routes = [
       { path: 'receipts', component: DashboardComponent, data: { breadcrumb: 'Receipts' } },
       { path: 'authors', component: AuthorsComponent, data: { breadcrumb: 'Authors' } },
       { path: 'books', component: DashboardComponent, data: { breadcrumb: 'Books' } },
-      { path: 'publishers', component: DashboardComponent, data: { breadcrumb: 'Publishers' } },
+      { path: 'publishers', component: PublishersComponent, data: { breadcrumb: 'Publishers' } },
+      { path: 'suppliers', component: SuppliersComponent, data: { breadcrumb: 'Suppliers' } },
     ],
   },
 ];

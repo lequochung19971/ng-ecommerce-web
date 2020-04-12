@@ -13,6 +13,20 @@ export class FormDialogService {
       position: { top: '100px' },
       disableClose: true,
       autoFocus: true,
+      panelClass: 'lqh-dialog',
+    });
+  }
+
+  openFullFormDialog(FormComponent) {
+    return this.dialog.open(FormComponent, {
+      width: '100%',
+      height: '100%',
+      maxHeight: '100%',
+      maxWidth: '100%',
+      position: { top: '0' },
+      disableClose: true,
+      autoFocus: true,
+      panelClass: 'lqh-dialog-full',
     });
   }
 }

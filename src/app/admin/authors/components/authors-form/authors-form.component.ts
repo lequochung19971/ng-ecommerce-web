@@ -8,11 +8,11 @@ import { AuthorsFormService } from '../../services/authors-form.service';
   styleUrls: ['./authors-form.component.scss'],
 })
 export class AuthorsFormComponent implements OnInit {
-  authorsForm: FormGroup;
+  form: FormGroup;
 
   constructor(protected authorsFormService: AuthorsFormService) {}
 
   ngOnInit(): void {
-    this.authorsForm = this.authorsFormService.getAuthorForm();
+    this.form = this.authorsFormService.getAuthorForm();
   }
 }

@@ -27,21 +27,40 @@ export class NavBarSideBarListComponent implements OnInit {
       children: [],
     },
     {
+      id: 'authors',
+      isDisabled: false,
+      isExpanded: !!(this.router.url === '/admin/authors'),
+      routeName: 'Authors',
+      matIcon: 'create',
+      url: '/admin/authors',
+      children: [],
+    },
+    {
+      id: 'publishers',
+      isDisabled: false,
+      isExpanded: !!(this.router.url === '/admin/publishers'),
+      routeName: 'Publishers',
+      matIcon: 'library_books',
+      url: '/admin/publishers',
+      children: [],
+    },
+    {
+      id: 'suppliers',
+      isDisabled: false,
+      isExpanded: !!(this.router.url === '/admin/suppliers'),
+      routeName: 'Suppliers',
+      matIcon: 'library_add_check',
+      url: '/admin/suppliers',
+      children: [],
+    },
+    {
       id: 'products',
       isDisabled: false,
-      isExpanded: !!(
-        this.router.url === '/admin/authors' ||
-        this.router.url === '/admin/publishers' ||
-        this.router.url === '/admin/books'
-      ),
+      isExpanded: !!(this.router.url === '/admin/products'),
       routeName: 'Products',
       matIcon: 'menu_book',
-      url: '',
-      children: [
-        { routeName: 'Authors', url: '/admin/authors' },
-        { routeName: 'Publishers', url: '/admin/publishers' },
-        { routeName: 'Books', url: '/admin/books' },
-      ],
+      url: '/admin/products',
+      children: [],
     },
     {
       id: 'employees',
@@ -71,16 +90,21 @@ export class NavBarSideBarListComponent implements OnInit {
       children: [],
     },
     // {
-    //   id: 'panel-2',
+    //   id: 'products',
     //   isDisabled: false,
-    //   isExpanded: false,
-    //   routeName: 'List Route',
-    //   url: null,
+    //   isExpanded: !!(
+    //     this.router.url === '/admin/authors' ||
+    //     this.router.url === '/admin/publishers' ||
+    //     this.router.url === '/admin/books'
+    //   ),
+    //   routeName: 'Products',
+    //   matIcon: 'menu_book',
+    //   url: '',
     //   children: [
-    //     { routeName: 'Route 1', url: '/admin/route1' },
-    //     { routeName: 'Route 2', url: '/admin/route2' },
-    //     { routeName: 'Route 3', url: '/admin/route3' }
-    //   ]
+    //     { routeName: 'Authors', url: '/admin/authors' },
+    //     { routeName: 'Publishers', url: '/admin/publishers' },
+    //     { routeName: 'Books', url: '/admin/books' },
+    //   ],
     // },
   ];
 

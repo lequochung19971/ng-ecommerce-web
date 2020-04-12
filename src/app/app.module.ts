@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { PageNotfoundComponent } from './page-notfound/page-notfound.component';
 import { EmployeesFormComponent } from './admin/employees/components/employees-form/employees-form.component';
-import { AuthorsFormComponent } from './admin/product/authors/components/authors-form/authors-form.component';
+import { AuthorsFormComponent } from './admin/authors/components/authors-form/authors-form.component';
+import { PublishersFormComponent } from './admin/publishers/components/publishers-form/publishers-form.component';
 
 @NgModule({
   declarations: [AppComponent, PageNotfoundComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EmployeesFormComponent, AuthorsFormComponent],
+  entryComponents: [EmployeesFormComponent, AuthorsFormComponent, PublishersFormComponent],
 })
 export class AppModule {}
