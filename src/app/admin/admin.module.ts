@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './nav-bar/components/nav-bar/nav-bar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from '../material/material.module';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { NavBarSideBarListComponent } from './nav-bar-side-bar-list/nav-bar-side-bar-list.component';
-import { NavBarProfileComponent } from './nav-bar-profile/nav-bar-profile.component';
+import { NavBarSideBarListComponent } from './nav-bar/components/nav-bar-side-bar-list/nav-bar-side-bar-list.component';
+import { NavBarProfileComponent } from './nav-bar/components/nav-bar-profile/nav-bar-profile.component';
 import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -18,6 +18,9 @@ import { EmployeesComponent } from './employees/components/employees/employees.c
 import { EmployeesFormComponent } from './employees/components/employees-form/employees-form.component';
 import { EmployeesTableComponent } from './employees/components/employees-table/employees-table.component';
 import { EmployeesSearchboxComponent } from './employees/components/employees-searchbox/employees-searchbox.component';
+import { AuthorsComponent } from './product/authors/components/authors/authors.component';
+import { AuthorsFormComponent } from './product/authors/components/authors-form/authors-form.component';
+import { AuthorsTableComponent } from './product/authors/components/authors-table/authors-table.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -30,6 +33,9 @@ import { EmployeesSearchboxComponent } from './employees/components/employees-se
     EmployeesFormComponent,
     EmployeesTableComponent,
     EmployeesSearchboxComponent,
+    AuthorsComponent,
+    AuthorsFormComponent,
+    AuthorsTableComponent,
   ],
   imports: [
     CommonModule,

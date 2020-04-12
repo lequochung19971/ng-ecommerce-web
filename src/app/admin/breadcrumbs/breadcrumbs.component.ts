@@ -30,6 +30,6 @@ export class BreadcrumbsComponent implements OnInit {
     this.childRouteName = route.firstChild.routeConfig
       ? route.firstChild.routeConfig.data.breadcrumb
       : '';
-    console.log(this.childRouteName);
+    console.log(route);
   }
 }

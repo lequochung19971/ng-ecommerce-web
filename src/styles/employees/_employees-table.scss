@@ -2,37 +2,6 @@
   overflow: auto;
 }
 
-.employee-table {
-  .full-name__wrapper {
-    display: flex;
-    align-items: center;
-    a {
-      text-decoration: none;
-      color: $primary;
-      padding-left: 1rem;
-      &:hover {
-        color: $text-primary-hover-color;
-      }
-    }
-  }
-
-  th.mat-header-cell {
-    font-size: 1rem;
-    padding: 1rem 1rem;
-  }
-
-  td.mat-cell,
-  td.mat-footer-cell {
-    font-size: 1rem;
-    color: $black-7-opacity;
-    padding: 1.5rem 1rem;
-  }
-
-  .mat-table-sticky {
-    min-width: 180px;
-  }
-}
-
 .employee {
   padding: 3px 6px;
   border-radius: 50px;

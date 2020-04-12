@@ -5,7 +5,7 @@
       [hideToggle]="!(panel.children && panel.children.length > 0)"
       [expanded]="panel.isExpanded"
       [disabled]="panel.isDisabled"
-      [routerLink]="panel.url ? panel.url : null"
+      [routerLink]="panel.url && !(panel.children && panel.children.length > 0) ? panel.url : null"
     >
       <mat-expansion-panel-header [collapsedHeight]="'43px'" [expandedHeight]="'44px'">
         <mat-panel-title class="lqh-mat-panel-title">
@@ -14,9 +14,12 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-nav-list>
-        <mat-list-item *ngFor="let child of panel.children" [routerLink]="child.url">{{
-          child.routeName
-        }}</mat-list-item>
+        <mat-list-item
+          *ngFor="let child of panel.children"
+          [routerLink]="child.url"
+          [routerLinkActive]="'is-active'"
+          >{{ child.routeName }}</mat-list-item
+        >
       </mat-nav-list>
     </mat-expansion-panel>
   </div>

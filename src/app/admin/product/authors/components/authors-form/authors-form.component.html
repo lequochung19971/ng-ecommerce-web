@@ -1,6 +1,6 @@
 <div class="form-container">
   <div mat-dialog-title>
-    <h2>Create Employees</h2>
+    <h2>Create Author</h2>
     <div mat-dialog-title class="icon-exit">
       <button mat-button mat-icon-button [mat-dialog-close]="false">
         <mat-icon>close</mat-icon>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
-  <form mat-dialog-content *ngIf="employeeForm" [formGroup]="employeeForm" class="form-wrapper">
+  <form mat-dialog-content *ngIf="authorsForm" [formGroup]="authorsForm" class="form-wrapper">
     <mat-grid-list cols="12" rowHeight="80px">
       <mat-grid-tile [colspan]="6" [rowspan]="1">
         <input type="hidden" formControlName="uuid" />
@@ -16,17 +16,6 @@
           <mat-label>Full Name</mat-label>
           <input matInput formControlName="fullName" placeholder="Full Name" required />
           <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <mat-form-field appearance="standard">
-          <mat-label>Departments</mat-label>
-          <mat-select placeholder="Department" formControlName="department" required>
-            <mat-option *ngFor="let department of departments" [value]="department">{{
-              department
-            }}</mat-option>
-          </mat-select>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -46,42 +35,16 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
+      <mat-grid-tile [colspan]="12" [rowspan]="2">
         <mat-form-field appearance="standard">
-          <mat-label>Age</mat-label>
-          <input matInput formControlName="age" placeholder="Age" required />
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="7" [rowspan]="1" class="gender-grid-tile">
-        <mat-button-toggle-group
-          name="fontStyle"
-          aria-label="Font Style"
-          class="gender"
-          formControlName="gender"
-        >
-          <mat-button-toggle value="M">
-            <fa-icon [icon]="faMale" size="2x"></fa-icon>
-          </mat-button-toggle>
-          <mat-button-toggle value="F">
-            <fa-icon [icon]="faFemale" size="2x"></fa-icon>
-          </mat-button-toggle>
-        </mat-button-toggle-group>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
-        <mat-form-field appearance="standard">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="Email" required />
-          <!-- <mat-error>{{ getErrorMessage('email') }}</mat-error> -->
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="6" [rowspan]="1">
-        <mat-form-field appearance="standard">
-          <mat-label>Phone</mat-label>
-          <input matInput formControlName="phone" placeholder="Phone" required />
-          <!-- <mat-error>{{ getErrorMessage('mobile') }}</mat-error> -->
+          <mat-label>Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Description"
+            rows="8"
+            required
+          ></textarea>
         </mat-form-field>
       </mat-grid-tile>
 

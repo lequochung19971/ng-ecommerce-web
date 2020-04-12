@@ -5,7 +5,7 @@ import { Gender } from 'src/app/admin/models/gender.model';
 @Component({
   selector: 'app-employees-table',
   templateUrl: './employees-table.component.html',
-  styleUrls: ['./employees-table.component.scss']
+  styleUrls: ['./employees-table.component.scss'],
 })
 export class EmployeesTableComponent implements OnInit {
   ELEMENT_DATA = [
@@ -19,7 +19,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.dir,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 2,
@@ -31,7 +31,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.acco,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 3,
@@ -43,7 +43,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.chair,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 4,
@@ -55,7 +55,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.man,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 5,
@@ -67,7 +67,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.sta,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 6,
@@ -79,7 +79,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.dir,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 7,
@@ -91,7 +91,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.assi,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 8,
@@ -103,7 +103,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.acco,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 9,
@@ -115,7 +115,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.sta,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 10,
@@ -127,7 +127,7 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.man,
-      gender: Gender.M
+      gender: Gender.M,
     },
     {
       uuid: 11,
@@ -139,11 +139,20 @@ export class EmployeesTableComponent implements OnInit {
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
       department: Departments.sta,
-      gender: Gender.M
-    }
+      gender: Gender.M,
+    },
   ];
   dataSource = this.ELEMENT_DATA;
-  displayedColumns: string[] = ['fullName', 'dob', 'age', 'gender', 'department', 'phone', 'email'];
+  displayedColumns: string[] = [
+    'fullName',
+    'dob',
+    'age',
+    'gender',
+    'department',
+    'phone',
+    'email',
+    'action',
+  ];
   constructor() {}
 
   ngOnInit(): void {}

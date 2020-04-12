@@ -1,6 +1,6 @@
 <div class="person-profile">
   <img mat-card-avatar src="../../../../assets/images/avatar.jpg" class="person-profile__avatar" />
-  <div class="ring-ph-circle "></div>
+  <div class="ring-ph-circle"></div>
   <div class="person-profile__dropdown">
     <button mat-button [matMenuTriggerFor]="menu">Bryan Lee</button>
     <mat-menu #menu="matMenu" xPosition="before" class="lqh-mat-menu">
@@ -8,12 +8,24 @@
         <mat-icon>person_outline</mat-icon>
         <span>My Profile</span>
       </button>
-      <button mat-menu-item>My Balance</button>
-      <button mat-menu-item>Inbox</button>
+      <button mat-menu-item>
+        <mat-icon>account_balance_wallet</mat-icon>
+        <span>My Balance</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>mail_outline</mat-icon>
+        <span>Inbox</span>
+      </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>Account Setting</button>
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Account Setting</span>
+      </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>Logout</button>
+      <button mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+      </button>
     </mat-menu>
   </div>
 </div>

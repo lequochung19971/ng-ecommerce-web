@@ -10,4 +10,5 @@ export class Employees {
   phone: Number;
   department: Departments;
   gender: Gender;
+  avatar?: String;
 }

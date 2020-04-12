@@ -2,15 +2,16 @@
 .lqh-mat-accordion {
   padding: 1rem;
   .mat-expansion-panel {
+    margin-bottom: 10px;
     .mat-expansion-panel-header {
       padding: 0 16px;
-      margin-bottom: 10px;
       align-items: center;
       &.mat-expanded:focus,
       &.mat-expanded {
         background-color: $accent;
         font-weight: 500;
-        box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+          0 1px 8px 0 rgba(0, 0, 0, 0.12);
         .mat-expansion-panel-header-title {
           color: #ffffff;
         }
@@ -28,6 +29,11 @@
       font-size: 15px;
       border-radius: 4px;
       height: 42px;
+      color: $black-7-opacity;
+
+      &.is-active {
+        font-weight: 500;
+      }
     }
 
     .lqh-mat-panel-title {

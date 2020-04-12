@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav-bar-side-bar-list',
   templateUrl: './nav-bar-side-bar-list.component.html',
-  styleUrls: ['./nav-bar-side-bar-list.component.scss']
+  styleUrls: ['./nav-bar-side-bar-list.component.scss'],
 })
 export class NavBarSideBarListComponent implements OnInit {
   accordionList = [
@@ -15,7 +15,7 @@ export class NavBarSideBarListComponent implements OnInit {
       routeName: 'Dashboard',
       matIcon: 'dashboard',
       url: '/admin/dashboard',
-      children: []
+      children: [],
     },
     {
       id: 'categories',
@@ -24,16 +24,24 @@ export class NavBarSideBarListComponent implements OnInit {
       routeName: 'Categories',
       matIcon: 'category',
       url: '/admin/categories',
-      children: []
+      children: [],
     },
     {
       id: 'products',
       isDisabled: false,
-      isExpanded: !!(this.router.url === '/admin/products'),
+      isExpanded: !!(
+        this.router.url === '/admin/authors' ||
+        this.router.url === '/admin/publishers' ||
+        this.router.url === '/admin/books'
+      ),
       routeName: 'Products',
       matIcon: 'menu_book',
-      url: '/admin/products',
-      children: []
+      url: '',
+      children: [
+        { routeName: 'Authors', url: '/admin/authors' },
+        { routeName: 'Publishers', url: '/admin/publishers' },
+        { routeName: 'Books', url: '/admin/books' },
+      ],
     },
     {
       id: 'employees',
@@ -42,7 +50,7 @@ export class NavBarSideBarListComponent implements OnInit {
       routeName: 'Employees',
       matIcon: 'assignment_ind',
       url: '/admin/employees',
-      children: []
+      children: [],
     },
     {
       id: 'customers',
@@ -51,7 +59,7 @@ export class NavBarSideBarListComponent implements OnInit {
       routeName: 'Customers',
       matIcon: 'people',
       url: '/admin/customers',
-      children: []
+      children: [],
     },
     {
       id: 'receipts',
@@ -60,8 +68,8 @@ export class NavBarSideBarListComponent implements OnInit {
       routeName: 'Receipts',
       matIcon: 'assessment',
       url: '/admin/receipts',
-      children: []
-    }
+      children: [],
+    },
     // {
     //   id: 'panel-2',
     //   isDisabled: false,

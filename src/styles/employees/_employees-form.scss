@@ -1,25 +1,5 @@
-.employee-form-wrapper {
-  .employee-form {
-    overflow: hidden;
-    .mat-grid-tile {
-      .mat-form-field {
-        width: 100%;
-      }
-
-      .mat-figure {
-        padding: 0 1rem;
-        justify-content: flex-start;
-      }
-    }
-
-    .btn-submit-cancel {
-      .mat-figure {
-        button {
-          margin-right: 1rem;
-        }
-      }
-    }
-
+.form-container {
+  .form-wrapper {
     .gender.mat-button-toggle-group {
       border-color: #ffffff;
       border-radius: 0;
@@ -53,44 +33,5 @@
         }
       }
     }
-  }
-
-  .upload-file-wrapper {
-    width: 100%;
-    max-width: 100%;
-    height: 95%;
-    border: solid 2px $disabled-color-1;
-    position: relative;
-
-    input[type='file'] {
-      width: 0;
-      height: 0;
-    }
-
-    .label-upload-wrapper {
-      @include w-h-100;
-
-      position: absolute;
-      top: 0;
-      left: 0;
-      cursor: pointer;
-
-      .label-upload {
-        @include w-h-100;
-        @include flex-between(column);
-        color: $disabled-color-2;
-        text-align: center;
-
-        .mat-icon {
-          @include w-h-option(40px, 40px);
-          font-size: 40px;
-        }
-      }
-    }
-  }
-
-  .mat-dialog-title {
-    display: flex;
-    justify-content: space-between;
   }
 }
