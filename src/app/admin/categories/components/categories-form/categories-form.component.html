@@ -1,6 +1,6 @@
 <div class="form-container">
   <div mat-dialog-title>
-    <h2>Create Publishers</h2>
+    <h2>Create Categories</h2>
     <div mat-dialog-title class="icon-exit">
       <button mat-button mat-icon-button [mat-dialog-close]="false">
         <mat-icon>close</mat-icon>
@@ -11,26 +11,26 @@
   <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
     <mat-grid-list cols="12" rowHeight="80px">
       <mat-grid-tile [colspan]="4" [rowspan]="7">
-        <div *ngIf="form.controls.logo" class="upload-file-wrapper uploaded-wrapper">
-          <input type="file" formControlName="logo" id="up-file" />
-          <label *ngIf="!form.controls.logo.value" for="up-file" class="label-upload-wrapper">
+        <div *ngIf="form.controls.banner" class="upload-file-wrapper uploaded-wrapper">
+          <input type="file" formControlName="banner" id="up-file" />
+          <label *ngIf="!form.controls.banner.value" for="up-file" class="label-upload-wrapper">
             <div class="label-upload">
               <mat-icon class="bounce">cloud_upload</mat-icon>
               <p>Drag and drop a file here or click</p>
             </div>
           </label>
           <!-- UPLOADED -->
-          <div *ngIf="form.controls.logo.value" class="uploaded-image">
+          <div *ngIf="form.controls.banner.value" class="uploaded-image">
             <img src="../../../../../assets/images/unnamed.jpg" alt="image" />
           </div>
-          <div *ngIf="form.controls.logo.value" class="uploaded-overlay"></div>
-          <div *ngIf="form.controls.logo.value" class="uploaded-remove">
-            <button mat-stroked-button color="white" (click)="removeImage(form.controls.logo)">
+          <div *ngIf="form.controls.banner.value" class="uploaded-overlay"></div>
+          <div *ngIf="form.controls.banner.value" class="uploaded-remove">
+            <button mat-stroked-button color="white" (click)="removeImage(form.controls.banner)">
               Remove
             </button>
           </div>
           <label
-            *ngIf="form.controls.logo.value"
+            *ngIf="form.controls.banner.value"
             for="up-file"
             class="label-upload-wrapper uploaded-content"
           >
@@ -45,8 +45,15 @@
         <input type="hidden" formControlName="uuid" />
         <mat-form-field appearance="standard">
           <mat-label>Name</mat-label>
-          <input matInput formControlName="fullName" placeholder="Full Name" required />
+          <input matInput formControlName="name" placeholder="Full Name" required />
           <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Category Parent</mat-label>
+          <input matInput formControlName="parentCategory" placeholder="Categories" />
         </mat-form-field>
       </mat-grid-tile>
 

@@ -1,6 +1,6 @@
 import { Gender } from './gender.model';
 
-export class Employees {
+export class Customers {
   uuid: Number;
   dob: String;
   age: Number;

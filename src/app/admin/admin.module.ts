@@ -27,6 +27,11 @@ import { SuppliersTableComponent } from './suppliers/components/suppliers-table/
 import { PublishersComponent } from './publishers/components/publishers/publishers.component';
 import { PublishersFormComponent } from './publishers/components/publishers-form/publishers-form.component';
 import { PublishersTableComponent } from './publishers/components/publishers-table/publishers-table.component';
+import { CustomersComponent } from './customers/components/customers/customers.component';
+import { CustomersTableComponent } from './customers/components/customers-table/customers-table.component';
+import { CategoriesComponent } from './categories/components/categories/categories.component';
+import { CategoriesFormComponent } from './categories/components/categories-form/categories-form.component';
+import { CategoriesTableComponent } from './categories/components/categories-table/categories-table.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -48,6 +53,11 @@ import { PublishersTableComponent } from './publishers/components/publishers-tab
     PublishersComponent,
     PublishersFormComponent,
     PublishersTableComponent,
+    CustomersComponent,
+    CustomersTableComponent,
+    CategoriesComponent,
+    CategoriesFormComponent,
+    CategoriesTableComponent,
   ],
   imports: [
     CommonModule,

@@ -13,7 +13,7 @@ export class BreadcrumbsComponent implements OnInit {
   homeRouteName: string;
   childRouteName: string;
 
-  constructor(private activatedRouter: ActivatedRoute, private router: Router) {
+  constructor(protected activatedRouter: ActivatedRoute, protected router: Router) {
     this.breadcrumb$ = this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),

@@ -9,10 +9,13 @@ import { PublishersFormService } from '../../services/publishers-form.service';
 })
 export class PublishersFormComponent implements OnInit {
   form: FormGroup;
-  uploaded: boolean = false;
   constructor(protected publishersFormService: PublishersFormService) {}
 
   ngOnInit(): void {
     this.form = this.publishersFormService.getPublisherForm();
+  }
+
+  removeImage(image): void {
+    console.log(image);
   }
 }

@@ -9,6 +9,7 @@ export class PublishersFormService {
     uuid: new FormControl(null),
     name: new FormControl(''),
     description: new FormControl(''),
+    logo: new FormControl(''),
   });
 
   constructor() {}

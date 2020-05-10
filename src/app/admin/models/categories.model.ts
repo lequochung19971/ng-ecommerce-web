@@ -1,7 +1,7 @@
 export class Categories {
   uuid: Number;
   name: String;
-  categoryChildren: String[];
+  parentCategory: String;
+  description: String;
   image?: String;
-  status: String;
 }

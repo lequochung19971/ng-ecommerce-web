@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, FormsModule } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SuppliersFormService {
+export class CategoriesFormService {
   private form = new FormGroup({
     uuid: new FormControl(null),
     name: new FormControl(''),
-    email: new FormControl(''),
-    address: new FormControl(''),
+    parentCategory: new FormControl(''),
     description: new FormControl(''),
-    logo: new FormControl(''),
+    banner: new FormControl(''),
   });
   constructor() {}
 
-  getSuppliersForm() {
+  getCategoriesForm() {
     return this.form;
   }
 }

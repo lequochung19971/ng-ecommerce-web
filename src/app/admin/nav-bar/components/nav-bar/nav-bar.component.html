@@ -25,7 +25,7 @@
     [ngStyle]="{ 'padding-top': (isMobile$ | async) ? '3.7rem' : '4.25rem' }"
   >
     <app-nav-bar-profile></app-nav-bar-profile>
-    <app-nav-bar-side-bar-list></app-nav-bar-side-bar-list>
+    <app-nav-bar-side-bar-list [accordion]="navGroup"></app-nav-bar-side-bar-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <!-- Add Content Here -->

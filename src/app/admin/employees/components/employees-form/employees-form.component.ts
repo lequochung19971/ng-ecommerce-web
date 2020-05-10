@@ -16,7 +16,6 @@ import { Departments } from 'src/app/admin/models/departments.model';
 export class EmployeesFormComponent implements OnInit {
   form: FormGroup;
   departments = _.values(Departments);
-  uploaded: boolean = true;
 
   faMale = faMale;
   faFemale = faFemale;
@@ -62,7 +61,7 @@ export class EmployeesFormComponent implements OnInit {
     this.form = this.employeesFormService.getEmployeeForm();
   }
 
-  removeImage(value) {
-    console.log(value);
+  removeImage(image) {
+    console.log(image);
   }
 }

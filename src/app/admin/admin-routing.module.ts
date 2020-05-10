@@ -8,6 +8,8 @@ import { EmployeesComponent } from './employees/components/employees/employees.c
 import { AuthorsComponent } from './authors/components/authors/authors.component';
 import { PublishersComponent } from './publishers/components/publishers/publishers.component';
 import { SuppliersComponent } from './suppliers/components/suppliers/suppliers.component';
+import { CustomersComponent } from './customers/components/customers/customers.component';
+import { CategoriesComponent } from './categories/components/categories/categories.component';
 
 const routes: Routes = [
   {
@@ -16,9 +18,9 @@ const routes: Routes = [
     component: NavBarComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent, data: { breadcrumb: 'Dashboard' } },
-      { path: 'categories', component: DashboardComponent, data: { breadcrumb: 'Categories' } },
+      { path: 'categories', component: CategoriesComponent, data: { breadcrumb: 'Categories' } },
       { path: 'employees', component: EmployeesComponent, data: { breadcrumb: 'Employees' } },
-      { path: 'customers', component: DashboardComponent, data: { breadcrumb: 'Customers' } },
+      { path: 'customers', component: CustomersComponent, data: { breadcrumb: 'Customers' } },
       { path: 'receipts', component: DashboardComponent, data: { breadcrumb: 'Receipts' } },
       { path: 'authors', component: AuthorsComponent, data: { breadcrumb: 'Authors' } },
       { path: 'books', component: DashboardComponent, data: { breadcrumb: 'Books' } },
