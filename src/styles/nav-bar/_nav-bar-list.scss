@@ -6,6 +6,7 @@
     .mat-expansion-panel-header {
       padding: 0 16px;
       align-items: center;
+      @include font-size(16px);
       &.mat-expanded:focus,
       &.mat-expanded {
         background-color: $accent;
@@ -26,7 +27,7 @@
       }
     }
     .mat-list-item {
-      font-size: 15px;
+      @include font-size($main-font-size);
       border-radius: 4px;
       height: 42px;
       color: $black-7-opacity;

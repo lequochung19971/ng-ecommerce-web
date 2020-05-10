@@ -1,4 +1,4 @@
-export class Categories {
+export class Contact {
   uuid: Number;
   name: String;
   address: String;

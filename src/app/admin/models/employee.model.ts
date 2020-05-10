@@ -1,13 +1,14 @@
 import { Gender } from './gender.model';
+import { Departments } from './departments.model';
 
-export class Customers {
+export class Employee {
   uuid: Number;
   dob: String;
   age: Number;
   fullName: String;
   email: String;
   phone: Number;
+  department: Departments;
   gender: Gender;
-  avatar?: String;
-  address: String;
+  avatar: String;
 }

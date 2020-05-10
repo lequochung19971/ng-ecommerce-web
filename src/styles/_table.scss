@@ -8,20 +8,20 @@
       color: $primary;
       padding-left: 1rem;
       &:hover {
-        color: $text-primary-hover-color;
+        color: $primary-hover;
       }
     }
   }
 
   th.mat-header-cell {
-    font-size: 1rem;
     padding: 1rem 1rem;
+    @include font-size($main-font-size);
   }
 
   td.mat-cell,
   td.mat-footer-cell {
-    font-size: 1rem;
     color: $black-7-opacity;
+    @include font-size($main-font-size);
     padding: 1.5rem 1rem;
   }
 

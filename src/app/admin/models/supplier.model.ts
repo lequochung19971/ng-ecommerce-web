@@ -1,4 +1,4 @@
-export class Suppliers {
+export class Supplier {
   uuid: Number;
   name: String;
   email: String;

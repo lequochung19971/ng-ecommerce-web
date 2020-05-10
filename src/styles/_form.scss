@@ -49,7 +49,7 @@
 
         .mat-icon {
           @include w-h-option(40px, 40px);
-          font-size: 40px;
+          @include font-size(40px);
         }
       }
     }
@@ -99,7 +99,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: $black;
+      background-color: $black-10-opacity;
       opacity: 0;
     }
 

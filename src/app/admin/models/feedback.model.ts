@@ -1,4 +1,4 @@
-export class Categories {
+export class Feedback {
   uuid: Number;
   userId: Number;
   productId: Number;

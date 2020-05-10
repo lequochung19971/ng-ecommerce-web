@@ -14,3 +14,7 @@
   width: $height;
   height: $width;
 }
+
+@mixin font-size($size) {
+  font-size: ($size / $main-font-size) * 1rem;
+}

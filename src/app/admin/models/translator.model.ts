@@ -1,6 +1,5 @@
-export class Publishers {
+export class Translator {
   uuid: Number;
   name: String;
-  logo: String;
   description: String;
 }

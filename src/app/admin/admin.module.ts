@@ -8,7 +8,6 @@ import { MaterialModule } from '../material/material.module';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { NavBarSideBarListComponent } from './nav-bar/components/nav-bar-side-bar-list/nav-bar-side-bar-list.component';
 import { NavBarProfileComponent } from './nav-bar/components/nav-bar-profile/nav-bar-profile.component';
-import { TableComponent } from './table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -39,7 +38,6 @@ import { CategoriesTableComponent } from './categories/components/categories-tab
     BreadcrumbsComponent,
     NavBarSideBarListComponent,
     NavBarProfileComponent,
-    TableComponent,
     EmployeesComponent,
     EmployeesFormComponent,
     EmployeesTableComponent,
