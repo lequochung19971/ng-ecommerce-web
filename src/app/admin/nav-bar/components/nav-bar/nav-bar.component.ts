@@ -75,7 +75,7 @@ export class NavBarComponent {
       routeName: 'Products',
       matIcon: 'menu_book',
       url: '/admin/products',
-      children: [],
+      children: [{ routeName: 'Books', url: '/admin/products/books' }],
     },
     {
       id: 'employees',

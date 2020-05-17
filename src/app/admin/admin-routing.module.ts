@@ -9,6 +9,7 @@ import { PublishersComponent } from './publishers/components/publishers/publishe
 import { SuppliersComponent } from './suppliers/components/suppliers/suppliers.component';
 import { CustomersComponent } from './customers/components/customers/customers.component';
 import { CategoriesComponent } from './categories/components/categories/categories.component';
+import { BooksComponent } from './product/books/components/books/books.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
       { path: 'customers', component: CustomersComponent, data: { breadcrumb: 'Customers' } },
       { path: 'receipts', component: DashboardComponent, data: { breadcrumb: 'Receipts' } },
       { path: 'authors', component: AuthorsComponent, data: { breadcrumb: 'Authors' } },
-      { path: 'books', component: DashboardComponent, data: { breadcrumb: 'Books' } },
+      { path: 'products/books', component: BooksComponent, data: { breadcrumb: 'Books' } },
       { path: 'publishers', component: PublishersComponent, data: { breadcrumb: 'Publishers' } },
       { path: 'suppliers', component: SuppliersComponent, data: { breadcrumb: 'Suppliers' } },
     ],

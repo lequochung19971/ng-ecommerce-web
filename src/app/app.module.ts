@@ -11,6 +11,7 @@ import { AuthorsFormComponent } from './admin/authors/components/authors-form/au
 import { PublishersFormComponent } from './admin/publishers/components/publishers-form/publishers-form.component';
 import { SuppliersFormComponent } from './admin/suppliers/components/suppliers-form/suppliers-form.component';
 import { CategoriesFormComponent } from './admin/categories/components/categories-form/categories-form.component';
+import { BooksFormComponent } from './admin/product/books/components/books-form/books-form.component';
 
 @NgModule({
   declarations: [AppComponent, PageNotfoundComponent],
@@ -23,6 +24,7 @@ import { CategoriesFormComponent } from './admin/categories/components/categorie
     PublishersFormComponent,
     SuppliersFormComponent,
     CategoriesFormComponent,
+    BooksFormComponent,
   ],
 })
 export class AppModule {}

@@ -1,12 +1,14 @@
-import { Author } from './authors.model';
-import { Supplier } from './suppliers.model';
-import { Publisher } from './publishers.model';
-import { Translator } from './translators.model';
+import { Author } from './author.model';
+import { Supplier } from './supplier.model';
+import { Publisher } from './publisher.model';
+import { Translator } from './translator.model';
+import { Category } from './category.model';
 
-export class Product {
+export class Book {
   uuid: String;
   name: String;
-  category: String;
+  productCode: String;
+  category: Category;
   author: Author;
   translator: Translator;
   supplier: Supplier;

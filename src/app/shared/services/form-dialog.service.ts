@@ -9,7 +9,7 @@ export class FormDialogService {
 
   openFormDialog(FormComponent) {
     return this.dialog.open(FormComponent, {
-      width: '100%',
+      width: '1366px',
       position: { top: '100px' },
       disableClose: true,
       autoFocus: true,

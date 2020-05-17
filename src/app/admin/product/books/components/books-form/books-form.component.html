@@ -1,0 +1,423 @@
+<div class="form-container">
+  <div mat-dialog-title>
+    <h2>Create Book</h2>
+    <div mat-dialog-title class="icon-exit">
+      <button mat-button mat-icon-button [mat-dialog-close]="false">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
+  <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
+    <mat-grid-list mat-dialog-content cols="12" rowHeight="80px">
+      <!-- Divider -->
+      <mat-grid-tile [colspan]="12" [rowspan]="1" class="title-divider">
+        <div class="title mat-h2">
+          <span>
+            BASIC INFORMATION
+          </span>
+        </div>
+        <div class="divider">
+          <mat-divider color="primary"></mat-divider>
+          <mat-divider color="primary"></mat-divider>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="7">
+        <div *ngIf="form.controls.image" class="upload-file-wrapper uploaded-wrapper">
+          <input type="file" formControlName="image" id="up-file" />
+          <label *ngIf="!form.controls.image.value" for="up-file" class="label-upload-wrapper">
+            <div class="label-upload">
+              <mat-icon class="bounce">cloud_upload</mat-icon>
+              <p>Drag and drop a <strong>image</strong> here or click</p>
+            </div>
+          </label>
+          <!-- UPLOADED -->
+          <div *ngIf="form.controls.image.value" class="uploaded-image">
+            <img src="../../../../../assets/images/unnamed.jpg" alt="image" />
+          </div>
+          <div *ngIf="form.controls.image.value" class="uploaded-overlay"></div>
+          <div *ngIf="form.controls.image.value" class="uploaded-remove">
+            <button mat-stroked-button color="white" (click)="removeImage(form.controls.image)">
+              Remove
+            </button>
+          </div>
+          <label
+            *ngIf="form.controls.image.value"
+            for="up-file"
+            class="label-upload-wrapper uploaded-content"
+          >
+            <p>image.jpg</p>
+            <p></p>
+            <p>Drag and drop or click to replace</p>
+          </label>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <input type="hidden" formControlName="uuid" />
+        <mat-form-field appearance="standard">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="Name" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Code</mat-label>
+          <input matInput formControlName="productCode" placeholder="Code" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Author column -->
+      <mat-grid-tile [colspan]="8" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Author</mat-label>
+          <input matInput formControlName="author" placeholder="Author" />
+        </mat-form-field>
+        <button mat-mini-fab color="primary" class="mat-mini-fab-create mat-elevation-z0">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <!-- Category column -->
+      <mat-grid-tile [colspan]="8" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Category</mat-label>
+          <input matInput formControlName="category" placeholder="Category" />
+        </mat-form-field>
+        <button mat-mini-fab color="primary" class="mat-mini-fab-create mat-elevation-z0">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <!-- <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="priceOut" placeholder="Price"  />
+        </mat-form-field>
+      </mat-grid-tile> -->
+
+      <!-- Divider -->
+      <mat-grid-tile [colspan]="12" [rowspan]="1" class="title-divider">
+        <div class="title mat-h2">
+          <span>
+            DETAIL INFORMATION
+          </span>
+        </div>
+        <div class="divider">
+          <mat-divider color="primary"></mat-divider>
+          <mat-divider color="primary"></mat-divider>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Supplier</mat-label>
+          <input matInput formControlName="supplier" placeholder="Supplier" />
+        </mat-form-field>
+        <button mat-mini-fab color="primary" class="mat-mini-fab-create mat-elevation-z0">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Publisher</mat-label>
+          <input matInput formControlName="publisher" placeholder="Publisher" />
+        </mat-form-field>
+        <button mat-mini-fab color="primary" class="mat-mini-fab-create mat-elevation-z0">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Translator</mat-label>
+          <input matInput formControlName="translator" placeholder="Translator" />
+        </mat-form-field>
+        <button mat-mini-fab color="primary" class="mat-mini-fab-create mat-elevation-z0">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Weight</mat-label>
+          <input matInput formControlName="weight" placeholder="Weight" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Size</mat-label>
+          <input matInput formControlName="size" placeholder="Size" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Page quantity column -->
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Page quantity</mat-label>
+          <input matInput formControlName="pageQuantity" placeholder="Page quantity" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Language column -->
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Language</mat-label>
+          <mat-select placeholder="Language" formControlName="language">
+            <mat-option value="vn">Tiếng việt</mat-option>
+            <mat-option value="en">Tiếng anh</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Publish Date column-->
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Publish Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="publishDatePicker"
+            placeholder="Publish Date"
+            color="primary"
+            formControlName="publishDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="publishDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #publishDatePicker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Release Date column-->
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Release Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="releaseDatePicker"
+            placeholder="Release Date"
+            color="primary"
+            formControlName="releaseDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="releaseDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #releaseDatePicker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="4">
+        <div *ngIf="form.controls.image" class="upload-file-wrapper uploaded-wrapper">
+          <input type="file" formControlName="image" id="up-file" />
+          <label *ngIf="!form.controls.image.value" for="up-file" class="label-upload-wrapper">
+            <div class="label-upload">
+              <mat-icon class="bounce">cloud_upload</mat-icon>
+              <p>Drag and drop <strong>images</strong> here or click</p>
+            </div>
+          </label>
+          <!-- UPLOADED -->
+          <div *ngIf="form.controls.image.value" class="uploaded-image">
+            <img src="../../../../../assets/images/unnamed.jpg" alt="image" />
+          </div>
+          <div *ngIf="form.controls.image.value" class="uploaded-overlay"></div>
+          <div *ngIf="form.controls.image.value" class="uploaded-remove">
+            <button mat-stroked-button color="white" (click)="removeImage(form.controls.image)">
+              Remove
+            </button>
+          </div>
+          <label
+            *ngIf="form.controls.image.value"
+            for="up-file"
+            class="label-upload-wrapper uploaded-content"
+          >
+            <p>image.jpg</p>
+            <p></p>
+            <p>Drag and drop or click to replace</p>
+          </label>
+        </div>
+      </mat-grid-tile>
+
+      <!-- Divider -->
+      <mat-grid-tile [colspan]="12" [rowspan]="1" class="title-divider">
+        <div class="title mat-h2">
+          <span>
+            DESCRIPTION
+          </span>
+        </div>
+        <div class="divider">
+          <mat-divider color="primary"></mat-divider>
+          <mat-divider color="primary"></mat-divider>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="2">
+        <mat-form-field appearance="standard">
+          <mat-label>Short Description</mat-label>
+          <textarea
+            matInput
+            formControlName="shortDescription"
+            placeholder="Short Description"
+            rows="8"
+          ></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="5">
+        <mat-form-field appearance="standard">
+          <mat-label>Main Description</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Main Description"
+            rows="24"
+          ></textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Divider -->
+      <mat-grid-tile [colspan]="12" [rowspan]="1" class="title-divider">
+        <div class="title mat-h2">
+          <span>
+            SALES INFORMATION
+          </span>
+        </div>
+        <div class="divider">
+          <mat-divider color="primary"></mat-divider>
+          <mat-divider color="primary"></mat-divider>
+        </div>
+      </mat-grid-tile>
+
+      <!-- Page quantity column -->
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Quantity</mat-label>
+          <input matInput formControlName="quantity" placeholder="Quantity" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Page quantity column -->
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Price</mat-label>
+          <input matInput formControlName="priceOut" placeholder="Price" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Page quantity column -->
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Promotion Price</mat-label>
+          <input matInput formControlName="promotionPriceOut" placeholder="Promotion Price" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="startDatePicker"
+            placeholder="Start Date"
+            color="primary"
+            formControlName="saleStartDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="endDatePicker"
+            placeholder="End Date"
+            color="primary"
+            formControlName="saleEndDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="1" class="title-divider">
+        <div class="title mat-h2">
+          <span>
+            PROMOTIONS INFORMATION
+          </span>
+        </div>
+        <div class="divider">
+          <mat-divider color="primary"></mat-divider>
+          <mat-divider color="primary"></mat-divider>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="1">
+        <div class="promotion-task-card mat-elevation-z1">
+          <div class="promotion-task-card__content">
+            Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi
+            Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi
+            Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi
+            Thông tin khuyến mãi Thông tin khuyến mãi
+          </div>
+          <div class="promotion-task-card__expiredDate">12/12/2019 - 04/04/2020</div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="1">
+        <div class="promotion-task-card mat-elevation-z1">
+          <div class="promotion-task-card__content">
+            Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi
+            Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi
+            Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi Thông tin khuyến mãi
+            Thông tin khuyến mãi Thông tin khuyến mãi
+          </div>
+          <div class="promotion-task-card__expiredDate">12/12/2019 - 04/04/2020</div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Promotion</mat-label>
+          <input matInput formControlName="promotionPriceOut" placeholder="Promotion Price" />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Promotion Start Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="promotionStartDatePicker"
+            placeholder="Promotion Start Date"
+            color="primary"
+            formControlName="promotionStartDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="promotionStartDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #promotionStartDatePicker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="6" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Promotion End Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="promotionEndDatePicker"
+            placeholder="Promotion End Date"
+            color="primary"
+            formControlName="promotionEndDate"
+          />
+          <mat-datepicker-toggle matSuffix [for]="promotionEndDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #promotionEndDatePicker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="12" [rowspan]="1" class="btn-submit-cancel">
+        <button mat-flat-button color="primary">Submit</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>

@@ -31,6 +31,9 @@ import { CustomersTableComponent } from './customers/components/customers-table/
 import { CategoriesComponent } from './categories/components/categories/categories.component';
 import { CategoriesFormComponent } from './categories/components/categories-form/categories-form.component';
 import { CategoriesTableComponent } from './categories/components/categories-table/categories-table.component';
+import { BooksComponent } from './product/books/components/books/books.component';
+import { BooksTableComponent } from './product/books/components/books-table/books-table.component';
+import { BooksFormComponent } from './product/books/components/books-form/books-form.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -56,6 +59,9 @@ import { CategoriesTableComponent } from './categories/components/categories-tab
     CategoriesComponent,
     CategoriesFormComponent,
     CategoriesTableComponent,
+    BooksComponent,
+    BooksTableComponent,
+    BooksFormComponent,
   ],
   imports: [
     CommonModule,

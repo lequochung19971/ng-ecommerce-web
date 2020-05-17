@@ -7,7 +7,7 @@
       }
 
       .mat-figure {
-        padding: 0 1rem;
+        padding: 0 30px;
         justify-content: flex-start;
       }
     }
@@ -15,7 +15,7 @@
     .btn-submit-cancel {
       .mat-figure {
         button {
-          margin-right: 1rem;
+          margin-right: 15px;
         }
       }
     }
@@ -145,6 +145,64 @@
         transform: translateY(-10px);
         opacity: 1;
       }
+    }
+  }
+
+  .title-divider {
+    .title {
+      white-space: nowrap;
+      padding-right: 30px;
+    }
+
+    .divider {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+      width: 100%;
+
+      margin-bottom: 15px;
+
+      .mat-divider {
+        width: 100%;
+        border-top-color: $primary;
+      }
+    }
+  }
+
+  .mat-mini-fab-create {
+    margin: {
+      left: 22px;
+      bottom: 8px;
+    }
+  }
+
+  .promotion-task-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    &__content {
+      padding: {
+        top: 15px;
+        left: 15px;
+        bottom: 15px;
+      }
+      width: 100%;
+      overflow-x: scroll;
+      white-space: nowrap;
+
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &__expiredDate {
+      white-space: nowrap;
+      padding: 15px;
+      box-shadow: -10px 0px 13px -15px rgba(194, 194, 194, 1);
+      color: $black-5-opacity;
     }
   }
 }
