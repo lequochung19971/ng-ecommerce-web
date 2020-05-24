@@ -9,6 +9,6 @@
     </button>
   </mat-card-actions>
   <mat-card-content>
-    <app-employees-table></app-employees-table>
+    <app-employees-table (editEmployee)="openEditEmployeesDialog($event)"></app-employees-table>
   </mat-card-content>
 </mat-card>

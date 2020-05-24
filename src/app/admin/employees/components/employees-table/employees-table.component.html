@@ -56,7 +56,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" class="actions">
         <div class="show-edit-delete">
-          <button mat-icon-button title="Edit">
+          <button mat-icon-button title="Edit" (click)="edit(element)">
             <mat-icon>launch</mat-icon>
           </button>
           <button mat-icon-button color="warn" title="Delete">

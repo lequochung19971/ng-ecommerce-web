@@ -7,14 +7,18 @@ import { MatDialog } from '@angular/material/dialog';
 export class FormDialogService {
   constructor(protected dialog: MatDialog) {}
 
-  openFormDialog(FormComponent) {
-    return this.dialog.open(FormComponent, {
+  openFormDialog(FormComponent, data) {
+    console.log(data);
+    const formDialogRef = this.dialog.open(FormComponent, {
       width: '1366px',
       position: { top: '100px' },
       disableClose: true,
       autoFocus: true,
       panelClass: 'lqh-dialog',
+      data: data,
     });
+
+    return formDialogRef;
   }
 
   openFullFormDialog(FormComponent) {

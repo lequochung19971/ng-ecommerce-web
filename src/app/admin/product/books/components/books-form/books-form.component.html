@@ -8,8 +8,8 @@
     </div>
   </div>
   <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
-  <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
-    <mat-grid-list mat-dialog-content cols="12" rowHeight="80px">
+  <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper has-scroll">
+    <mat-grid-list mat-dialog-content cols="12" rowHeight="80px" class="has-scroll">
       <!-- Divider -->
       <mat-grid-tile [colspan]="12" [rowspan]="1" class="title-divider">
         <div class="title mat-h2">

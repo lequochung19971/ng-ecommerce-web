@@ -53,7 +53,7 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Departments</mat-label>
-          <mat-select placeholder="Department" formControlName="department" required>
+          <mat-select placeholder="Department" formControlName="department">
             <mat-option *ngFor="let department of departments" [value]="department">{{
               department
             }}</mat-option>
@@ -70,7 +70,6 @@
             placeholder="Date of birth"
             color="primary"
             formControlName="dob"
-            required
           />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -80,7 +79,7 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Age</mat-label>
-          <input matInput formControlName="age" placeholder="Age" required />
+          <input matInput formControlName="age" placeholder="Age" />
         </mat-form-field>
       </mat-grid-tile>
 
@@ -91,11 +90,11 @@
           class="gender"
           formControlName="gender"
         >
-          <mat-button-toggle value="M">
-            <fa-icon [icon]="faMale" size="2x"></fa-icon>
+          <mat-button-toggle value="M" class="male">
+            <fa-icon [icon]="maleIcon" size="2x"></fa-icon>
           </mat-button-toggle>
-          <mat-button-toggle value="F">
-            <fa-icon [icon]="faFemale" size="2x"></fa-icon>
+          <mat-button-toggle value="F" class="female">
+            <fa-icon [icon]="femaleIcon" size="2x"></fa-icon>
           </mat-button-toggle>
         </mat-button-toggle-group>
       </mat-grid-tile>
@@ -103,7 +102,7 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="Email" required />
+          <input matInput formControlName="email" placeholder="Email" />
           <!-- <mat-error>{{ getErrorMessage('email') }}</mat-error> -->
         </mat-form-field>
       </mat-grid-tile>
@@ -111,13 +110,13 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Phone</mat-label>
-          <input matInput formControlName="phone" placeholder="Phone" required />
+          <input matInput formControlName="phone" placeholder="Phone" />
           <!-- <mat-error>{{ getErrorMessage('mobile') }}</mat-error> -->
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="8" [rowspan]="1" class="btn-submit-cancel">
-        <button mat-flat-button color="primary">Submit</button>
+        <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
         <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
       </mat-grid-tile>
     </mat-grid-list>

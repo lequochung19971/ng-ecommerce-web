@@ -1,8 +1,8 @@
 export enum Departments {
-  dir = 'Director',
-  man = 'Manager',
-  sta = 'Staff',
-  assi = 'Assistant',
-  acco = 'Accountant',
-  chair = 'Chairman'
+  DIRECTOR = 'Director',
+  MANAGER = 'Manager',
+  STAFF = 'Staff',
+  ASSISTANT = 'Assistant',
+  ACCOUNTANT = 'Accountant',
+  CHAIRMAN = 'Chairman',
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +13,19 @@ import { PublishersFormComponent } from './admin/publishers/components/publisher
 import { SuppliersFormComponent } from './admin/suppliers/components/suppliers-form/suppliers-form.component';
 import { CategoriesFormComponent } from './admin/categories/components/categories-form/categories-form.component';
 import { BooksFormComponent } from './admin/product/books/components/books-form/books-form.component';
+import { EmployeesFormService } from './admin/employees/services/employees-form.service';
 
 @NgModule({
   declarations: [AppComponent, PageNotfoundComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MaterialModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [EmployeesFormService],
   bootstrap: [AppComponent],
   entryComponents: [
     EmployeesFormComponent,

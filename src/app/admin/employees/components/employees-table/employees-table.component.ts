@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Departments } from 'src/app/admin/models/departments.model';
 import { Gender } from 'src/app/admin/models/gender.model';
+import { Employee } from 'src/app/admin/models/employee.model';
 
 @Component({
   selector: 'app-employees-table',
@@ -8,17 +9,19 @@ import { Gender } from 'src/app/admin/models/gender.model';
   styleUrls: ['./employees-table.component.scss'],
 })
 export class EmployeesTableComponent implements OnInit {
+  @Output() editEmployee = new EventEmitter();
+
   ELEMENT_DATA = [
     {
       uuid: 1,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.dir,
+      department: Departments.DIRECTOR,
       gender: Gender.M,
     },
     {
@@ -26,11 +29,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.acco,
+      department: Departments.ACCOUNTANT,
       gender: Gender.M,
     },
     {
@@ -38,11 +41,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.chair,
+      department: Departments.CHAIRMAN,
       gender: Gender.M,
     },
     {
@@ -50,11 +53,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.man,
+      department: Departments.MANAGER,
       gender: Gender.M,
     },
     {
@@ -62,11 +65,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.sta,
+      department: Departments.STAFF,
       gender: Gender.M,
     },
     {
@@ -74,11 +77,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.dir,
+      department: Departments.DIRECTOR,
       gender: Gender.M,
     },
     {
@@ -86,11 +89,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.assi,
+      department: Departments.ASSISTANT,
       gender: Gender.M,
     },
     {
@@ -98,11 +101,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.acco,
+      department: Departments.ACCOUNTANT,
       gender: Gender.M,
     },
     {
@@ -110,11 +113,11 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.sta,
+      department: Departments.STAFF,
       gender: Gender.M,
     },
     {
@@ -122,23 +125,23 @@ export class EmployeesTableComponent implements OnInit {
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.man,
-      gender: Gender.M,
+      department: Departments.MANAGER,
+      gender: Gender.F,
     },
     {
       uuid: 11,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
-      dob: '12/03/1997',
+      dob: new Date('12/03/1997'),
       age: 23,
       email: 'lequochung19971@gmail.com',
       phone: '0329442883',
-      department: Departments.sta,
+      department: Departments.STAFF,
       gender: Gender.M,
     },
   ];
@@ -156,4 +159,9 @@ export class EmployeesTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  edit(currentData) {
+    this.editEmployee.emit(currentData);
+    // console.log(currentData);
+  }
 }

@@ -11,4 +11,8 @@ export class Employee {
   department: Departments;
   gender: Gender;
   avatar: String;
+
+  isEmployee() {
+    return true;
+  }
 }

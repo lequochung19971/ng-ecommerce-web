@@ -1,20 +1,32 @@
+// ----------------------------------------------------------------
+// ---------------------------GENERAL------------------------------
+// ----------------------------------------------------------------
 @import './styles/base';
 @import './styles/material-theme/';
 @import './styles/material/material-styles';
 @import './styles/variables';
 @import './styles/mixins';
+@import './styles/common';
+@import './styles/animation';
 
+// ----------------------------------------------------------------
+// ---------------------------LAYOUT-------------------------------
+// ----------------------------------------------------------------
 @import './styles/table';
 @import './styles/card';
 @import './styles/form';
-@import './styles/animation';
 
+// ----------------------------------------------------------------
+// ---------------------------COMPONENTS---------------------------
+// ----------------------------------------------------------------
 @import './styles/nav-bar/nav-bar';
 @import './styles/nav-bar/nav-bar-profile';
 @import './styles/nav-bar/nav-bar-list';
 
 @import './styles/breadcrumbs';
-
 @import './styles/employees/employees';
 
+// ----------------------------------------------------------------
+// ---------------------------RESPONSIVE---------------------------
+// ----------------------------------------------------------------
 @import './styles/responsive';
