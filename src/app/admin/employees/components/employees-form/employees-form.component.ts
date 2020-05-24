@@ -60,8 +60,6 @@ export class EmployeesFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('Employee Component:' + this.data);
-    this.data = this.data ? this.data : new Employee();
     this.employeesFormService.createEmployeeInfoForm(this.data);
     this.form = this.employeesFormService.getEmployeeInfoForm();
   }
