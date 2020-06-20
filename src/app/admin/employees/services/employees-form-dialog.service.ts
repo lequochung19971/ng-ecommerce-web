@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeesFormComponent } from '../components/employees-form/employees-form.component';
-import { FormDialogService } from 'src/app/shared/services/form-dialog.service';
 import { Employee } from '../../models/employee.model';
+import { FormDialogService } from '../../shared/services/form-dialog.service';
 
 @Injectable({
   providedIn: 'root',

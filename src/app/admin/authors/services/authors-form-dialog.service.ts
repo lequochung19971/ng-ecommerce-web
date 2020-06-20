@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormDialogService } from 'src/app/shared/services/form-dialog.service';
 import { AuthorsFormComponent } from '../components/authors-form/authors-form.component';
+import { FormDialogService } from '../../shared/services/form-dialog.service';
 
 @Injectable({
   providedIn: 'root',
