@@ -34,6 +34,11 @@ import { CategoriesTableComponent } from './categories/components/categories-tab
 import { BooksComponent } from './product/books/components/books/books.component';
 import { BooksTableComponent } from './product/books/components/books-table/books-table.component';
 import { BooksFormComponent } from './product/books/components/books-form/books-form.component';
+import { InputNumberDirective } from './shared/directives/input-number.directive';
+import { DoubleClickDirective } from './shared/directives/double-click.directive';
+import { InputLetterDirective } from './shared/directives/input-letter.directive';
+import { InputDateDirective } from './shared/directives/input-date.directive';
+import { ImageUploaderComponent } from './shared/components/image-uploader/image-uploader.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -62,6 +67,11 @@ import { BooksFormComponent } from './product/books/components/books-form/books-
     BooksComponent,
     BooksTableComponent,
     BooksFormComponent,
+    InputNumberDirective,
+    DoubleClickDirective,
+    InputLetterDirective,
+    InputDateDirective,
+    ImageUploaderComponent,
   ],
   imports: [
     CommonModule,

@@ -11,41 +11,24 @@
   <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
     <mat-grid-list cols="12" rowHeight="80px">
       <mat-grid-tile [colspan]="4" [rowspan]="7">
-        <div *ngIf="form.controls.avatar" class="upload-file-wrapper uploaded-wrapper">
-          <input type="file" formControlName="avatar" id="up-file" />
-          <label *ngIf="!form.controls.avatar.value" for="up-file" class="label-upload-wrapper">
-            <div class="label-upload">
-              <mat-icon class="bounce">cloud_upload</mat-icon>
-              <p>Drag and drop a file here or click</p>
-            </div>
-          </label>
-          <!-- UPLOADED -->
-          <div *ngIf="form.controls.avatar.value" class="uploaded-image">
-            <img src="../../../../../assets/images/unnamed.jpg" alt="image" />
-          </div>
-          <div *ngIf="form.controls.avatar.value" class="uploaded-overlay"></div>
-          <div *ngIf="form.controls.avatar.value" class="uploaded-remove">
-            <button mat-stroked-button color="white" (click)="removeImage(form.controls.avatar)">
-              Remove
-            </button>
-          </div>
-          <label
-            *ngIf="form.controls.avatar.value"
-            for="up-file"
-            class="label-upload-wrapper uploaded-content"
-          >
-            <p>image.jpg</p>
-            <p></p>
-            <p>Drag and drop or click to replace</p>
-          </label>
-        </div>
+        <app-image-uploader
+          [control]="form.controls.avatar"
+          class="upload-file-wrapper uploaded-wrapper"
+        ></app-image-uploader>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <input type="hidden" formControlName="uuid" />
         <mat-form-field appearance="standard">
           <mat-label>Full Name</mat-label>
-          <input matInput formControlName="fullName" placeholder="Full Name" required />
+          <input
+            matInput
+            formControlName="fullName"
+            placeholder="Full Name"
+            [appInputLetter]="true"
+            autocomplete="off"
+            required
+          />
           <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
         </mat-form-field>
       </mat-grid-tile>
@@ -53,7 +36,7 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Departments</mat-label>
-          <mat-select placeholder="Department" formControlName="department">
+          <mat-select placeholder="Department" formControlName="department" required>
             <mat-option *ngFor="let department of departments" [value]="department">{{
               department
             }}</mat-option>
@@ -66,13 +49,14 @@
           <mat-label>Date of birth</mat-label>
           <input
             matInput
-            [matDatepicker]="picker"
             placeholder="Date of birth"
             color="primary"
             formControlName="dob"
+            autocomplete="off"
+            [appInputDate]="true"
+            (change)="changeDate()"
+            required
           />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -90,10 +74,10 @@
           class="gender"
           formControlName="gender"
         >
-          <mat-button-toggle value="M" class="male">
+          <mat-button-toggle value="Male" class="male">
             <fa-icon [icon]="maleIcon" size="2x"></fa-icon>
           </mat-button-toggle>
-          <mat-button-toggle value="F" class="female">
+          <mat-button-toggle value="Female" class="female">
             <fa-icon [icon]="femaleIcon" size="2x"></fa-icon>
           </mat-button-toggle>
         </mat-button-toggle-group>
@@ -110,7 +94,13 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Phone</mat-label>
-          <input matInput formControlName="phone" placeholder="Phone" />
+          <input
+            matInput
+            formControlName="phone"
+            placeholder="Phone"
+            [appInputNumber]="true"
+            autocomplete="off"
+          />
           <!-- <mat-error>{{ getErrorMessage('mobile') }}</mat-error> -->
         </mat-form-field>
       </mat-grid-tile>

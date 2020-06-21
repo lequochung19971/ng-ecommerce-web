@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesFormDialogService } from '../../services/employees-form-dialog.service';
-import { Employee } from 'src/app/admin/models/employee.model';
+import { Employee } from 'src/app/admin/shared/models/employee.model';
 
 @Component({
   selector: 'app-employees',

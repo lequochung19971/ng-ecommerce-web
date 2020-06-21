@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Departments } from 'src/app/admin/models/departments.model';
-import { Gender } from 'src/app/admin/models/gender.model';
-import { Employee } from 'src/app/admin/models/employee.model';
+import { Departments } from 'src/app/admin/shared/models/departments.model';
+import { Gender } from 'src/app/admin/shared/models/gender.model';
 
 @Component({
   selector: 'app-employees-table',

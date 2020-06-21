@@ -1,0 +1,123 @@
+.upload-file-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 95%;
+  border: solid 2px $disabled-color-1;
+  position: relative;
+
+  input[type='file'] {
+    width: 0;
+    height: 0;
+  }
+
+  .label-upload-wrapper {
+    @include w-h-100;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+
+    .label-upload {
+      @include w-h-100;
+      @include flex-between(column);
+      color: $disabled-color-2;
+      text-align: center;
+
+      .mat-icon {
+        @include w-h-option(40px, 40px);
+        @include font-size(40px);
+      }
+    }
+  }
+}
+
+.uploaded-wrapper {
+  @include flex-between(column);
+  .uploaded-image {
+    max-width: 100%;
+    max-height: 100%;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .uploaded {
+    @include w-h-100;
+  }
+
+  .uploaded-remove {
+    transition: ease 0.5s;
+    @include w-h-100;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    button {
+      margin: 1rem;
+      border-color: white;
+      z-index: 2;
+      span {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .uploaded-overlay {
+    transition: ease 0.5s;
+    @include w-h-100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $black-10-opacity;
+    opacity: 0;
+  }
+
+  .uploaded-content {
+    transition: ease 0.5s;
+    @include w-h-100;
+    @include flex-between(column);
+    position: absolute;
+    text-align: center;
+    opacity: 0;
+    font-weight: 500;
+    transform: translateY(10px);
+    p {
+      padding: 1rem;
+    }
+
+    p:nth-child(1) {
+      color: #ffffff;
+    }
+
+    p:nth-child(2) {
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      padding: 0;
+      width: 30px;
+    }
+
+    p:nth-child(3) {
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    & .uploaded-remove {
+      opacity: 1;
+    }
+
+    & .uploaded-overlay {
+      opacity: 0.5;
+    }
+
+    & .uploaded-content {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+  }
+}

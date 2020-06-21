@@ -1,0 +1,32 @@
+<div>
+  <input
+    type="file"
+    [formControl]="control"
+    id="up-file"
+    (change)="onFileUploaded($event)"
+    #inputImage
+  />
+  <div *ngIf="imgSrc">
+    <div class="uploaded-image">
+      <img [src]="imgSrc" alt="image" />
+    </div>
+    <div class="uploaded-overlay"></div>
+    <div class="uploaded-remove">
+      <button mat-stroked-button color="white" (click)="removeImage(inputImage)">
+        Remove
+      </button>
+    </div>
+    <label for="up-file" class="label-upload-wrapper uploaded-content">
+      <p>image.jpg</p>
+      <p></p>
+      <p>Drag and drop or click to replace</p>
+    </label>
+  </div>
+  <label *ngIf="!imgSrc" for="up-file" class="label-upload-wrapper">
+    <div class="label-upload">
+      <mat-icon class="bounce">cloud_upload</mat-icon>
+      <p>Drag and drop a file here or click</p>
+    </div>
+  </label>
+  <!-- UPLOADED -->
+</div>

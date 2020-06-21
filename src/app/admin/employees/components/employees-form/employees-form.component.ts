@@ -4,12 +4,14 @@ import { map } from 'rxjs/operators';
 import { EmployeesFormService } from '../../services/employees-form.service';
 import * as _ from 'lodash';
 import { FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 
 import { faMale } from '@fortawesome/free-solid-svg-icons';
 import { faFemale } from '@fortawesome/free-solid-svg-icons';
-import { Departments } from 'src/app/admin/models/departments.model';
-import { Employee } from 'src/app/admin/models/employee.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Departments } from 'src/app/admin/shared/models/departments.model';
+import { Employee } from 'src/app/admin/shared/models/employee.model';
+import { UtilitiesService } from 'src/app/admin/shared/services/utilities.service';
 @Component({
   selector: 'app-employees-form',
   templateUrl: './employees-form.component.html',
@@ -20,6 +22,8 @@ export class EmployeesFormComponent implements OnInit {
   departments = _.values(Departments);
   maleIcon = faMale;
   femaleIcon = faFemale;
+  imgSrc: string;
+  selectedImage: any;
 
   // grids = this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
   //   map(({ matches }) => {
@@ -56,22 +60,45 @@ export class EmployeesFormComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Employee,
     protected breakpointObserver: BreakpointObserver,
-    protected employeesFormService: EmployeesFormService
+    protected employeesFormService: EmployeesFormService,
+    protected utilitiesService: UtilitiesService
   ) {}
 
   ngOnInit(): void {
-    this.employeesFormService.createEmployeeInfoForm(this.data);
-    this.form = this.employeesFormService.getEmployeeInfoForm();
+    this.form = this.employeesFormService.getEmployeeForm();
   }
 
-  removeImage(image) {
-    console.log(image);
-  }
-
-  onSubmit() {
-    this.employeesFormService.createEmployee();
+  onSubmit(): void {
     console.log(this.form);
   }
 
-  onCancel() {}
+  changeDate() {
+    const dateOfBirthForm = this.form.controls.dob;
+    this.updateAge(dateOfBirthForm.value);
+  }
+
+  updateAge(date) {
+    const calculatedAge = this.utilitiesService.calculateAgeFromDOB(date);
+    this.form.controls.age.patchValue(calculatedAge);
+  }
+
+  // showPreview(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e: any) => (this.imgSrc = e.target.result);
+  //     const test = reader.readAsDataURL(event.target.files[0]);
+  //     this.selectedImage = event.target.files[0];
+  //   }
+  // }
+
+  // removeImage(event) {
+  //   if (event) {
+  //     this.imgSrc = '';
+  //     event.value = '';
+  //   }
+  // }
+
+  ngOnDestroy(): void {
+    this.employeesFormService.resetEmployeeForm();
+  }
 }
