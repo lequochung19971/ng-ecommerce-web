@@ -86,7 +86,7 @@
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Email</mat-label>
-          <input matInput formControlName="email" placeholder="Email" />
+          <input matInput formControlName="email" placeholder="Email" autocomplete="off" required />
           <!-- <mat-error>{{ getErrorMessage('email') }}</mat-error> -->
         </mat-form-field>
       </mat-grid-tile>
@@ -100,6 +100,7 @@
             placeholder="Phone"
             [appInputNumber]="true"
             autocomplete="off"
+            required
           />
           <!-- <mat-error>{{ getErrorMessage('mobile') }}</mat-error> -->
         </mat-form-field>
