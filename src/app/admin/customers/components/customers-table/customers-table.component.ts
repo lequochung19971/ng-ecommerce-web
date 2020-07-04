@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Gender } from 'src/app/admin/shared/models/gender.model';
+import { Gender } from 'src/app/admin/providers/enum/gender.enum';
 
 @Component({
   selector: 'app-customers-table',

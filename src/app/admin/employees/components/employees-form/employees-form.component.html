@@ -73,6 +73,7 @@
           aria-label="Font Style"
           class="gender"
           formControlName="gender"
+          id="gender"
         >
           <mat-button-toggle value="Male" class="male">
             <fa-icon [icon]="maleIcon" size="2x"></fa-icon>
@@ -81,6 +82,38 @@
             <fa-icon [icon]="femaleIcon" size="2x"></fa-icon>
           </mat-button-toggle>
         </mat-button-toggle-group>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+            [appInputLetter]="true"
+            autocomplete="off"
+            required
+          />
+          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Confirm password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Password"
+            [appInputLetter]="true"
+            autocomplete="off"
+            required
+          />
+          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+        </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">

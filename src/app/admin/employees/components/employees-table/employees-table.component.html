@@ -59,7 +59,7 @@
           <button mat-icon-button title="Edit" (click)="edit(element)">
             <mat-icon>launch</mat-icon>
           </button>
-          <button mat-icon-button color="warn" title="Delete">
+          <button mat-icon-button color="warn" title="Delete" (click)="delete(element.uuid)">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </div>

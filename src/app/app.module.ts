@@ -13,7 +13,8 @@ import { PublishersFormComponent } from './admin/publishers/components/publisher
 import { SuppliersFormComponent } from './admin/suppliers/components/suppliers-form/suppliers-form.component';
 import { CategoriesFormComponent } from './admin/categories/components/categories-form/categories-form.component';
 import { BooksFormComponent } from './admin/product/books/components/books-form/books-form.component';
-import { EmployeesFormService } from './admin/employees/services/employees-form.service';
+import { EmployeesService } from './admin/employees/services/employees.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, PageNotfoundComponent],
@@ -24,8 +25,9 @@ import { EmployeesFormService } from './admin/employees/services/employees-form.
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [EmployeesFormService],
+  providers: [EmployeesService],
   bootstrap: [AppComponent],
   entryComponents: [
     EmployeesFormComponent,
