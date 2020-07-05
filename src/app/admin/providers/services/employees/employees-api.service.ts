@@ -9,7 +9,19 @@ import { Observable } from 'rxjs';
 export class EmployeesApiService {
   constructor(protected proxy: ProxyService) {}
 
-  callAPIToCreateCustomer(data: any) {
-    this.proxy.post<Employee>(Employee, data).subscribe();
+  callAPIToCreateEmployee(data: any) {
+    return this.proxy.post<Employee>(Employee, data);
+  }
+
+  callAPIToFetchEmployees(query?: any) {
+    return this.proxy.get<Employee>(Employee, query);
+  }
+
+  callAPIToUpdateEmployee(data: any) {
+    return this.proxy.put<Employee>(Employee, data);
+  }
+
+  callAPIToDeleteEmployee(data: any) {
+    return this.proxy.delete<Employee>(Employee, data);
   }
 }

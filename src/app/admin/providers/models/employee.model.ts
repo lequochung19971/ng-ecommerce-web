@@ -9,6 +9,7 @@ export class Employee {
   email: string;
   phone: number;
   department: Departments;
+  password: string;
   gender: Gender;
   avatar: string;
   static tableName: string = 'employees';

@@ -84,7 +84,7 @@ export class EmployeesFormComponent implements OnInit {
     //   password: '123456789',
     //   avatar: '',
     // };
-    // this.proxy.post(Employee, objData).subscribe((data) => console.log(data));
+    // const temp = this.employeesService.deleteEmployee(objData).subscribe((res) => console.log(res));
   }
 
   onSubmit(): void {

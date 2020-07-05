@@ -35,17 +35,24 @@ export class EmployeesService {
 
   ///////////////////////API///////////////////////
 
-  deleteEmployee(uuid: String) {
-    console.log(uuid);
-  }
-
   createEmployee(data: any) {
-    this.employeesApiService.callAPIToCreateCustomer(data);
+    return this.employeesApiService.callAPIToCreateEmployee(data);
   }
 
-  updateEmployee(data: any) {}
+  updateEmployee(data: any) {
+    return this.employeesApiService.callAPIToUpdateEmployee(data);
+  }
 
-  fetchEmployees(uuid: String) {}
+  fetchEmployees() {
+    return this.employeesApiService.callAPIToFetchEmployees();
+  }
 
-  fetchEmployee() {}
+  fetchEmployee(uuid: string) {
+    const query = `uuid=${uuid}`;
+    return this.employeesApiService.callAPIToFetchEmployees(uuid);
+  }
+
+  deleteEmployee(data: any) {
+    return this.employeesApiService.callAPIToDeleteEmployee(data);
+  }
 }
