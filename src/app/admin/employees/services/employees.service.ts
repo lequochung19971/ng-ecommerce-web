@@ -10,7 +10,7 @@ export class EmployeesService {
   constructor(
     protected employeesFormService: EmployeesFormService,
     protected employeesApiService: EmployeesApiService
-  ) {}
+  ) { }
 
   ///////////////////////FORM///////////////////////
 
@@ -23,7 +23,7 @@ export class EmployeesService {
     this.employeesFormService.generateFormDefaultData();
   }
 
-  setEmployeeForm() {}
+  setEmployeeForm() { }
 
   resetEmployeeForm() {
     this.employeesFormService.resetForm();
@@ -43,13 +43,17 @@ export class EmployeesService {
     return this.employeesApiService.callAPIToUpdateEmployee(data);
   }
 
-  fetchEmployees() {
+  fetchAllEmployees() {
     return this.employeesApiService.callAPIToFetchEmployees();
   }
 
-  fetchEmployee(uuid: string) {
-    const query = `uuid=${uuid}`;
-    return this.employeesApiService.callAPIToFetchEmployees(uuid);
+  fetchAllEmployeesWithParams() {
+    const query: string = '';
+    return this.employeesApiService.callAPIToFetchEmployees(query);
+  }
+
+  fetchEmployeeByID(uuid: string) {
+    return this.employeesApiService.callAPIToFetchEmployee(uuid);
   }
 
   deleteEmployee(data: any) {

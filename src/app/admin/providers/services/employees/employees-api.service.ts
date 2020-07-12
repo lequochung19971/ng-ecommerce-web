@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class EmployeesApiService {
-  constructor(protected proxy: ProxyService) {}
+  constructor(protected proxy: ProxyService) { }
 
   callAPIToCreateEmployee(data: any) {
     return this.proxy.post<Employee>(Employee, data);
@@ -15,6 +15,10 @@ export class EmployeesApiService {
 
   callAPIToFetchEmployees(query?: any) {
     return this.proxy.get<Employee>(Employee, query);
+  }
+
+  callAPIToFetchEmployee(uuid: string) {
+    return this.proxy.get<Employee>(Employee, null, uuid);
   }
 
   callAPIToUpdateEmployee(data: any) {

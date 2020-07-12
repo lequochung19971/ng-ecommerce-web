@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpParams, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { LoggerService } from '../logger/logger.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class ProxyService {
   private endpoint: String = 'http://localhost:3000/';
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       // 'Authorization': 'auth-token'
@@ -18,7 +19,7 @@ export class ProxyService {
     params: new HttpParams(),
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, protected logger: LoggerService) { }
 
   post<T>(model: T | any, objData: T | any): Observable<T | T[]> {
     if (objData) {
@@ -26,7 +27,7 @@ export class ProxyService {
       const jsonData = JSON.stringify(objData);
       const url = `${this.endpoint}${model.tableName}`;
 
-      return this.http.post<T | T[]>(url, jsonData, this.httpOptions).pipe(
+      return this.http.post<T>(url, jsonData, this.httpOptions).pipe(
         catchError(this.handleError),
         tap((res: T[] | any) => {
           return res;
@@ -39,30 +40,41 @@ export class ProxyService {
     if (objData) {
       // const newObjData = new model(objData);
       const jsonData = JSON.stringify(objData);
-      // const url = `${this.endpoint}${model.tableName}/${objData.uuid}`;
-      const url = `${this.endpoint}${model.tableName}/zmdF-yj`;
+      const url = `${this.endpoint}${model.tableName}/${objData.uuid}`;
+      // const url = `${this.endpoint}${model.tableName}/zmdF-yj`;
 
-      return this.http.put<T | T[]>(url, jsonData, this.httpOptions).pipe(
+      return this.http.put<T>(url, jsonData, this.httpOptions).pipe(
         catchError(this.handleError),
         tap((res: T[] | any) => {
+          this.logger.LOG(res);
           return res;
         })
       );
     }
   }
 
-  get<T>(model: T | any, query?: HttpParams | string | any): Observable<T | T[]> {
+  get<T>(model: T | any, query?: HttpParams | string | any, uuid?: string | any): Observable<T | T[]> {
     const httpOpts = Object.assign({}, this.httpOptions);
+    let url: string;
+
+    if (query && uuid) {
+      this.logger.WARN('Just only one parameter: (query or uuid)');
+      return;
+    }
 
     if (query) {
       httpOpts.params = this.createParams(query);
+      url = `${this.endpoint}${model.tableName}`;
     }
 
-    const url = `${this.endpoint}${model.tableName}`;
+    if (uuid) {
+      url = `${this.endpoint}${model.tableName}/${uuid}`;
+    }
 
     return this.http.get<T[]>(url, httpOpts).pipe(
       catchError(this.handleError),
       tap((res: T[]) => {
+        this.logger.LOG(res);
         return res;
       })
     );
@@ -76,6 +88,7 @@ export class ProxyService {
       return this.http.delete<T | T[]>(url, this.httpOptions).pipe(
         catchError(this.handleError),
         tap((res: T[] | any) => {
+          this.logger.LOG(res);
           return res;
         })
       );
@@ -102,6 +115,7 @@ export class ProxyService {
     if (typeof query === 'string') {
       let stringParams = new HttpParams();
       const splitQuery = query.split('&');
+
       splitQuery.forEach((param) => {
         const pairOfKeyValue = param.split('=');
         stringParams = stringParams.set(pairOfKeyValue[0], pairOfKeyValue[1]);
