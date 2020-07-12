@@ -67,7 +67,7 @@ export class EmployeesFormComponent implements OnInit {
     protected employeesService: EmployeesService,
     protected utilitiesService: UtilitiesService,
     protected proxy: ProxyService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.employeesService.generateEmployeeFormAndDefaultFormData(this.data);
@@ -84,7 +84,6 @@ export class EmployeesFormComponent implements OnInit {
     //   password: '123456789',
     //   avatar: '',
     // };
-    // const temp = this.employeesService.deleteEmployee(objData).subscribe((res) => console.log(res));
   }
 
   onSubmit(): void {
