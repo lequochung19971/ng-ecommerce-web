@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoggerLevel } from '../../enum/logger-level.enum';
+import { environment } from '../../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +30,7 @@ export class LoggerService {
   }
 
   private log(message: any, level = LoggerLevel.LOG) {
-    if (!this.production) {
+    if (!environment.production) {
       switch (level) {
         case LoggerLevel.LOG:
           console.log(message);

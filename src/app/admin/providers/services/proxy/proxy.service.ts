@@ -53,22 +53,15 @@ export class ProxyService {
     }
   }
 
-  get<T>(model: T | any, query?: HttpParams | string | any, uuid?: string | any): Observable<T | T[]> {
+  get<T>(model: T | any, query?: HttpParams | string | any, fetchByID?: boolean): Observable<T | T[]> {
     const httpOpts = Object.assign({}, this.httpOptions);
     let url: string;
 
-    if (query && uuid) {
-      this.logger.WARN('Just only one parameter: (query or uuid)');
-      return;
-    }
-
-    if (query) {
-      httpOpts.params = this.createParams(query);
+    if (fetchByID) {
       url = `${this.endpoint}${model.tableName}`;
-    }
-
-    if (uuid) {
-      url = `${this.endpoint}${model.tableName}/${uuid}`;
+    } else {
+      httpOpts.params = this.createParams(query);
+      url = `${this.endpoint}${model.tableName}/${query}`;
     }
 
     return this.http.get<T[]>(url, httpOpts).pipe(

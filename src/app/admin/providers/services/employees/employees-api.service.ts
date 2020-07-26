@@ -14,11 +14,11 @@ export class EmployeesApiService {
   }
 
   callAPIToFetchEmployees(query?: any) {
-    return this.proxy.get<Employee>(Employee, query);
+    return this.proxy.get<Employee>(Employee, query, false);
   }
 
   callAPIToFetchEmployee(uuid: string) {
-    return this.proxy.get<Employee>(Employee, null, uuid);
+    return this.proxy.get<Employee>(Employee, uuid, true);
   }
 
   callAPIToUpdateEmployee(data: any) {
