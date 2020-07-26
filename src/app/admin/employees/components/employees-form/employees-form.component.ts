@@ -16,6 +16,7 @@ import { EmployeeUI } from 'src/app/admin/providers/models/ui-employee.model';
 import { ProxyService } from 'src/app/admin/providers/services/proxy/proxy.service';
 import { Gender } from 'src/app/admin/providers/enum/gender.enum';
 import { Employee } from 'src/app/admin/providers/models/employee.model';
+import { LoadingService } from 'src/app/admin/shared/services/loading.service';
 @Component({
   selector: 'app-employees-form',
   templateUrl: './employees-form.component.html',
@@ -29,45 +30,14 @@ export class EmployeesFormComponent implements OnInit {
   imgSrc: string;
   selectedImage: any;
 
-  // grids = this.breakpointObserver.observe(Breakpoints.XSmall).pipe(
-  //   map(({ matches }) => {
-  //     if (matches) {
-  //       return [
-  //         {
-  //           text: 'Full Name',
-  //           cols: 12,
-  //           rows: 1,
-  //           color: 'lightblue',
-  //         },
-  //         { text: 'Last Name', cols: 12, rows: 1, color: 'lightgreen' },
-  //         { text: 'Date of birth', cols: 12, rows: 1, color: 'lightpink' },
-  //         { text: 'Age', cols: 12, rows: 1, color: '#DDBDF1' },
-  //         { text: 'Phone', cols: 12, rows: 1, color: 'lightblue' },
-  //         { text: 'Gender', cols: 12, rows: 1, color: 'lightgreen' },
-  //         { text: 'Email', cols: 12, rows: 1, color: 'lightpink' },
-  //         { text: 'Department', cols: 12, rows: 1, color: '#DDBDF1' },
-  //       ];
-  //     }
-  //     // return [
-  //     //   { text: 'Full Name', cols: 6, rows: 1, color: 'lightblue' },
-  //     //   { text: 'Last Name', cols: 6, rows: 1, color: 'lightgreen' },
-  //     //   { text: 'Date of birth', cols: 6, rows: 1, color: 'lightpink' },
-  //     //   { text: 'Age', cols: 6, rows: 1, color: '#DDBDF1' },
-  //     //   { text: 'Phone', cols: 6, rows: 1, color: 'lightblue' },
-  //     //   { text: 'Gender', cols: 6, rows: 1, color: 'lightgreen' },
-  //     //   { text: 'Email', cols: 6, rows: 1, color: 'lightpink' },
-  //     //   { text: 'Department', cols: 6, rows: 1, color: '#DDBDF1' }
-  //     // ];
-  //   })
-  // );
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: EmployeeUI,
     protected breakpointObserver: BreakpointObserver,
     protected employeesService: EmployeesService,
     protected utilitiesService: UtilitiesService,
-    protected proxy: ProxyService
-  ) { }
+    protected proxy: ProxyService,
+    protected loadingService: LoadingService
+  ) {}
 
   ngOnInit(): void {
     this.employeesService.generateEmployeeFormAndDefaultFormData(this.data);
@@ -88,6 +58,7 @@ export class EmployeesFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log('on submit');
+    this.loadingService.open();
   }
 
   changeDate() {

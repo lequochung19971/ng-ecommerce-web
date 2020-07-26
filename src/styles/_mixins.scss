@@ -18,3 +18,10 @@
 @mixin font-size($size) {
   font-size: ($size / $main-font-size) * 1rem;
 }
+
+@mixin top-bottom-left-right-all-0 {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,20 @@
+app-loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.loading-spinner {
+  @include w-h-100;
+  @include flex-between('row');
+  position: fixed;
+  z-index: 2001;
+}
+
+.overlay {
+  @include w-h-100;
+  @include top-bottom-left-right-all-0;
+  position: fixed;
+  z-index: 2000;
+  background-color: $white-8-opacity;
+}

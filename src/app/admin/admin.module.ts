@@ -39,6 +39,8 @@ import { DoubleClickDirective } from './shared/directives/double-click.directive
 import { InputLetterDirective } from './shared/directives/input-letter.directive';
 import { InputDateDirective } from './shared/directives/input-date.directive';
 import { ImageUploaderComponent } from './shared/components/image-uploader/image-uploader.component';
+import { LoadingComponent } from './shared/components/loading/loading.component';
+import { ErrorMessageComponent } from './shared/components/error-message/error-message.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -72,6 +74,8 @@ import { ImageUploaderComponent } from './shared/components/image-uploader/image
     InputLetterDirective,
     InputDateDirective,
     ImageUploaderComponent,
+    LoadingComponent,
+    ErrorMessageComponent,
   ],
   imports: [
     CommonModule,

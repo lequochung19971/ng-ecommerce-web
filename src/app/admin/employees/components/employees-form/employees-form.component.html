@@ -25,8 +25,8 @@
             matInput
             formControlName="fullName"
             placeholder="Full Name"
-            [appInputLetter]="true"
             autocomplete="off"
+            [appInputLetter]="true"
             required
           />
           <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
@@ -57,6 +57,9 @@
             (change)="changeDate()"
             required
           />
+          <mat-error>
+            <app-error-message [control]="form.controls['dob']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 

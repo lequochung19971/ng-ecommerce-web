@@ -11,10 +11,8 @@
   <img src="assets/icons/biohazard-white.svg" alt="logo" height="40px" width="40px" />
   &nbsp;&nbsp;<span>LQH</span>
 </mat-toolbar>
-<mat-sidenav-container
-  class="sidenav-container"
-  [ngStyle]="{ 'padding-top': (isMobile$ | async) ? '3.7rem' : '4.25rem' }"
->
+<app-loading></app-loading>
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
     class="sidenav mat-elevation-z3"
