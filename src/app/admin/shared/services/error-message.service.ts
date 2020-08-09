@@ -7,9 +7,14 @@ import { FormControl } from '@angular/forms';
 export class ErrorMessageService {
   constructor() {}
 
-  getErrorMessage(control: FormControl) {
-    if (control.hasError('invalidDate')) {
-      return 'Invalid Date';
-    }
+  get messages() {
+    return {
+      invalidDate: 'Invalid Date',
+      required: 'Required',
+    };
+  }
+
+  getErrorMessage(errorName: string) {
+    return this.messages[errorName];
   }
 }

@@ -20,7 +20,7 @@
     [attr.role]="(isBrokken$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isBrokken$ | async) ? 'over' : 'side'"
     [opened]="(isBrokken$ | async) === false"
-    [ngStyle]="{ 'padding-top': (isMobile$ | async) ? '3.7rem' : '4.25rem' }"
+    [ngStyle]="{ 'padding-top': (isMobile$ | async) ? '3.7rem' : '4rem' }"
   >
     <app-nav-bar-profile></app-nav-bar-profile>
     <app-nav-bar-side-bar-list [accordion]="navGroup"></app-nav-bar-side-bar-list>

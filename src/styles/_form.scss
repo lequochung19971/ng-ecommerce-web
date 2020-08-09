@@ -1,7 +1,9 @@
 .form-container {
+  font-size: $main-font-size;
   .form-wrapper {
     overflow: hidden;
     .mat-grid-tile {
+      overflow: initial;
       .mat-form-field {
         width: 100%;
       }

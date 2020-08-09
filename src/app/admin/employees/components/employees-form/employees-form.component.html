@@ -29,7 +29,9 @@
             [appInputLetter]="true"
             required
           />
-          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+          <mat-error>
+            <app-error-message [control]="form.controls['fullName']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -41,6 +43,9 @@
               department
             }}</mat-option>
           </mat-select>
+          <mat-error>
+            <app-error-message [control]="form.controls['department']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -99,7 +104,9 @@
             autocomplete="off"
             required
           />
-          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+          <mat-error>
+            <app-error-message [control]="form.controls['password']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -115,7 +122,9 @@
             autocomplete="off"
             required
           />
-          <!-- <mat-error>{{ getErrorMessage('fullName') }}</mat-error> -->
+          <mat-error>
+            <app-error-message [control]="form.controls['confirmPassword']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -123,7 +132,9 @@
         <mat-form-field appearance="standard">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" autocomplete="off" required />
-          <!-- <mat-error>{{ getErrorMessage('email') }}</mat-error> -->
+          <mat-error>
+            <app-error-message [control]="form.controls['email']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -138,13 +149,19 @@
             autocomplete="off"
             required
           />
-          <!-- <mat-error>{{ getErrorMessage('mobile') }}</mat-error> -->
+          <mat-error>
+            <app-error-message [control]="form.controls['phone']"></app-error-message>
+          </mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="8" [rowspan]="1" class="btn-submit-cancel">
-        <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
-        <button mat-stroked-button color="primary" [mat-dialog-close]="false">Cancel</button>
+        <button class="btn btn-flat-primary" mat-button (click)="onSubmit()">
+          Submit
+        </button>
+        <button class="btn btn-stroked-primary" mat-button [mat-dialog-close]="false">
+          Cancel
+        </button>
       </mat-grid-tile>
     </mat-grid-list>
   </form>

@@ -6,8 +6,18 @@
 @import './styles/material/material-styles';
 @import './styles/variables';
 @import './styles/mixins';
-@import './styles/common';
-@import './styles/animation';
+
+// ----------------------------------------------------------------
+// ---------------------------UTILITIES----------------------------
+// ----------------------------------------------------------------
+@import './styles/utils/animation';
+@import './styles/utils/button';
+@import './styles/utils/flex-box';
+@import './styles/utils/padding';
+@import './styles/utils/margin';
+@import './styles/utils/font-size';
+@import './styles/utils/font-weight';
+@import './styles/utils/display';
 
 // ----------------------------------------------------------------
 // ---------------------------LAYOUT-------------------------------

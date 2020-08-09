@@ -25,3 +25,72 @@
   left: 0;
   right: 0;
 }
+
+@mixin padding-margin-rendering($type, $direction) {
+  $limit: 50;
+  $type-shortcut: p;
+  $step: 0.1;
+
+  // Select padding or margin
+  @if ($type) == padding {
+    $type-shortcut: p;
+  } @else {
+    $type-shortcut: m;
+  }
+
+  // Render
+  @for $i from 0 through $limit {
+    @if $direction == all {
+      .#{$type-shortcut}-#{$i} {
+        #{$type}: $i * $step * 1rem;
+      }
+    } @else if $direction == right {
+      .#{$type-shortcut}r-#{$i} {
+        #{$type}-right: $i * $step * 1rem;
+      }
+    } @else if $direction == left {
+      .#{$type-shortcut}l-#{$i} {
+        #{$type}-left: $i * $step * 1rem;
+      }
+    } @else if $direction == top {
+      .#{$type-shortcut}t-#{$i} {
+        #{$type}-top: $i * $step * 1rem;
+      }
+    } @else if $direction == bottom {
+      .#{$type-shortcut}b-#{$i} {
+        #{$type}-bottom: $i * $step * 1rem;
+      }
+    } @else if $direction == x {
+      .#{$type-shortcut}b-#{$i} {
+        #{$type}-left: $i * $step * 1rem;
+        #{$type}-right: $i * $step * 1rem;
+      }
+    } @else if $direction == y {
+      .#{$type-shortcut}b-#{$i} {
+        #{$type}-top: $i * $step * 1rem;
+        #{$type}-bottom: $i * $step * 1rem;
+      }
+    }
+  }
+}
+
+@mixin font-size-rendering {
+  $limit: 30;
+  $step: 0.1;
+
+  @for $i from 0 through $limit {
+    .fs-#{$i} {
+      font-size: $i * $step * 1rem;
+    }
+  }
+}
+
+@mixin font-weight-rendering {
+  $limit: 9;
+
+  @for $i from 1 through $limit {
+    .fw-#{$i} {
+      font-weight: $i * 100;
+    }
+  }
+}
