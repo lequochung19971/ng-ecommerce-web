@@ -1,0 +1,6 @@
+{
+  "invalidDate": "Invalid Date",
+  "required": "Required",
+  "invalidEmail": "Invalid Email",
+  "maxLengthOfFieldName": "Max length of {{fieldName}} is not more than {{max}}"
+}

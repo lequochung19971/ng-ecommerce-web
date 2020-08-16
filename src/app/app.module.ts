@@ -14,8 +14,13 @@ import { SuppliersFormComponent } from './admin/suppliers/components/suppliers-f
 import { CategoriesFormComponent } from './admin/categories/components/categories-form/categories-form.component';
 import { BooksFormComponent } from './admin/product/books/components/books-form/books-form.component';
 import { EmployeesService } from './admin/employees/services/employees.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function HttpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [AppComponent, PageNotfoundComponent],
   imports: [
@@ -26,6 +31,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [EmployeesService],
   bootstrap: [AppComponent],

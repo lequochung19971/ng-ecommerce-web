@@ -26,15 +26,18 @@ export class EmployeesFormService {
   generateForm(data: EmployeeUI) {
     this.form = this.fb.group({
       uuid: [(data && data.uuid) || ''],
-      fullName: [(data && data.fullName) || '', [Validators.required, Validators.maxLength(30)]],
-      dob: [
-        (data && data.dob) || '',
-        [Validators.required, Validators.maxLength(10), this.validationsService.invalidDate],
+      fullName: [
+        (data && data.fullName) || '',
+        [Validators.required, Validators.maxLength(30), Validators.minLength(4)],
       ],
+      dob: [(data && data.dob) || '', [Validators.required, this.validationsService.invalidDate]],
       age: [{ value: (data && data.age) || null, disabled: true }],
-      phone: [(data && data.phone) || '', [Validators.required, Validators.maxLength(10)]],
+      phone: [
+        (data && data.phone) || '',
+        [Validators.required, this.validationsService.maxLengthWithNumber(10, 'phone')],
+      ],
       gender: [(data && data.gender) || Gender.M],
-      email: [(data && data.email) || '', [Validators.required]],
+      email: [(data && data.email) || '', [Validators.required, Validators.email]],
       department: [(data && data.department) || ''],
       password: [(data && data.password) || ''],
       confirmPassword: [''],

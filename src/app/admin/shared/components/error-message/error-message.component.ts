@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ErrorMessageService } from '../../services/error-message.service';
 import { FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-error-message',
@@ -14,11 +15,13 @@ export class ErrorMessageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  get errrorMessage() {
+  get errrorMessage(): string {
     if (this.control instanceof FormControl) {
       if (this.control && this.control.errors) {
-        const errorName = Object.keys(this.control.errors)[0];
-        return this.errorMessageService.getErrorMessage(errorName);
+        const errorName = Object.keys(this.control.errors)[0] as string;
+        const valueInsideError = this.control.errors[errorName] as any;
+
+        return this.errorMessageService.getErrorMessage(valueInsideError, errorName);
       }
     }
   }

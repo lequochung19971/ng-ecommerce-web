@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -123,8 +124,17 @@ export class NavBarComponent {
     // },
   ];
 
-  constructor(private breakpointObserver: BreakpointObserver, protected router: Router) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    protected router: Router,
+    protected translateSerivce: TranslateService
+  ) {
     this.redirectToDashboard();
+    translateSerivce.addLangs(['en', 'vi']);
+    translateSerivce.setDefaultLang('en');
+    // const browserLang = translateSerivce.getBrowserLang();
+    // translateSerivce.use(browserLang.match(/en|vi/) ? browserLang: 'en');
+    translateSerivce.use('en');
   }
 
   ngOnInit(): void {}
