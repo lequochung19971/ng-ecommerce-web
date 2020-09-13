@@ -8,7 +8,13 @@
     </div>
   </div>
   <!-- <h2 mat-dialog-title>Edit Employees</h2> -->
-  <form mat-dialog-content *ngIf="form" [formGroup]="form" class="form-wrapper">
+  <form
+    mat-dialog-content
+    *ngIf="form"
+    [formGroup]="form"
+    class="form-wrapper"
+    (submit)="onSubmit()"
+  >
     <mat-grid-list cols="12" rowHeight="80px">
       <mat-grid-tile [colspan]="4" [rowspan]="7">
         <app-image-uploader
@@ -18,7 +24,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">
-        <input type="hidden" formControlName="uuid" />
+        <input type="hidden" formControlName="id" />
         <mat-form-field appearance="standard">
           <mat-label>Full Name</mat-label>
           <input
@@ -94,42 +100,6 @@
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
-          <mat-label>Password</mat-label>
-          <input
-            matInput
-            type="password"
-            formControlName="password"
-            placeholder="Password"
-            [appInputLetter]="true"
-            autocomplete="off"
-            required
-          />
-          <mat-error>
-            <app-error-message [control]="form.controls['password']"></app-error-message>
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="4" [rowspan]="1">
-        <mat-form-field appearance="standard">
-          <mat-label>Confirm password</mat-label>
-          <input
-            matInput
-            type="password"
-            formControlName="confirmPassword"
-            placeholder="Password"
-            [appInputLetter]="true"
-            autocomplete="off"
-            required
-          />
-          <mat-error>
-            <app-error-message [control]="form.controls['confirmPassword']"></app-error-message>
-          </mat-error>
-        </mat-form-field>
-      </mat-grid-tile>
-
-      <mat-grid-tile [colspan]="4" [rowspan]="1">
-        <mat-form-field appearance="standard">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="Email" autocomplete="off" required />
           <mat-error>
@@ -155,13 +125,46 @@
         </mat-form-field>
       </mat-grid-tile>
 
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+            [appInputLetter]="true"
+            autocomplete="off"
+            required
+          />
+          <app-lqh-progress-bar matSuffix></app-lqh-progress-bar>
+          <mat-error>
+            <app-error-message [control]="form.controls['password']"></app-error-message>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-form-field appearance="standard">
+          <mat-label>Confirm password</mat-label>
+          <input
+            matInput
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Password"
+            [appInputLetter]="true"
+            autocomplete="off"
+            required
+          />
+          <mat-error>
+            <app-error-message [control]="form.controls['confirmPassword']"></app-error-message>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+
       <mat-grid-tile [colspan]="8" [rowspan]="1" class="btn-submit-cancel">
-        <button class="btn btn-flat-primary" mat-button (click)="onSubmit()">
-          Submit
-        </button>
-        <button class="btn btn-stroked-primary" mat-button [mat-dialog-close]="false">
-          Cancel
-        </button>
+        <button class="btn btn-flat-accent" mat-button>Submit</button>
+        <button class="btn btn-stroked-accent" mat-button [mat-dialog-close]="false">Cancel</button>
       </mat-grid-tile>
     </mat-grid-list>
   </form>

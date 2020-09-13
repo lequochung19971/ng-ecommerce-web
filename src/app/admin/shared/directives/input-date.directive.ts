@@ -45,7 +45,7 @@ export class InputDateDirective {
 
   checkAllowKeyCode(event) {
     if (
-      [46, 8].indexOf(event.keyCode) !== -1 ||
+      [46, 8, 9].indexOf(event.keyCode) !== -1 ||
       // Allow: Ctrl + A
       (event.keyCode == 65 && event.ctrlKey === true) ||
       // Allow: Ctrl + C

@@ -13,7 +13,7 @@ export class EmployeesTableComponent implements OnInit {
 
   ELEMENT_DATA = [
     {
-      uuid: 1,
+      id: 1,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -25,7 +25,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 2,
+      id: 2,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -37,7 +37,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 3,
+      id: 3,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -49,7 +49,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 4,
+      id: 4,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -61,7 +61,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 5,
+      id: 5,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -73,7 +73,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 6,
+      id: 6,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -85,7 +85,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 7,
+      id: 7,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -97,7 +97,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 8,
+      id: 8,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -109,7 +109,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 9,
+      id: 9,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -121,7 +121,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.M,
     },
     {
-      uuid: 10,
+      id: 10,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -133,7 +133,7 @@ export class EmployeesTableComponent implements OnInit {
       gender: Gender.F,
     },
     {
-      uuid: 11,
+      id: 11,
       fullName: 'Le Quoc Hung',
       firstName: 'Le',
       lastName: 'Quoc Hung',
@@ -165,7 +165,7 @@ export class EmployeesTableComponent implements OnInit {
     // console.log(currentData);
   }
 
-  delete(uuid: String) {
-    this.deleteEmployee.emit(uuid);
+  delete(id: String) {
+    this.deleteEmployee.emit(id);
   }
 }

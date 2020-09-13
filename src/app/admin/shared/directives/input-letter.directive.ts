@@ -32,7 +32,7 @@ export class InputLetterDirective {
   checkAllowKeyCode(event) {
     if (
       // Allow: Delete, Backspace, Spacebar
-      [46, 8, 32].indexOf(event.keyCode) !== -1 ||
+      [46, 8, 32, 9].indexOf(event.keyCode) !== -1 ||
       // Allow: Ctrl + A
       (event.keyCode == 65 && event.ctrlKey === true) ||
       // Allow: Ctrl + C

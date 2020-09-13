@@ -14,7 +14,7 @@
 $ng-ecommerce-website-warn: mat-palette($mat-red);
 
 // Light theme
-$ng-ecommerce-website-primary-light: mat-palette($mat-blue, 500);
+$ng-ecommerce-website-primary-light: mat-palette($mat-cyan, 500);
 $ng-ecommerce-website-accent-light: mat-palette($mat-cyan, 400);
 $ng-ecommerce-website-light-theme: mat-light-theme(
   $ng-ecommerce-website-primary-light,
@@ -23,13 +23,13 @@ $ng-ecommerce-website-light-theme: mat-light-theme(
 );
 
 // Dark theme
-$ng-ecommerce-website-primary-dark: mat-palette($mat-cyan, 600);
-$ng-ecommerce-website-accent-dark: mat-palette($mat-cyan, 400);
-$ng-ecommerce-website-dark-theme: mat-dark-theme(
-  $ng-ecommerce-website-primary-dark,
-  $ng-ecommerce-website-accent-dark,
-  $ng-ecommerce-website-warn
-);
+// $ng-ecommerce-website-primary-dark: mat-palette($mat-cyan, 600);
+// $ng-ecommerce-website-accent-dark: mat-palette($mat-cyan, 400);
+// $ng-ecommerce-website-dark-theme: mat-dark-theme(
+//   $ng-ecommerce-website-primary-dark,
+//   $ng-ecommerce-website-accent-dark,
+//   $ng-ecommerce-website-warn
+// );
 
 // The warn palette is optional (defaults to red).
 
@@ -42,8 +42,8 @@ $ng-ecommerce-website-dark-theme: mat-dark-theme(
   @include angular-material-theme($ng-ecommerce-website-light-theme);
 }
 
-.dark-theme {
-  @include angular-material-theme($ng-ecommerce-website-dark-theme);
-}
+// .dark-theme {
+//   @include angular-material-theme($ng-ecommerce-website-dark-theme);
+// }
 
 @include angular-material-theme($ng-ecommerce-website-light-theme);

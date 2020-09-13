@@ -3,7 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import * as _ from 'lodash';
 import { ValidationsService } from 'src/app/admin/shared/services/validations.service';
 import { Gender } from '../../enum/gender.enum';
-import { EmployeeUI } from '../../models/ui-employee.model';
+import { EmployeeUI } from '../../models/employee-ui.model';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class EmployeesFormService {
 
   generateForm(data: EmployeeUI) {
     this.form = this.fb.group({
-      uuid: [(data && data.uuid) || ''],
+      id: [(data && data.id) || ''],
       fullName: [
         (data && data.fullName) || '',
         [Validators.required, Validators.maxLength(30), Validators.minLength(4)],

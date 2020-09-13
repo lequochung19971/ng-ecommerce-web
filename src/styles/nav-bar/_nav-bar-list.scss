@@ -3,7 +3,25 @@
   padding: 1rem;
   .mat-expansion-panel {
     margin-bottom: 10px;
+    border-radius: 0;
+    box-shadow: none;
+
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 0 !important;
+      }
+
+      .mat-list-item {
+        border-radius: 0 !important;
+
+        &:hover {
+          border-radius: 0 !important;
+        }
+      }
+    }
+
     .mat-expansion-panel-header {
+      border-radius: 0;
       padding: 0 16px;
       align-items: center;
       @include font-size(16px);

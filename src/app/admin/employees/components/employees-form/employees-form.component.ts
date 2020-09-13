@@ -8,15 +8,12 @@ import * as moment from 'moment';
 
 import { faMale } from '@fortawesome/free-solid-svg-icons';
 import { faFemale } from '@fortawesome/free-solid-svg-icons';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UtilitiesService } from 'src/app/admin/shared/services/utilities.service';
 import { Departments } from 'src/app/admin/providers/enum/departments.enum';
-import { EmployeesFormService } from 'src/app/admin/providers/services/employees/employees-form.service';
-import { EmployeeUI } from 'src/app/admin/providers/models/ui-employee.model';
-import { ProxyService } from 'src/app/admin/providers/services/proxy/proxy.service';
-import { Gender } from 'src/app/admin/providers/enum/gender.enum';
-import { Employee } from 'src/app/admin/providers/models/employee.model';
+import { EmployeeUI } from 'src/app/admin/providers/models/employee-ui.model';
 import { LoadingService } from 'src/app/admin/shared/services/loading.service';
+import { FormDialogService } from 'src/app/admin/shared/services/form-dialog.service';
 @Component({
   selector: 'app-employees-form',
   templateUrl: './employees-form.component.html',
@@ -25,8 +22,10 @@ import { LoadingService } from 'src/app/admin/shared/services/loading.service';
 export class EmployeesFormComponent implements OnInit {
   form: FormGroup;
   departments = _.values(Departments);
+
   maleIcon = faMale;
   femaleIcon = faFemale;
+
   imgSrc: string;
   selectedImage: any;
 
@@ -35,30 +34,44 @@ export class EmployeesFormComponent implements OnInit {
     protected breakpointObserver: BreakpointObserver,
     protected employeesService: EmployeesService,
     protected utilitiesService: UtilitiesService,
-    protected proxy: ProxyService,
-    protected loadingService: LoadingService
+    protected loadingService: LoadingService,
+    protected dialogService: FormDialogService,
+    protected dialogRef: MatDialogRef<EmployeesFormComponent>
   ) {}
 
   ngOnInit(): void {
     this.employeesService.generateEmployeeFormAndDefaultFormData(this.data);
     this.form = this.employeesService.getEmployeeForm();
-    // const objData: any = {
-    //   uuid: '123456789',
-    //   fullName: 'Le Quoc Hung',
-    //   dob: '12/03/1997',
-    //   age: 23,
-    //   phone: '0329442883',
-    //   gender: Gender.M,
-    //   email: 'lequochung19971@gmail.com',
-    //   department: Departments.DIRECTOR,
-    //   password: '123456789',
-    //   avatar: '',
-    // };
   }
 
   onSubmit(): void {
-    console.log('on submit');
-    this.loadingService.open();
+    if (this.form.valid) {
+      if (!this.form.controls.id.value) {
+        this.newEmployee();
+      } else {
+        this.updateEmployee();
+      }
+    }
+  }
+
+  newEmployee(): void {
+    this.employeesService.createEmployee(this.form.value).subscribe((data: any) => {
+      if (data.id) {
+        this.employeesService.resetEmployeeForm();
+        this.loadingService.close();
+        this.dialogRef.close();
+      }
+    });
+  }
+
+  updateEmployee(): void {
+    this.employeesService.updateEmployee(this.form.value).subscribe((data: any) => {
+      if (data.id) {
+        this.employeesService.resetEmployeeForm();
+        this.loadingService.close();
+        this.dialogRef.close();
+      }
+    });
   }
 
   changeDate() {
@@ -66,7 +79,7 @@ export class EmployeesFormComponent implements OnInit {
     this.updateAge(dateOfBirthForm.value);
   }
 
-  updateAge(date) {
+  updateAge(date: string | Date) {
     const calculatedAge = this.utilitiesService.calculateAgeFromDOB(date);
     this.form.controls.age.patchValue(calculatedAge);
   }

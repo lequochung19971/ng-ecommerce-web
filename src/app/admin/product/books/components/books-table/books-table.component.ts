@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class BooksTableComponent implements OnInit {
   ELEMENT_DATA = [
     {
-      uuid: 1,
+      id: 1,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -17,7 +17,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 2,
+      id: 2,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -26,7 +26,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 3,
+      id: 3,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -35,7 +35,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 4,
+      id: 4,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -44,7 +44,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 5,
+      id: 5,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -53,7 +53,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 6,
+      id: 6,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -62,7 +62,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 7,
+      id: 7,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -71,7 +71,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 8,
+      id: 8,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -80,7 +80,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 9,
+      id: 9,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -89,7 +89,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 10,
+      id: 10,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',
@@ -98,7 +98,7 @@ export class BooksTableComponent implements OnInit {
       publisher: 'Lê Quốc Hùng',
     },
     {
-      uuid: 11,
+      id: 11,
       name: 'Hành trình về phương đông',
       category: 'Sách hay',
       author: 'Lê Quốc Hùng',

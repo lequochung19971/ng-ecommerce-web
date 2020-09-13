@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ErrorMessageService } from '../../services/error-message.service';
 import { FormControl } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-error-message',
@@ -9,7 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./error-message.component.scss'],
 })
 export class ErrorMessageComponent implements OnInit {
-  @Input() fieldName: string;
   @Input() control: any;
   constructor(protected errorMessageService: ErrorMessageService) {}
 

@@ -5,7 +5,7 @@ import { Translator } from './translator.model';
 import { Category } from './category.model';
 
 export class Book {
-  uuid: String;
+  id: String;
   name: String;
   productCode: String;
   category: Category;

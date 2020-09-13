@@ -81,9 +81,9 @@
 
       .female {
         &.mat-button-toggle.mat-button-toggle-checked {
-          border: #fc4b6c solid 2px;
+          border: $accent solid 2px;
           .ng-fa-icon {
-            color: #fc4b6c;
+            color: $accent;
             @include font-size(18px);
           }
         }

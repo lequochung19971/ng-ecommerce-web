@@ -1,5 +1,5 @@
 export class Contact {
-  uuid: Number;
+  id: Number;
   name: String;
   address: String;
   phone: String;

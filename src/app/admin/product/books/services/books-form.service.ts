@@ -6,7 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class BooksFormService {
   private form = new FormGroup({
-    uuid: new FormControl(null),
+    id: new FormControl(null),
     name: new FormControl(''),
     productCode: new FormControl(''),
     category: new FormControl(''),

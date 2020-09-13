@@ -1,5 +1,5 @@
 export class Publisher {
-  uuid: Number;
+  id: Number;
   name: String;
   logo: String;
   description: String;

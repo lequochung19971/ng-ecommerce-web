@@ -1,5 +1,5 @@
 export class Author {
-  uuid: Number;
+  id: Number;
   dob: String;
   fullName: String;
   description: String;

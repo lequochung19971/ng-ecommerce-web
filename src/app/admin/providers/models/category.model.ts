@@ -1,5 +1,5 @@
 export class Category {
-  uuid: Number;
+  id: Number;
   name: String;
   parentCategory: String;
   description: String;

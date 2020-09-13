@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  .progress-bar-wapper {
+    position: relative;
+    display: block;
+
+    .lqh-bar {
+      display: block;
+      height: 13px;
+      width: 100px;
+      border-radius: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid;
+    }
+
+    .lqh-progress {
+      @extend .lqh-bar;
+      z-index: 2;
+      transition: width 0.25s linear;
+    }
+  }
+
+  .progress-icon {
+    margin-top: -4px;
+
+    .mat-icon {
+      font-size: 20px;
+      font-weight: 900;
+      height: 0;
+    }
+  }
+}

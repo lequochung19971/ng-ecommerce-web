@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { EmployeesFormService } from '../../providers/services/employees/employees-form.service';
-import { EmployeeUI } from '../../providers/models/ui-employee.model';
+import { EmployeeUI } from '../../providers/models/employee-ui.model';
 import { EmployeesApiService } from '../../providers/services/employees/employees-api.service';
+import { FormDialogService } from '../../shared/services/form-dialog.service';
+import { EmployeesFormComponent } from '../components/employees-form/employees-form.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import * as _ from 'lodash';
+import { UtilitiesService } from '../../shared/services/utilities.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +14,20 @@ import { EmployeesApiService } from '../../providers/services/employees/employee
 export class EmployeesService {
   constructor(
     protected employeesFormService: EmployeesFormService,
-    protected employeesApiService: EmployeesApiService
-  ) { }
+    protected employeesApiService: EmployeesApiService,
+    protected formDialogService: FormDialogService,
+    protected utilitiesService: UtilitiesService
+  ) {}
+  ///////////////////////DIALOG///////////////////////
+
+  openEmployeesFormDialog(data?: EmployeeUI) {
+    this.formDialogService
+      .openFormDialog(EmployeesFormComponent, data)
+      .afterClosed()
+      .subscribe(() => {
+        this.resetEmployeeForm();
+      });
+  }
 
   ///////////////////////FORM///////////////////////
 
@@ -23,7 +40,7 @@ export class EmployeesService {
     this.employeesFormService.generateFormDefaultData();
   }
 
-  setEmployeeForm() { }
+  setEmployeeForm() {}
 
   resetEmployeeForm() {
     this.employeesFormService.resetForm();
@@ -36,6 +53,7 @@ export class EmployeesService {
   ///////////////////////API///////////////////////
 
   createEmployee(data: any) {
+    data.id = data.id || this.utilitiesService.createid();
     return this.employeesApiService.callAPIToCreateEmployee(data);
   }
 
@@ -52,8 +70,8 @@ export class EmployeesService {
     return this.employeesApiService.callAPIToFetchEmployees(query);
   }
 
-  fetchEmployeeByID(uuid: string) {
-    return this.employeesApiService.callAPIToFetchEmployee(uuid);
+  fetchEmployeeByID(id: string) {
+    return this.employeesApiService.callAPIToFetchEmployee(id);
   }
 
   deleteEmployee(data: any) {

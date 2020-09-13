@@ -43,5 +43,37 @@
       }
       @include font-size(14px);
     }
+
+    &.btn-flat-accent {
+      color: $white-10-opacity;
+      background-color: $accent;
+      border-color: $accent;
+
+      &:hover {
+        background-color: $accent-hover;
+        border-color: $accent-hover;
+      }
+    }
+
+    &.btn-stroked-accent {
+      color: $accent;
+      background-color: $white-10-opacity;
+      border-color: $accent;
+
+      &:hover {
+        color: $accent-hover;
+        border-color: $accent-hover;
+      }
+    }
+
+    &.btn-radius-accent {
+      @extend .btn-flat-accent;
+      border-radius: 100px;
+      padding: {
+        top: 0;
+        bottom: 0;
+      }
+      @include font-size(14px);
+    }
   }
 }

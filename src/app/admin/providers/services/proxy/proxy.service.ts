@@ -3,6 +3,7 @@ import { HttpHeaders, HttpParams, HttpClient, HttpErrorResponse } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { LoggerService } from '../logger/logger.service';
+import { LoadingService } from 'src/app/admin/shared/services/loading.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,12 +20,18 @@ export class ProxyService {
     params: new HttpParams(),
   };
 
-  constructor(private http: HttpClient, protected logger: LoggerService) { }
+  constructor(
+    private http: HttpClient,
+    protected logger: LoggerService,
+    protected loadingService: LoadingService
+  ) {}
 
   post<T>(model: T | any, objData: T | any): Observable<T | T[]> {
     if (objData) {
-      // const newObjData = new model(objData);
-      const jsonData = JSON.stringify(objData);
+      const objDataMapped = new model(objData);
+
+      this.loadingService.open();
+      const jsonData = JSON.stringify(objDataMapped);
       const url = `${this.endpoint}${model.tableName}`;
 
       return this.http.post<T>(url, jsonData, this.httpOptions).pipe(
@@ -38,9 +45,9 @@ export class ProxyService {
 
   put<T>(model: T | any, objData: T | any): Observable<T | T[]> {
     if (objData) {
-      // const newObjData = new model(objData);
-      const jsonData = JSON.stringify(objData);
-      const url = `${this.endpoint}${model.tableName}/${objData.uuid}`;
+      const objDataMapped = new model(objData);
+      const jsonData = JSON.stringify(objDataMapped);
+      const url = `${this.endpoint}${model.tableName}/${objDataMapped.id}`;
       // const url = `${this.endpoint}${model.tableName}/zmdF-yj`;
 
       return this.http.put<T>(url, jsonData, this.httpOptions).pipe(
@@ -53,7 +60,11 @@ export class ProxyService {
     }
   }
 
-  get<T>(model: T | any, query?: HttpParams | string | any, fetchByID?: boolean): Observable<T | T[]> {
+  get<T>(
+    model: T | any,
+    query?: HttpParams | string | any,
+    fetchByID?: boolean
+  ): Observable<T | T[]> {
     const httpOpts = Object.assign({}, this.httpOptions);
     let url: string;
 
@@ -64,9 +75,9 @@ export class ProxyService {
       url = `${this.endpoint}${model.tableName}/${query}`;
     }
 
-    return this.http.get<T[]>(url, httpOpts).pipe(
+    return this.http.get<T[] | T>(url, httpOpts).pipe(
       catchError(this.handleError),
-      tap((res: T[]) => {
+      tap((res: T[] | T) => {
         this.logger.LOG(res);
         return res;
       })
@@ -75,7 +86,7 @@ export class ProxyService {
 
   delete<T>(model: T | any, objData: T | any): Observable<T | T[]> {
     if (objData) {
-      const url = `${this.endpoint}${model.tableName}/${objData.uuid}`;
+      const url = `${this.endpoint}${model.tableName}/${objData.id}`;
       // const url = `${this.endpoint}${model.tableName}/zmdF-yj`;
 
       return this.http.delete<T | T[]>(url, this.httpOptions).pipe(

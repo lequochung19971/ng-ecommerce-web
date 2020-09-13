@@ -23,4 +23,14 @@ export class UtilitiesService {
   }
 
   convertDOBObjectToDOBString(date) {}
+
+  createid(): string {
+    const date = new Date().getTime();
+    const id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char: string) => {
+      const random = (date + Math.random() * 16) % 16 | 0;
+      return (char === 'x' ? random : (random & 0x3) | 0x8).toString(16);
+    });
+
+    return id;
+  }
 }

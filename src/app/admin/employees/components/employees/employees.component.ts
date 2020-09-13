@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeesFormDialogService } from '../../services/employees-form-dialog.service';
-import { EmployeeUI } from 'src/app/admin/providers/models/ui-employee.model';
+import { EmployeeUI } from 'src/app/admin/providers/models/employee-ui.model';
 import { Gender } from 'src/app/admin/providers/enum/gender.enum';
 import { Departments } from 'src/app/admin/providers/enum/departments.enum';
 import { EmployeesService } from '../../services/employees.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-employees',
@@ -12,7 +12,7 @@ import { EmployeesService } from '../../services/employees.service';
 })
 export class EmployeesComponent implements OnInit {
   MOCK_DATA: EmployeeUI = {
-    uuid: '123456789',
+    id: '123456789',
     fullName: 'Le Quoc Hung',
     dob: '12/03/1997',
     age: 23,
@@ -24,22 +24,19 @@ export class EmployeesComponent implements OnInit {
     avatar: '',
   };
 
-  constructor(
-    protected employeesFormDialogService: EmployeesFormDialogService,
-    protected employeesService: EmployeesService
-  ) {}
+  constructor(protected employeesService: EmployeesService) {}
 
   ngOnInit(): void {}
 
   openCreateEmployeesDialog() {
-    this.employeesFormDialogService.openEmployeesFormDialog();
+    this.employeesService.openEmployeesFormDialog();
   }
 
   openEditEmployeesDialog(data: EmployeeUI) {
-    this.employeesFormDialogService.openEmployeesFormDialog(this.MOCK_DATA);
+    this.employeesService.openEmployeesFormDialog(this.MOCK_DATA);
   }
 
-  deleteEmployee(uuid: String) {
-    this.employeesService.deleteEmployee(uuid);
+  deleteEmployee(id: String) {
+    this.employeesService.deleteEmployee(id);
   }
 }

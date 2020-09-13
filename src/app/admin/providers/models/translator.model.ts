@@ -1,5 +1,5 @@
 export class Translator {
-  uuid: Number;
+  id: Number;
   name: String;
   description: String;
 }

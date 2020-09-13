@@ -41,6 +41,7 @@ import { InputDateDirective } from './shared/directives/input-date.directive';
 import { ImageUploaderComponent } from './shared/components/image-uploader/image-uploader.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { ErrorMessageComponent } from './shared/components/error-message/error-message.component';
+import { LqhProgressBarComponent } from './shared/components/lqh-progress-bar/lqh-progress-bar.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -76,6 +77,7 @@ import { ErrorMessageComponent } from './shared/components/error-message/error-m
     ImageUploaderComponent,
     LoadingComponent,
     ErrorMessageComponent,
+    LqhProgressBarComponent,
   ],
   imports: [
     CommonModule,

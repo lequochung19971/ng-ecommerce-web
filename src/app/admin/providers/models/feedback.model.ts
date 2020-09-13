@@ -1,5 +1,5 @@
 export class Feedback {
-  uuid: Number;
+  id: Number;
   userId: Number;
   productId: Number;
   title: String;

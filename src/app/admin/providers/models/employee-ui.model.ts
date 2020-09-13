@@ -1,0 +1,32 @@
+import { Gender } from '../enum/gender.enum';
+import { Departments } from '../enum/departments.enum';
+
+export class EmployeeUI {
+  id: String;
+  dob: String;
+  age: Number;
+  fullName: String;
+  email: String;
+  phone: String;
+  department: Departments;
+  gender: Gender;
+  avatar: String;
+  password: String;
+  confirmPassword?: String;
+
+  constructor(props?: any) {
+    if (props) {
+      this.id = props.id;
+      this.dob = props.dob;
+      this.age = props.age;
+      this.fullName = props.fullName;
+      this.email = props.email;
+      this.phone = props.phone;
+      this.department = props.department;
+      this.password = props.password;
+      this.confirmPassword = props.password;
+      this.gender = props.gender;
+      this.avatar = props.avatar;
+    }
+  }
+}
