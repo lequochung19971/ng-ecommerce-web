@@ -125,7 +125,7 @@
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="4" [rowspan]="1">
+      <!-- <mat-grid-tile [colspan]="4" [rowspan]="1">
         <mat-form-field appearance="standard">
           <mat-label>Password</mat-label>
           <input
@@ -139,9 +139,18 @@
           />
           <app-lqh-progress-bar matSuffix></app-lqh-progress-bar>
           <mat-error>
-            <app-error-message [control]="form.controls['password']"></app-error-message>
+            <app-error-message [control]="form.controls?.password"></app-error-message>
           </mat-error>
         </mat-form-field>
+      </mat-grid-tile> -->
+
+      <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <app-password-input
+          [control]="form.controls?.password"
+          [fieldID]="'password'"
+          class="w-100"
+        >
+        </app-password-input>
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">

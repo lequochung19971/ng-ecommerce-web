@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex" *ngIf="errrorMessage">
   <img
     src="../../../../../assets/icons/error.svg"
     alt="error"
@@ -6,5 +6,5 @@
     width="auto"
     class="pr-3"
   />
-  <div class="fs-9" *ngIf="errrorMessage">{{ errrorMessage }}</div>
+  <div class="fs-9">{{ errrorMessage }}</div>
 </div>

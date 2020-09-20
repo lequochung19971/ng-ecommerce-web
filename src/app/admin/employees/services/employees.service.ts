@@ -53,7 +53,7 @@ export class EmployeesService {
   ///////////////////////API///////////////////////
 
   createEmployee(data: any) {
-    data.id = data.id || this.utilitiesService.createid();
+    data.id = data.id || this.utilitiesService.createId();
     return this.employeesApiService.callAPIToCreateEmployee(data);
   }
 

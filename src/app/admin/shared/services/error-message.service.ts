@@ -18,6 +18,7 @@ export class ErrorMessageService {
         fieldName: valueInsideError['fieldName'],
         max: valueInsideError['max'],
       }),
+      invalidPassword: this.showMessage('invalidPassword'),
     };
   }
 

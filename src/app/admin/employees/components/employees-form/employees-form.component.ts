@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { EmployeesService } from '../../services/employees.service';
 import * as _ from 'lodash';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 
 import { faMale } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +28,8 @@ export class EmployeesFormComponent implements OnInit {
 
   imgSrc: string;
   selectedImage: any;
+
+  tempControl: FormControl = new FormControl('');
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: EmployeeUI,

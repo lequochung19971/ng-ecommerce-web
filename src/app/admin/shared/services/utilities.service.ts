@@ -24,7 +24,7 @@ export class UtilitiesService {
 
   convertDOBObjectToDOBString(date) {}
 
-  createid(): string {
+  createId(): string {
     const date = new Date().getTime();
     const id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (char: string) => {
       const random = (date + Math.random() * 16) % 16 | 0;

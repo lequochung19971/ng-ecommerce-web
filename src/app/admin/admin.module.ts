@@ -42,6 +42,7 @@ import { ImageUploaderComponent } from './shared/components/image-uploader/image
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { ErrorMessageComponent } from './shared/components/error-message/error-message.component';
 import { LqhProgressBarComponent } from './shared/components/lqh-progress-bar/lqh-progress-bar.component';
+import { PasswordInputComponent } from './shared/components/password-input/password-input.component';
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -78,6 +79,7 @@ import { LqhProgressBarComponent } from './shared/components/lqh-progress-bar/lq
     LoadingComponent,
     ErrorMessageComponent,
     LqhProgressBarComponent,
+    PasswordInputComponent,
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { FormControl, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import * as moment from 'moment';
+import { StrongAndWeakPasswordModel } from '../models/strong-weak-password.model';
+import { PasswordService } from './password.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidationsService {
-  constructor() {}
+  constructor(protected passwordService: PasswordService) {}
 
   invalidDate(control: AbstractControl): ValidationErrors | null {
     if (control.value) {
@@ -20,10 +22,25 @@ export class ValidationsService {
     return null;
   }
 
-  maxLengthWithNumber(max: number, fieldName: string): ValidationErrors | null {
+  maxLengthWithNumber(max: number, fieldName: string): ValidatorFn {
     return (control: AbstractControl) => {
       if (control.value && control.value.length > max) {
         return { maxLengthWithNumberAndFieldName: { fieldName, max } };
+      }
+
+      return null;
+    };
+  }
+
+  invalidPassword(): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value) {
+        const weakness = this.passwordService.weakPasswords(control.value);
+        const strengthPercent = this.passwordService.calculatePasswordStrengthPercent(weakness);
+
+        if (strengthPercent < 75) {
+          return { invalidPassword: true };
+        }
       }
 
       return null;
