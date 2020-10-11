@@ -13,7 +13,6 @@ import { PublishersFormComponent } from './admin/publishers/components/publisher
 import { SuppliersFormComponent } from './admin/suppliers/components/suppliers-form/suppliers-form.component';
 import { CategoriesFormComponent } from './admin/categories/components/categories-form/categories-form.component';
 import { BooksFormComponent } from './admin/product/books/components/books-form/books-form.component';
-import { EmployeesService } from './admin/employees/services/employees.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -39,7 +38,6 @@ export function HttpTranslateLoader(http: HttpClient) {
       },
     }),
   ],
-  providers: [EmployeesService],
   bootstrap: [AppComponent],
   entryComponents: [
     EmployeesFormComponent,

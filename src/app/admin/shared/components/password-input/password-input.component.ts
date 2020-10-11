@@ -15,6 +15,7 @@ import { ValidationsService } from '../../services/validations.service';
 export class PasswordInputComponent implements OnInit {
   @Input() control: FormControl;
   @Input() fieldID: string;
+  @Input() disabled: boolean = false;
 
   errorColor: string = '#EB5757';
   warningColor: string = '#FFC107';
@@ -31,9 +32,6 @@ export class PasswordInputComponent implements OnInit {
   showIcon: string;
   groupOfStatus: string[] = ['error', 'warning', 'success'];
   passwordMeter: StrongAndWeakPasswordModel = new StrongAndWeakPasswordModel();
-  temp = {
-    percent: 0,
-  };
   constructor(
     protected passwordService: PasswordService,
     protected validationsService: ValidationsService
@@ -47,7 +45,6 @@ export class PasswordInputComponent implements OnInit {
 
   ngOnInit(): void {
     this.control.setValidators([this.validationsService.invalidPassword()]);
-    this.controlValueChange();
   }
 
   ngAfterViewInit(): void {
@@ -55,28 +52,39 @@ export class PasswordInputComponent implements OnInit {
     this.progress = document.getElementById(this.progressID);
     this.icon = document.getElementById(this.iconID);
 
-    this.setProgressBarDefault();
+    if (!this.disabled) {
+      this.setProgressBarDefault();
+      this.controlValueChange();
+    }
   }
 
   protected controlValueChange(): void {
     this.control.valueChanges.subscribe((value) => {
-      this.passwordMeter = this.passwordService.calculatePasswordMeter(
-        value,
-        this.bar.clientWidth
-      ) as StrongAndWeakPasswordModel;
-      this.temp.percent = this.passwordMeter.percent;
-      if (this.passwordMeter.percent < 40) {
-        this.error(this.passwordMeter.width);
-      } else if (this.passwordMeter.percent >= 40 && this.passwordMeter.percent < 75) {
-        this.warning(this.passwordMeter.width);
-      } else if (this.passwordMeter.percent >= 75) {
-        this.success(this.passwordMeter.width);
+      if (value === null || value === undefined) {
+        return;
       }
+
+      this.changeProgressBarStatus(value);
     });
+  }
+
+  protected changeProgressBarStatus(value: string) {
+    this.passwordMeter = this.passwordService.calculatePasswordMeter(
+      value,
+      this.bar.clientWidth
+    ) as StrongAndWeakPasswordModel;
+    if (this.passwordMeter.percent < 40) {
+      this.error(this.passwordMeter.width);
+    } else if (this.passwordMeter.percent >= 40 && this.passwordMeter.percent < 75) {
+      this.warning(this.passwordMeter.width);
+    } else if (this.passwordMeter.percent >= 75) {
+      this.success(this.passwordMeter.width);
+    }
   }
 
   protected setProgressBarDefault(): void {
     this.setLayoutProgress({ width: '0', color: this.warningColor, status: 'warning' });
+    this.changeProgressBarStatus(this.control.value);
   }
 
   protected success(width: string): void {

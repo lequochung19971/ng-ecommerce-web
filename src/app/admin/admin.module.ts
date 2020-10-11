@@ -43,6 +43,14 @@ import { LoadingComponent } from './shared/components/loading/loading.component'
 import { ErrorMessageComponent } from './shared/components/error-message/error-message.component';
 import { LqhProgressBarComponent } from './shared/components/lqh-progress-bar/lqh-progress-bar.component';
 import { PasswordInputComponent } from './shared/components/password-input/password-input.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DisableControlDirective } from './shared/directives/disable-control.directive';
+
+export function HttpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -80,6 +88,7 @@ import { PasswordInputComponent } from './shared/components/password-input/passw
     ErrorMessageComponent,
     LqhProgressBarComponent,
     PasswordInputComponent,
+    DisableControlDirective,
   ],
   imports: [
     CommonModule,
@@ -91,6 +100,13 @@ import { PasswordInputComponent } from './shared/components/password-input/passw
     MatPaginatorModule,
     MatSortModule,
     FontAwesomeModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
 })
 export class AdminModule {}

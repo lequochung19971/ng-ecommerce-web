@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ErrorParams } from '../../providers/models/error-params.model';
 
@@ -13,12 +12,15 @@ export class ErrorMessageService {
     return {
       invalidDate: this.showMessage('invalidDate'),
       required: this.showMessage('required'),
+      maxLength: this.showMessage('maxLength'),
+      minLength: this.showMessage('minLength'),
       email: this.showMessage('invalidEmail'),
       maxLengthWithNumberAndFieldName: this.showMessage('maxLengthOfFieldName', {
         fieldName: valueInsideError['fieldName'],
         max: valueInsideError['max'],
       }),
       invalidPassword: this.showMessage('invalidPassword'),
+      invalidConfirmPassword: this.showMessage('invalidConfirmPassword'),
     };
   }
 

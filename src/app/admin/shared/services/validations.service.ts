@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import * as moment from 'moment';
-import { StrongAndWeakPasswordModel } from '../models/strong-weak-password.model';
+import { EmployeesFormService } from '../../providers/services/employees/employees-form.service';
 import { PasswordService } from './password.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidationsService {
-  constructor(protected passwordService: PasswordService) {}
+  constructor(
+    protected passwordService: PasswordService,
+    protected employeesFormService: EmployeesFormService
+  ) {}
 
   invalidDate(control: AbstractControl): ValidationErrors | null {
     if (control.value) {
@@ -41,6 +44,19 @@ export class ValidationsService {
         if (strengthPercent < 75) {
           return { invalidPassword: true };
         }
+      }
+
+      return null;
+    };
+  }
+
+  invalidConfirmPassword(): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value) {
+        const password = this.employeesFormService.getFormControlWithProperty('password');
+        return password && password.value !== control.value
+          ? { invalidConfirmPassword: true }
+          : null;
       }
 
       return null;

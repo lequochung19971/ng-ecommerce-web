@@ -14,6 +14,8 @@ import { Departments } from 'src/app/admin/providers/enum/departments.enum';
 import { EmployeeUI } from 'src/app/admin/providers/models/employee-ui.model';
 import { LoadingService } from 'src/app/admin/shared/services/loading.service';
 import { FormDialogService } from 'src/app/admin/shared/services/form-dialog.service';
+import { DialogMode } from 'src/app/admin/providers/enum/dialog-mode.enum';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-employees-form',
   templateUrl: './employees-form.component.html',
@@ -29,21 +31,27 @@ export class EmployeesFormComponent implements OnInit {
   imgSrc: string;
   selectedImage: any;
 
-  tempControl: FormControl = new FormControl('');
-
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: EmployeeUI,
+    @Inject(MAT_DIALOG_DATA) public dialogData: EmployeeUI,
     protected breakpointObserver: BreakpointObserver,
     protected employeesService: EmployeesService,
     protected utilitiesService: UtilitiesService,
     protected loadingService: LoadingService,
     protected dialogService: FormDialogService,
-    protected dialogRef: MatDialogRef<EmployeesFormComponent>
-  ) {}
+    protected dialogRef: MatDialogRef<EmployeesFormComponent>,
+    protected translateService: TranslateService
+  ) {
+    this.translateService.setDefaultLang('en');
+    this.translateService.use('en');
+  }
 
   ngOnInit(): void {
-    this.employeesService.generateEmployeeFormAndDefaultFormData(this.data);
+    this.employeesService.generateEmployeeFormAndDefaultFormData(this.dialogData);
     this.form = this.employeesService.getEmployeeForm();
+  }
+
+  getDialogMode(): DialogMode {
+    return this.dialogData && this.dialogData.id ? DialogMode.EDIT : DialogMode.CREATE;
   }
 
   onSubmit(): void {
