@@ -29,12 +29,13 @@
 @import './styles/form';
 @import './styles/file-uploader';
 @import './styles/password-input';
+@import './styles/input';
 // ----------------------------------------------------------------
 // ---------------------------COMPONENTS---------------------------
 // ----------------------------------------------------------------
-@import './styles/nav-bar/nav-bar';
-@import './styles/nav-bar/nav-bar-profile';
-@import './styles/nav-bar/nav-bar-list';
+@import './styles/shell/shell';
+@import './styles/shell/shell-left-side';
+@import './styles/shell/shell-right-side';
 @import './styles/loading';
 @import './styles/breadcrumbs';
 @import './styles/employees/employees';

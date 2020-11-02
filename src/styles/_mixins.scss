@@ -26,7 +26,7 @@
   right: 0;
 }
 
-@mixin padding-margin-rendering($type, $direction) {
+@mixin padding-margin-rendering-rem($type, $direction) {
   $limit: 50;
   $type-shortcut: p;
   $step: 0.1;
@@ -41,34 +41,82 @@
   // Render
   @for $i from 0 through $limit {
     @if $direction == all {
-      .#{$type-shortcut}-#{$i} {
-        #{$type}: $i * $step * 1rem;
+      .#{$type-shortcut}-#{$i * $step} {
+        #{$type}: $i * $step * 1rem !important;
       }
     } @else if $direction == right {
-      .#{$type-shortcut}r-#{$i} {
-        #{$type}-right: $i * $step * 1rem;
+      .#{$type-shortcut}r-#{$i * $step} {
+        #{$type}-right: $i * $step * 1rem !important;
       }
     } @else if $direction == left {
-      .#{$type-shortcut}l-#{$i} {
-        #{$type}-left: $i * $step * 1rem;
+      .#{$type-shortcut}l-#{$i * $step} {
+        #{$type}-left: $i * $step * 1rem !important;
       }
     } @else if $direction == top {
-      .#{$type-shortcut}t-#{$i} {
-        #{$type}-top: $i * $step * 1rem;
+      .#{$type-shortcut}t-#{$i * $step} {
+        #{$type}-top: $i * $step * 1rem !important;
       }
     } @else if $direction == bottom {
-      .#{$type-shortcut}b-#{$i} {
-        #{$type}-bottom: $i * $step * 1rem;
+      .#{$type-shortcut}b-#{$i * $step} {
+        #{$type}-bottom: $i * $step * 1rem !important;
       }
     } @else if $direction == x {
-      .#{$type-shortcut}b-#{$i} {
-        #{$type}-left: $i * $step * 1rem;
-        #{$type}-right: $i * $step * 1rem;
+      .#{$type-shortcut}b-#{$i * $step} {
+        #{$type}-left: $i * $step * 1rem !important;
+        #{$type}-right: $i * $step * 1rem !important;
       }
     } @else if $direction == y {
-      .#{$type-shortcut}b-#{$i} {
-        #{$type}-top: $i * $step * 1rem;
-        #{$type}-bottom: $i * $step * 1rem;
+      .#{$type-shortcut}b-#{$i * $step} {
+        #{$type}-top: $i * $step * 1rem !important;
+        #{$type}-bottom: $i * $step * 1rem !important;
+      }
+    }
+  }
+}
+
+@mixin padding-margin-rendering-px($type, $direction) {
+  $limit: 50;
+  $type-shortcut: p;
+  $step: 1;
+
+  // Select padding or margin
+  @if ($type) == padding {
+    $type-shortcut: p;
+  } @else {
+    $type-shortcut: m;
+  }
+
+  // Render
+  @for $i from 0 through $limit {
+    @if $direction == all {
+      .#{$type-shortcut}-#{$i * $step} {
+        #{$type}: $i * $step * 1px !important;
+      }
+    } @else if $direction == right {
+      .#{$type-shortcut}r-#{$i * $step} {
+        #{$type}-right: $i * $step * 1px !important;
+      }
+    } @else if $direction == left {
+      .#{$type-shortcut}l-#{$i * $step} {
+        #{$type}-left: $i * $step * 1px !important;
+      }
+    } @else if $direction == top {
+      .#{$type-shortcut}t-#{$i * $step} {
+        #{$type}-top: $i * $step * 1px !important;
+      }
+    } @else if $direction == bottom {
+      .#{$type-shortcut}b-#{$i * $step} {
+        #{$type}-bottom: $i * $step * 1px !important;
+      }
+    } @else if $direction == x {
+      .#{$type-shortcut}b-#{$i * $step} {
+        #{$type}-left: $i * $step * 1px !important;
+        #{$type}-right: $i * $step * 1px !important;
+      }
+    } @else if $direction == y {
+      .#{$type-shortcut}b-#{$i * $step} {
+        #{$type}-top: $i * $step * 1px !important;
+        #{$type}-bottom: $i * $step * 1px !important;
       }
     }
   }

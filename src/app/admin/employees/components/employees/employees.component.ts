@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeUI } from 'src/app/admin/providers/models/employee-ui.model';
+import { EmployeeFE } from 'src/app/admin/providers/models/employee-fe.model';
 import { Gender } from 'src/app/admin/providers/enum/gender.enum';
 import { Departments } from 'src/app/admin/providers/enum/departments.enum';
 import { EmployeesService } from '../../services/employees.service';
@@ -11,7 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./employees.component.scss'],
 })
 export class EmployeesComponent implements OnInit {
-  MOCK_DATA: EmployeeUI = {
+  MOCK_DATA: EmployeeFE = {
     id: '123456789',
     fullName: 'Le Quoc Hung',
     dob: '12/03/1997',
@@ -32,7 +32,7 @@ export class EmployeesComponent implements OnInit {
     this.employeesService.openEmployeesFormDialog();
   }
 
-  openEditEmployeesDialog(data: EmployeeUI) {
+  openEditEmployeesDialog(data: EmployeeFE) {
     this.employeesService.openEmployeesFormDialog(this.MOCK_DATA);
   }
 

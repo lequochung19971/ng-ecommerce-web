@@ -1,5 +1,6 @@
 .table-wraper {
   width: 100%;
+  overflow: auto;
   .full-name__wrapper {
     display: flex;
     align-items: center;
@@ -11,6 +12,11 @@
         color: $primary-hover;
       }
     }
+
+    .mat-card-avatar {
+      vertical-align: middle;
+      padding-right: 15px;
+    }
   }
 
   th.mat-header-cell {
@@ -20,17 +26,17 @@
 
   td.mat-cell,
   td.mat-footer-cell {
+    width: 100%;
     color: $black-7-opacity;
     @include font-size($main-font-size);
     padding: 1.5rem 1rem;
   }
 
   .mat-table-sticky {
-    min-width: 180px;
+    min-width: 200px;
   }
 
   .actions {
     min-width: 85px;
-    max-width: 85px;
   }
 }

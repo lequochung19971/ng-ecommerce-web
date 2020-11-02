@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EmployeeFE } from '../../providers/models/employee-fe.model';
 @Injectable({
   providedIn: 'root',
 })
 export class FormDialogService {
   constructor(protected dialog: MatDialog) {}
 
-  openFormDialog(FormComponent, data?) {
+  openFormDialog(FormComponent, data?): MatDialogRef<any> {
     const formDialogRef = this.dialog.open(FormComponent, {
       width: '1366px',
       position: { top: '100px' },

@@ -10,12 +10,13 @@ import { SuppliersComponent } from './suppliers/components/suppliers/suppliers.c
 import { CustomersComponent } from './customers/components/customers/customers.component';
 import { CategoriesComponent } from './categories/components/categories/categories.component';
 import { BooksComponent } from './product/books/components/books/books.component';
+import { ShellComponent } from './lqh-shell/components/shell/shell.component';
 
 const routes: Routes = [
   {
     path: '',
     data: { breadcrumb: 'Home' },
-    component: NavBarComponent,
+    component: ShellComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent, data: { breadcrumb: 'Dashboard' } },
       { path: 'categories', component: CategoriesComponent, data: { breadcrumb: 'Categories' } },

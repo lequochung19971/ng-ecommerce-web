@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EmployeesFormService } from '../../providers/services/employees/employees-form.service';
-import { EmployeeUI } from '../../providers/models/employee-ui.model';
+import { EmployeeFE } from '../../providers/models/employee-fe.model';
 import { EmployeesApiService } from '../../providers/services/employees/employees-api.service';
 import { FormDialogService } from '../../shared/services/form-dialog.service';
 import { EmployeesFormComponent } from '../components/employees-form/employees-form.component';
@@ -9,11 +9,21 @@ import { UtilitiesService } from '../../shared/services/utilities.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ValidationsService } from '../../shared/services/validations.service';
 import { Gender } from '../../providers/enum/gender.enum';
+import { EmployeeBE } from '../../providers/models/employee.model';
+import { Observable, Subject } from 'rxjs';
+import { EmployeeTableParams } from '../../providers/models/employee-table-params';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeesService {
+  protected employees$: Subject<EmployeeFE[]> = new Subject<EmployeeFE[]>();
+  protected employeesTableData$: Subject<EmployeeFE[]> = new Subject<EmployeeFE[]>();
+  protected refreshData$: Subject<boolean> = new Subject<boolean>();
+  protected employeesTableDataLength: number;
+  protected currentEmployeeDialog: any;
+
   constructor(
     protected fb: FormBuilder,
     protected employeesFormService: EmployeesFormService,
@@ -22,15 +32,29 @@ export class EmployeesService {
     protected utilitiesService: UtilitiesService,
     protected validationsService: ValidationsService
   ) {}
+
+  get refreshData() {
+    return this.refreshData$.asObservable();
+  }
+
   ///////////////////////DIALOG///////////////////////
 
-  openEmployeesFormDialog(data?: EmployeeUI) {
-    this.formDialogService
-      .openFormDialog(EmployeesFormComponent, data)
-      .afterClosed()
-      .subscribe(() => {
-        this.resetEmployeeForm();
-      });
+  getCurrentEmployeesDialog(): MatDialogRef<EmployeeFE> {
+    return this.currentEmployeeDialog;
+  }
+
+  openEmployeesFormDialog(data?: EmployeeFE) {
+    this.currentEmployeeDialog = this.formDialogService.openFormDialog(
+      EmployeesFormComponent,
+      data
+    );
+
+    this.currentEmployeeDialog.afterClosed().subscribe((res) => {
+      this.resetEmployeeForm();
+      if (res) {
+        this.refreshData$.next(true)
+      }
+    });
   }
 
   ///////////////////////FORM///////////////////////
@@ -45,7 +69,7 @@ export class EmployeesService {
     this.employeesFormService.resetForm();
   }
 
-  generateEmployeeFormAndDefaultFormData(data: EmployeeUI) {
+  generateEmployeeFormAndDefaultFormData(data: EmployeeFE) {
     const form = this.fb.group({
       id: [(data && data.id) || ''],
       fullName: [
@@ -53,7 +77,7 @@ export class EmployeesService {
         [Validators.required, Validators.maxLength(30), Validators.minLength(4)],
       ],
       dob: [(data && data.dob) || '', [Validators.required, this.validationsService.invalidDate]],
-      age: [{ value: (data && data.age) || null, disabled: true }],
+      age: [(data && data.age) || null],
       phone: [
         (data && data.phone) || '',
         [Validators.required, this.validationsService.maxLengthWithNumber(10, 'phone')],
@@ -72,28 +96,37 @@ export class EmployeesService {
     this.employeesFormService.generateForm(form);
   }
 
-  getEmployeesFormValue() {
-    this.employeesFormService.getFormValue();
+  getEmployeeFormValue() {
+    return this.employeesFormService.getFormValue();
+  }
+
+  //////////////////////TABLE//////////////////////
+
+  getEmployeesTableData(): Observable<EmployeeFE[]> {
+    return this.employeesTableData$.asObservable();
+  }
+
+  getEmployeesTableDataLength(): number {
+    return this.employeesTableDataLength;
+  }
+
+  setEmployeesTableData(params?): void {
+    this.employeesApiService.callAPIToFetchEmployeesForTable(params).subscribe((res) => {
+      this.employeesTableData$.next(res.data);
+      this.employeesTableDataLength = res.totalCount;
+    });
   }
 
   ///////////////////////API///////////////////////
 
-  createEmployee(data: any) {
+  createEmployee(data: EmployeeFE) {
     data.id = data.id || this.utilitiesService.createId();
-    return this.employeesApiService.callAPIToCreateEmployee(data);
+    const newEmployee: EmployeeBE = this.convertEmployeeFEToEmployeeBE(data);
+    return this.employeesApiService.callAPIToCreateEmployee(newEmployee);
   }
 
   updateEmployee(data: any) {
     return this.employeesApiService.callAPIToUpdateEmployee(data);
-  }
-
-  fetchAllEmployees() {
-    return this.employeesApiService.callAPIToFetchEmployees();
-  }
-
-  fetchAllEmployeesWithParams() {
-    const query: string = '';
-    return this.employeesApiService.callAPIToFetchEmployees(query);
   }
 
   fetchEmployeeByID(id: string) {
@@ -102,5 +135,13 @@ export class EmployeesService {
 
   deleteEmployee(data: any) {
     return this.employeesApiService.callAPIToDeleteEmployee(data);
+  }
+
+  convertEmployeeBEToEmployeeFE(employeeData: EmployeeBE) {
+    return new EmployeeFE(employeeData);
+  }
+
+  convertEmployeeFEToEmployeeBE(employeeData: EmployeeFE) {
+    return new EmployeeBE(employeeData);
   }
 }

@@ -1,0 +1,25 @@
+<div class="lqh-shell-container">
+  <app-loading></app-loading>
+
+  <mat-toolbar color="primary" class="lqh-shell-header mat-elevation-z5">
+    <lqh-shell-toolbar [drawerElem]="drawer" class="lqh-shell-toolbar"></lqh-shell-toolbar>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="lqh-shell-body">
+    <mat-sidenav
+      #drawer
+      class="lqh-shell-left-side-wrapper mat-elevation-z4"
+      fixedInViewport
+      [attr.role]="(isBrokken | async) ? 'dialog' : 'navigation'"
+      [mode]="(isBrokken | async) ? 'over' : 'side'"
+      [opened]="(isBrokken | async) === false"
+      [ngStyle]="{ 'padding-top': (isMobile | async) ? '3.7rem' : '3.7rem' }"
+    >
+      <lqh-shell-left-side [accordion]="navGroup"></lqh-shell-left-side>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="lqh-shell-right-side-wrapper">
+      <lqh-shell-right-side></lqh-shell-right-side>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

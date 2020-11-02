@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./error-message.component.scss'],
 })
 export class ErrorMessageComponent implements OnInit {
-  @Input() control: any;
+  @Input() control: FormControl;
   constructor(protected errorMessageService: ErrorMessageService) {}
 
   ngOnInit(): void {}

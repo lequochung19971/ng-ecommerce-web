@@ -47,6 +47,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DisableControlDirective } from './shared/directives/disable-control.directive';
+import { ShellComponent } from './lqh-shell/components/shell/shell.component';
+import { ShellToolbarComponent } from './lqh-shell/components/shell-toolbar/shell-toolbar.component';
+import { ShellLeftSideComponent } from './lqh-shell/components/shell-left-side/shell-left-side.component';
+import { ShellRightSideComponent } from './lqh-shell/components/shell-right-side/shell-right-side.component';
+import { ShellLeftSideProfileComponent } from './lqh-shell/components/shell-left-side-profile/shell-left-side-profile.component';
+import { ShellLeftSideNavListComponent } from './lqh-shell/components/shell-left-side-nav-list/shell-left-side-nav-list.component';
 
 export function HttpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -89,6 +95,12 @@ export function HttpTranslateLoader(http: HttpClient) {
     LqhProgressBarComponent,
     PasswordInputComponent,
     DisableControlDirective,
+    ShellComponent,
+    ShellToolbarComponent,
+    ShellLeftSideComponent,
+    ShellRightSideComponent,
+    ShellLeftSideProfileComponent,
+    ShellLeftSideNavListComponent,
   ],
   imports: [
     CommonModule,

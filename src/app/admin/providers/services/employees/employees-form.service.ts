@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import * as _ from 'lodash';
-import { EmployeeUI } from '../../models/employee-ui.model';
+import { EmployeeFE } from '../../models/employee-fe.model';
 import { BaseFormService } from '../base-form/base-form.service';
 
 @Injectable({
@@ -14,6 +14,6 @@ export class EmployeesFormService extends BaseFormService {
 
   generateForm(form: FormGroup) {
     this.form = form;
-    this.generateFormDefaultData<EmployeeUI>();
+    this.generateFormDefaultData<EmployeeFE>();
   }
 }

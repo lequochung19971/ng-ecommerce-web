@@ -7,7 +7,7 @@ import * as _ from 'lodash';
 })
 export class BaseFormService {
   protected form: FormGroup;
-  protected defaultData;
+  protected defaultData: any;
 
   constructor() {}
 

@@ -1,7 +1,7 @@
 import { Gender } from '../enum/gender.enum';
 import { Departments } from '../enum/departments.enum';
 
-export class Employee {
+export class EmployeeBE {
   id: number;
   dob: string;
   age: number;
@@ -14,7 +14,7 @@ export class Employee {
   avatar: string;
   static tableName: string = 'employees';
 
-  constructor(props?: Employee) {
+  constructor(props?) {
     if (props) {
       this.id = props.id;
       this.dob = props.dob;

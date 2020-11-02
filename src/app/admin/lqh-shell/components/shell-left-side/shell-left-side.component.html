@@ -1,0 +1,60 @@
+<div class="person-profile">
+  <div class="person-profile__avatar">
+    <img mat-card-avatar src="../../../../assets/images/avatar.jpg" class="person-profile__avatar-img" />
+    <div class="ring-ph-circle"></div>
+  </div>
+  <div class="person-profile__dropdown">
+    <button mat-button [matMenuTriggerFor]="menu">Bryan Lee</button>
+    <mat-menu #menu="matMenu" xPosition="before" class="lqh-mat-menu">
+      <button mat-menu-item>
+        <mat-icon>person_outline</mat-icon>
+        <span>My Profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>account_balance_wallet</mat-icon>
+        <span>My Balance</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>mail_outline</mat-icon>
+        <span>Inbox</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Account Setting</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+
+<mat-accordion>
+  <div class="lqh-mat-accordion">
+    <mat-expansion-panel
+      *ngFor="let panel of accordion"
+      [hideToggle]="!(panel.children && panel.children.length > 0)"
+      [expanded]="panel.isExpanded"
+      [disabled]="panel.isDisabled"
+      [routerLink]="panel.url && !(panel.children && panel.children.length > 0) ? panel.url : null"
+    >
+      <mat-expansion-panel-header [collapsedHeight]="'43px'" [expandedHeight]="'44px'">
+        <mat-panel-title class="lqh-mat-panel-title">
+          <mat-icon *ngIf="panel.matIcon">{{ panel.matIcon }}</mat-icon>
+          <span>{{ panel.routeName }}</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <mat-list-item
+          *ngFor="let child of panel.children"
+          [routerLink]="child.url"
+          [routerLinkActive]="'is-active'"
+          >{{ child.routeName }}</mat-list-item
+        >
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </div>
+</mat-accordion>

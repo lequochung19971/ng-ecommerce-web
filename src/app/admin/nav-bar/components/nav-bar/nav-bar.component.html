@@ -10,7 +10,9 @@
   </button>
   <img src="assets/icons/logo-none.png" alt="logo" height="50px" />
 </mat-toolbar>
+
 <app-loading></app-loading>
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav
     #drawer
@@ -24,9 +26,11 @@
     <app-nav-bar-profile></app-nav-bar-profile>
     <app-nav-bar-side-bar-list [accordion]="navGroup"></app-nav-bar-side-bar-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <!-- Add Content Here -->
     <app-breadcrumbs></app-breadcrumbs>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+  
 </mat-sidenav-container>

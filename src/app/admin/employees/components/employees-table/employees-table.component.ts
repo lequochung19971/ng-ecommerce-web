@@ -1,6 +1,12 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge, Observable, Subject, timer } from 'rxjs';
+import { debounce, startWith, switchMap, tap } from 'rxjs/operators';
 import { Departments } from 'src/app/admin/providers/enum/departments.enum';
 import { Gender } from 'src/app/admin/providers/enum/gender.enum';
+import { EmployeeFE } from 'src/app/admin/providers/models/employee-fe.model';
+import { EmployeesService } from '../../services/employees.service';
 
 @Component({
   selector: 'app-employees-table',
@@ -8,144 +14,10 @@ import { Gender } from 'src/app/admin/providers/enum/gender.enum';
   styleUrls: ['./employees-table.component.scss'],
 })
 export class EmployeesTableComponent implements OnInit {
-  @Output() editEmployee = new EventEmitter();
-  @Output() deleteEmployee = new EventEmitter();
-
-  ELEMENT_DATA = [
-    {
-      id: 1,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.DIRECTOR,
-      gender: Gender.M,
-    },
-    {
-      id: 2,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.ACCOUNTANT,
-      gender: Gender.M,
-    },
-    {
-      id: 3,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.CHAIRMAN,
-      gender: Gender.M,
-    },
-    {
-      id: 4,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.MANAGER,
-      gender: Gender.M,
-    },
-    {
-      id: 5,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.STAFF,
-      gender: Gender.M,
-    },
-    {
-      id: 6,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.DIRECTOR,
-      gender: Gender.M,
-    },
-    {
-      id: 7,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.ASSISTANT,
-      gender: Gender.M,
-    },
-    {
-      id: 8,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.ACCOUNTANT,
-      gender: Gender.M,
-    },
-    {
-      id: 9,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.STAFF,
-      gender: Gender.M,
-    },
-    {
-      id: 10,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.MANAGER,
-      gender: Gender.F,
-    },
-    {
-      id: 11,
-      fullName: 'Le Quoc Hung',
-      firstName: 'Le',
-      lastName: 'Quoc Hung',
-      dob: '12/03/1997',
-      age: 23,
-      email: 'lequochung19971@gmail.com',
-      phone: '0329442883',
-      department: Departments.STAFF,
-      gender: Gender.M,
-    },
-  ];
-  dataSource = this.ELEMENT_DATA;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  refreshTable$: Observable<any>;
+  dataSource$: Observable<EmployeeFE[]>;
   displayedColumns: string[] = [
     'fullName',
     'dob',
@@ -156,16 +28,44 @@ export class EmployeesTableComponent implements OnInit {
     'email',
     'action',
   ];
-  constructor() {}
+  constructor(protected employeesService: EmployeesService) {}
 
-  ngOnInit(): void {}
-
-  edit(data) {
-    this.editEmployee.emit(data);
-    // console.log(currentData);
+  ngOnInit(): void {
+    this.dataSource$ = this.employeesService.getEmployeesTableData();
+    this.refreshTable$ = this.employeesService.refreshData; 
   }
 
-  delete(id: String) {
-    this.deleteEmployee.emit(id);
+  ngAfterViewInit(): void {
+    this.setTableData();
+  }
+
+  setTableData(): void {
+    merge(this.paginator.page, this.sort.sortChange, this.refreshTable$)
+      .pipe(
+        startWith({}),
+        tap(_ => {
+          const params = {
+            _sort: this.sort.active || '',
+            _order: this.sort.direction || '',
+            _page: this.paginator.pageIndex + 1,
+            _limit: this.paginator.pageSize,
+          }
+          this.employeesService.setEmployeesTableData(params);
+        })
+      ).subscribe();
+  }
+
+  tableDataLength(): number {
+    return this.employeesService.getEmployeesTableDataLength();
+  }
+
+  edit(data: EmployeeFE) {
+    this.employeesService.openEmployeesFormDialog(data);
+  }
+
+  delete(data: EmployeeFE) {
+    this.employeesService.deleteEmployee(data).subscribe((res) => {
+      this.setTableData();
+    });
   }
 }

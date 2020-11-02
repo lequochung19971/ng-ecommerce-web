@@ -1,0 +1,127 @@
+.lqh-shell-left-side-wrapper {
+  width: 240px;
+  z-index: 3;
+  border-right: none;
+}
+
+.person-profile {
+  position: relative;
+  background-image: url('assets/images/bkg-ne.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &__avatar {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    margin-left: 35px;
+
+    &-item {
+      width: 50px;
+      height: 50px;
+    }
+
+    .ring-ph-circle {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__dropdown {
+    width: 100%;
+    background-color: $black-5-opacity;
+    .mat-button {
+      width: 100%;
+      color: #ffffff;
+    }
+    .mat-menu-content {
+      width: 200px !important;
+    }
+  }
+}
+
+.cdk-overlay-container {
+  .lqh-mat-menu {
+    margin-top: 5px;
+    width: 200px;
+  }
+
+  .cdk-overlay-connected-position-bounding-box {
+    align-items: center !important;
+  }
+}
+
+//Custom expansion panel
+.lqh-mat-accordion {
+  padding: 1rem;
+  .mat-expansion-panel {
+    margin-bottom: 10px;
+    border-radius: 0;
+    box-shadow: none;
+
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 0 !important;
+      }
+
+      .mat-list-item {
+        border-radius: 0 !important;
+
+        &:hover {
+          border-radius: 0 !important;
+        }
+      }
+    }
+
+    .mat-expansion-panel-header {
+      border-radius: 0;
+      padding: 0 16px;
+      align-items: center;
+      @include font-size(16px);
+      &.mat-expanded:focus,
+      &.mat-expanded {
+        background-color: $accent;
+        font-weight: 500;
+        box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+          0 1px 8px 0 rgba(0, 0, 0, 0.12);
+        .mat-expansion-panel-header-title {
+          color: #ffffff;
+        }
+
+        .mat-expansion-indicator::after {
+          color: #ffffff;
+        }
+
+        ::ng-deep .mat-expansion-indicator::after {
+          color: #ffffff;
+        }
+      }
+    }
+    .mat-list-item {
+      @include font-size($main-font-size);
+      border-radius: 4px;
+      height: 42px;
+      color: $black-7-opacity;
+
+      &.is-active {
+        font-weight: 500;
+      }
+    }
+
+    .lqh-mat-panel-title {
+      color: $black-7-opacity;
+
+      &.mat-expansion-panel-header-title {
+        align-items: center;
+      }
+
+      .mat-icon {
+        padding-right: 15px;
+      }
+    }
+
+    &.mat-expansion-panel-spacing {
+      margin: 12px 0;
+    }
+  }
+}

@@ -11,7 +11,7 @@ import { faFemale } from '@fortawesome/free-solid-svg-icons';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UtilitiesService } from 'src/app/admin/shared/services/utilities.service';
 import { Departments } from 'src/app/admin/providers/enum/departments.enum';
-import { EmployeeUI } from 'src/app/admin/providers/models/employee-ui.model';
+import { EmployeeFE } from 'src/app/admin/providers/models/employee-fe.model';
 import { LoadingService } from 'src/app/admin/shared/services/loading.service';
 import { FormDialogService } from 'src/app/admin/shared/services/form-dialog.service';
 import { DialogMode } from 'src/app/admin/providers/enum/dialog-mode.enum';
@@ -32,7 +32,7 @@ export class EmployeesFormComponent implements OnInit {
   selectedImage: any;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public dialogData: EmployeeUI,
+    @Inject(MAT_DIALOG_DATA) public dialogData: EmployeeFE,
     protected breakpointObserver: BreakpointObserver,
     protected employeesService: EmployeesService,
     protected utilitiesService: UtilitiesService,
@@ -56,7 +56,7 @@ export class EmployeesFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      if (!this.form.controls.id.value) {
+      if (!this.form.value.id) {
         this.newEmployee();
       } else {
         this.updateEmployee();
@@ -69,7 +69,7 @@ export class EmployeesFormComponent implements OnInit {
       if (data.id) {
         this.employeesService.resetEmployeeForm();
         this.loadingService.close();
-        this.dialogRef.close();
+        this.dialogRef.close(true);
       }
     });
   }
@@ -79,7 +79,7 @@ export class EmployeesFormComponent implements OnInit {
       if (data.id) {
         this.employeesService.resetEmployeeForm();
         this.loadingService.close();
-        this.dialogRef.close();
+        this.dialogRef.close(true);
       }
     });
   }

@@ -76,9 +76,9 @@
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">
-        <mat-form-field appearance="standard">
+        <mat-form-field appearance="standard" class="lqh-form-field-input-disabled">
           <mat-label>Age</mat-label>
-          <input matInput formControlName="age" placeholder="Age" />
+          <input matInput formControlName="age" placeholder="Age" [readonly]="true"/>
         </mat-form-field>
       </mat-grid-tile>
 
@@ -137,7 +137,7 @@
       </mat-grid-tile>
 
       <mat-grid-tile [colspan]="4" [rowspan]="1">
-        <mat-form-field appearance="standard">
+        <mat-form-field appearance="standard" [ngClass]="{'lqh-form-field-input-disabled': getDialogMode() === 'EDIT'}">
           <mat-label>Confirm password</mat-label>
           <input
             matInput
@@ -145,7 +145,7 @@
             formControlName="confirmPassword"
             placeholder="Password"
             autocomplete="off"
-            [appDisableControl]="getDialogMode() === 'EDIT'"
+            [readonly]="getDialogMode() === 'EDIT'"
             required
           />
           <mat-error>
