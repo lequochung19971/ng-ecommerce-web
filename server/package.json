@@ -1,16 +1,27 @@
 {
-  "name": "fake-api",
+  "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "ecommerce-project",
+  "main": "./dist/server.js",
   "scripts": {
-    "json:server": "json-server --watch database.json",
-    "json:server-auto": "json-server generate.js"
+    "test": "ts-node ./app/server.ts",
+    "start": "tsc -w & nodemon ./dist/server.js",
+    "prod": "tsc && nodemon ./dist/server.js",
+    "start-tsc:watch": "tsc -w",
+    "server": "nodemon ./dist/server.js"
   },
-  "author": "lequochung",
+  "author": "hung-le",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
   "dependencies": {
-    "faker": "^4.1.0",
-    "json-server": "^0.15.1"
+    "@types/express": "^4.17.8",
+    "@types/mongoose": "^5.7.37",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.13",
+    "uuid": "^8.3.1"
   }
 }
