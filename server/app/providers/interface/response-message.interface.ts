@@ -5,4 +5,5 @@ export interface IResponseMessage {
   data?: any;
   message?: string;
   err?: any;
+  meta?: any
 }

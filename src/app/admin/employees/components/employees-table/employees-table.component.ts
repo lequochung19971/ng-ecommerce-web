@@ -45,10 +45,10 @@ export class EmployeesTableComponent implements OnInit {
         startWith({}),
         tap(_ => {
           const params = {
-            _sort: this.sort.active || '',
-            _order: this.sort.direction || '',
-            _page: this.paginator.pageIndex + 1,
-            _limit: this.paginator.pageSize,
+            sort: this.sort.active || '',
+            order: this.sort.direction || '',
+            page: this.paginator.pageIndex + 1,
+            limit: this.paginator.pageSize,
           }
           this.employeesService.setEmployeesTableData(params);
         })

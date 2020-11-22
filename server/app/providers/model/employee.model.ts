@@ -37,6 +37,6 @@ export class Employee extends BaseModel{
   }
   
   protected necessaryParams(): string[] {
-    return ['dob', 'age', 'fullName', 'email', 'phone', 'phone', 'gender'];
+    return ['dob', 'age', 'fullName', 'email', 'phone', 'gender'];
   }
 }

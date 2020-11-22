@@ -10,24 +10,23 @@ export class EmployeesRoutes {
   }
 
   public route(app: Application) {
-    app.post('/employee', async (req: Request, res: Response) => {
+    app.post('/employees', async (req: Request, res: Response) => {
       this.employeesController.createEmployee(req, res);
     });
 
-    app.get('/employee/:id', (req: Request, res: Response) => {
-      res.send({hung: 'ne'});
+    app.get('/employees/:id', (req: Request, res: Response) => {
     });
 
-    app.put('/employee/:id', (req: Request, res: Response) => {
+    app.put('/employees/:id', (req: Request, res: Response) => {
       this.employeesController.updateEmployee(req, res);
     });
 
-    app.delete('/employee/:id', (req: Request, res: Response) => {
-
+    app.delete('/employees/:id', (req: Request, res: Response) => {
+      this.employeesController.deleteEmployee(req, res);
     });
 
     app.get('/employees', (req: Request, res: Response) => {
-      this.employeesController.getEmployees(req, res);
+      this.employeesController.getFilteredEmployees(req, res);
     });
   }
 }

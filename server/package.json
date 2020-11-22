@@ -7,7 +7,7 @@
     "test": "ts-node ./app/server.ts",
     "start": "tsc -w & nodemon ./dist/server.js",
     "prod": "tsc && nodemon ./dist/server.js",
-    "start-tsc:watch": "tsc -w",
+    "tsc": "tsc -w",
     "server": "nodemon ./dist/server.js"
   },
   "author": "hung-le",

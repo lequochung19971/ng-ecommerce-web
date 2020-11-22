@@ -7,7 +7,7 @@ class Environment {
     this.environment = environment;
   }
 
-  getPort(): number {
+  get port(): number {
     if (this.environment === EnvironmentsEnum.dev_environment) {
       return 3001;
     } 
@@ -19,7 +19,7 @@ class Environment {
     return 3000;
   }
 
-  getDBName(): string {
+  get databaseName(): string {
     if (this.environment === EnvironmentsEnum.dev_environment) {
       return 'ecommerce-db_dev';
     } 
@@ -29,6 +29,18 @@ class Environment {
     }
 
     return 'ecommerce-db_local';
+  }
+
+  get production(): boolean {
+    if (this.environment === EnvironmentsEnum.dev_environment) {
+      return true;
+    } 
+    
+    if (this.environment === EnvironmentsEnum.prod_environment) {
+      return true;
+    }
+
+    return false;
   }
 }
 

@@ -1,10 +1,8 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map } from 'rxjs/operators';
+import { Component, OnInit, Inject } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { EmployeesService } from '../../services/employees.service';
 import * as _ from 'lodash';
-import { FormControl, FormGroup } from '@angular/forms';
-import * as moment from 'moment';
+import { FormGroup } from '@angular/forms';
 
 import { faMale } from '@fortawesome/free-solid-svg-icons';
 import { faFemale } from '@fortawesome/free-solid-svg-icons';
@@ -51,12 +49,12 @@ export class EmployeesFormComponent implements OnInit {
   }
 
   getDialogMode(): DialogMode {
-    return this.dialogData && this.dialogData.id ? DialogMode.EDIT : DialogMode.CREATE;
+    return this.dialogData && this.dialogData._id ? DialogMode.EDIT : DialogMode.CREATE;
   }
 
   onSubmit(): void {
     if (this.form.valid) {
-      if (!this.form.value.id) {
+      if (!this.form.value._id) {
         this.newEmployee();
       } else {
         this.updateEmployee();
@@ -65,8 +63,8 @@ export class EmployeesFormComponent implements OnInit {
   }
 
   newEmployee(): void {
-    this.employeesService.createEmployee(this.form.value).subscribe((data: any) => {
-      if (data.id) {
+    this.employeesService.createEmployee(this.form.value).subscribe((data: EmployeeFE) => {
+      if (data._id) {
         this.employeesService.resetEmployeeForm();
         this.loadingService.close();
         this.dialogRef.close(true);
@@ -76,7 +74,7 @@ export class EmployeesFormComponent implements OnInit {
 
   updateEmployee(): void {
     this.employeesService.updateEmployee(this.form.value).subscribe((data: any) => {
-      if (data.id) {
+      if (data._id) {
         this.employeesService.resetEmployeeForm();
         this.loadingService.close();
         this.dialogRef.close(true);

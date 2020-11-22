@@ -13,6 +13,8 @@ import { EmployeeBE } from '../../providers/models/employee.model';
 import { Observable, Subject } from 'rxjs';
 import { EmployeeTableParams } from '../../providers/models/employee-table-params';
 import { MatDialogRef } from '@angular/material/dialog';
+import { map } from 'rxjs/operators';
+import { DataResponse } from '../../providers/interface/data-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -71,7 +73,7 @@ export class EmployeesService {
 
   generateEmployeeFormAndDefaultFormData(data: EmployeeFE) {
     const form = this.fb.group({
-      id: [(data && data.id) || ''],
+      _id: [(data && data._id) || ''],
       fullName: [
         (data && data.fullName) || '',
         [Validators.required, Validators.maxLength(30), Validators.minLength(4)],
@@ -119,14 +121,17 @@ export class EmployeesService {
 
   ///////////////////////API///////////////////////
 
-  createEmployee(data: EmployeeFE) {
-    data.id = data.id || this.utilitiesService.createId();
+  createEmployee(data: EmployeeFE): Observable<EmployeeFE> {
     const newEmployee: EmployeeBE = this.convertEmployeeFEToEmployeeBE(data);
-    return this.employeesApiService.callAPIToCreateEmployee(newEmployee);
+    return this.employeesApiService.callAPIToCreateEmployee(newEmployee).pipe(
+      map((res: DataResponse) => { return this.convertEmployeeBEToEmployeeFE(res.DATA) })
+    );
   }
 
   updateEmployee(data: any) {
-    return this.employeesApiService.callAPIToUpdateEmployee(data);
+    return this.employeesApiService.callAPIToUpdateEmployee(data).pipe(
+      map((res: DataResponse) => { return this.convertEmployeeBEToEmployeeFE(res.DATA) })
+    );
   }
 
   fetchEmployeeByID(id: string) {

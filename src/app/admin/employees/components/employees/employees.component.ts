@@ -12,7 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class EmployeesComponent implements OnInit {
   MOCK_DATA: EmployeeFE = {
-    id: '123456789',
+    _id: '123456789',
     fullName: 'Le Quoc Hung',
     dob: '12/03/1997',
     age: 23,
@@ -30,13 +30,5 @@ export class EmployeesComponent implements OnInit {
 
   openCreateEmployeesDialog() {
     this.employeesService.openEmployeesFormDialog();
-  }
-
-  openEditEmployeesDialog(data: EmployeeFE) {
-    this.employeesService.openEmployeesFormDialog(this.MOCK_DATA);
-  }
-
-  deleteEmployee(id: String) {
-    this.employeesService.deleteEmployee(id);
   }
 }

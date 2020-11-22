@@ -19,7 +19,7 @@ export class Mongoose {
   }
 
   getMongoDBUrl(): string {
-    const url = this.url.replace('<dbname>', env.getDBName())
+    const url = this.url.replace('<dbname>', env.databaseName)
     return url;
   }
 }

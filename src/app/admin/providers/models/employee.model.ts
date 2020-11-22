@@ -2,7 +2,7 @@ import { Gender } from '../enum/gender.enum';
 import { Departments } from '../enum/departments.enum';
 
 export class EmployeeBE {
-  id: number;
+  _id: number;
   dob: string;
   age: number;
   fullName: string;
@@ -16,7 +16,7 @@ export class EmployeeBE {
 
   constructor(props?) {
     if (props) {
-      this.id = props.id;
+      this._id = props._id;
       this.dob = props.dob;
       this.age = props.age;
       this.fullName = props.fullName;

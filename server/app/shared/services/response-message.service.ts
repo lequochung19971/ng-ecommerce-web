@@ -1,13 +1,25 @@
 import { IResponseMessage } from '../../providers/interface/response-message.interface';
 import { ResponseStatus } from '../../providers/enum/response-status.enum';
+import { LoggerService } from './logger.service';
 
 export class ResponseMessageService {
+  protected logger: LoggerService;
 
-  successReponse({res, message, data}: IResponseMessage) {
+  constructor() {
+    this.logger = new LoggerService();
+  }
+
+  successReponse({res, message, data, meta}: IResponseMessage) {
+    // this.logger.LOG({
+    //   STATUS: 'SUCCESS',
+    //   MESSAGE: message,
+    //   DATA: data
+    // })
     res.status(ResponseStatus.SUCCESS).json({
       STATUS: 'SUCCESS',
       MESSAGE: message,
-      DATA: data
+      DATA: data,
+      META: meta
     })
   }
 

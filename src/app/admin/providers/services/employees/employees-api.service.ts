@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { ProxyMetaParams } from '../../models/proxy-meta-params';
 import { HttpResponse } from '@angular/common/http';
+import { DataResponse } from '../../interface/data-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ import { HttpResponse } from '@angular/common/http';
 export class EmployeesApiService {
   constructor(protected proxy: ProxyService) {}
 
-  callAPIToCreateEmployee(data: any) {
+  callAPIToCreateEmployee(data: any): Observable<any> {
     return this.proxy.post<EmployeeBE>(EmployeeBE, data);
   }
 
@@ -28,12 +29,12 @@ export class EmployeesApiService {
   }
 
   callAPIToFetchEmployeesForTable(query?: any): Observable<any> {
-    return this.proxy.get<EmployeeBE>(EmployeeBE, query, { fullResponse: true} as ProxyMetaParams).pipe(
+    return this.proxy.get<EmployeeBE>(EmployeeBE, query).pipe(
       map((res) => {
-        const data = res.body.map((emp) => {
+        const data = res.DATA.map((emp) => {
           return this.convertEmployeeBEToEmployeeFE(emp);
         }) as EmployeeFE[];
-        const totalCount = res.headers.get('X-Total-Count');
+        const totalCount = res.META.totalCount;
         return { data, totalCount };
       }),
     );
