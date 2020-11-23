@@ -5,7 +5,7 @@ export class BaseModel {
 
   constructor() {}
 
-  hasEnoughParams(): boolean {
+  hasEnoughParams(params?): boolean {
     return true;
   }
 }

@@ -28,7 +28,7 @@ export class EmployeesController {
 
     const body = { ...req.body, modificationNote } as Employee;
     const employee: Employee = new Employee(body);
-    if (employee.hasEnoughParams()) {
+    if (employee.hasEnoughParams(this.paramsForCreating())) {
       this.employeeService
         .createEmployee(employee)
         .then((data) => {
@@ -54,7 +54,7 @@ export class EmployeesController {
 
     const data = req.body as Employee;
     const employee: Employee = new Employee(data);
-    if (req.params.id && employee.hasEnoughParams()) {
+    if (req.params.id && employee.hasEnoughParams(this.paramsForUpdating())) {
       employee._id = req.params.id;
 
       this.employeeService
@@ -139,4 +139,14 @@ export class EmployeesController {
 
     return query;
   }
+
+  
+  protected paramsForCreating(): string[] {
+    return ['dob', 'age', 'fullName', 'email', 'phone', 'gender'];
+  }
+
+  protected paramsForUpdating(): string[] {
+    return ['dob', 'age', 'fullName', 'email', 'phone', 'gender'];
+  }
+
 }

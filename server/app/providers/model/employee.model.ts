@@ -31,12 +31,9 @@ export class Employee extends BaseModel{
     }
   }
 
-  hasEnoughParams(): boolean {
-    const necessaryParams: string[] = this.necessaryParams();
-    return necessaryParams.every(param => this[param]);
-  }
-  
-  protected necessaryParams(): string[] {
-    return ['dob', 'age', 'fullName', 'email', 'phone', 'gender'];
+  hasEnoughParams(params: string[]): boolean {
+    if (!params || params.length === 0) { return false; }
+
+    return params.every(param => this[param]);
   }
 }

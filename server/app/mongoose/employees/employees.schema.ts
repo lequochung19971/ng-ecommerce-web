@@ -2,17 +2,44 @@ import { model, Schema } from "mongoose";
 import { ModificationNoteSchema } from "../../providers/schema/modification-note.schema";
 
 const employeesSchema: Schema = new Schema({
-  _id: String,
-  dob: String,
-  age: Number,
-  fullName: String,
-  email: String,
-  phone: String,
-  department: String,
-  password: String,
-  gender: String,
+  _id: {
+    type: String,
+    required: true,
+  },
+  dob: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: false,
+  },
+  fullName: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  department: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: false,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
   avatar: String,
   modificationNote: [ModificationNoteSchema]
-}, { id: true })
+})
 
 export default model('employees', employeesSchema);
